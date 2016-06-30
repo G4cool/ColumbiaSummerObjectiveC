@@ -51,22 +51,32 @@
     p.weightInKG = [NSNumber numberWithDouble:self.weightField.text.doubleValue];
     self.bmiLabel.text = p.bmi.stringValue;
     
-    // 1 = underweight, 2 = normal weight, 3 = overweight, 4 = class I obesity, 5 = class II obesity, 6 = class III obesity
-    NSNumber* weightClass = p.weightClassification;
-    
-    static bool toggle = YES;
     UIImage* newImage;
     NSString* path;
     
     NSBundle *myBundle = [NSBundle mainBundle];
-    if (toggle) {
+    
+    // 1 = underweight, 2 = normal weight, 3 = overweight, 4 = class I obesity, 5 = class II obesity, 6 = class III obesity
+    if (p.weightClassification.integerValue == 1) {
         path = [myBundle pathForResource:@"ship3" ofType:@".jpg"];
         newImage = [UIImage imageWithContentsOfFile:path];
-    } else {
+    } else if (p.weightClassification.integerValue == 2) {
+        path = [myBundle pathForResource:@"ship6" ofType:@".jpg"];
+        newImage = [UIImage imageWithContentsOfFile:path];
+    } else if (p.weightClassification.integerValue == 3) {
+        path = [myBundle pathForResource:@"ship6" ofType:@".jpg"];
+        newImage = [UIImage imageWithContentsOfFile:path];
+    } else if (p.weightClassification.integerValue == 4) {
+        path = [myBundle pathForResource:@"ship6" ofType:@".jpg"];
+        newImage = [UIImage imageWithContentsOfFile:path];
+    } else if (p.weightClassification.integerValue == 5) {
+        path = [myBundle pathForResource:@"ship6" ofType:@".jpg"];
+        newImage = [UIImage imageWithContentsOfFile:path];
+    } else if (p.weightClassification.integerValue == 6) {
         path = [myBundle pathForResource:@"ship6" ofType:@".jpg"];
         newImage = [UIImage imageWithContentsOfFile:path];
     }
-    toggle = !toggle;
+    
     self.myImageView.image = newImage;
 }
 
