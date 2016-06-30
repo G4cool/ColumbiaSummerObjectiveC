@@ -56,6 +56,7 @@
     }
     p.age = [NSNumber numberWithDouble:self.ageField.text.doubleValue];
 
+    // LOWER PRECISION!!!!!
     self.bmiLabel.text = p.bmi.stringValue;
     self.bmrLabel.text = p.bmr.stringValue;
     
