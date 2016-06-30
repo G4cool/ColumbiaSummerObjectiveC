@@ -13,6 +13,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *heightField;
 @property (strong, nonatomic) IBOutlet UILabel *bmiLabel;
 
+@property (weak, nonatomic) IBOutlet UIImageView *myImageView;
+
 - (IBAction)calculate:(id)sender;
 
 @end

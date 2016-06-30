@@ -54,12 +54,17 @@
                                     <action selector="calculate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2lf-U7-xDS"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ship6.jpg" id="SZ6-Z8-Xd8">
+                                <rect key="frame" x="40" y="173" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="bmiLabel" destination="yda-Vv-Lov" id="CnO-0X-ora"/>
                         <outlet property="heightField" destination="Oob-Nj-P84" id="gAK-5B-0hR"/>
+                        <outlet property="myImageView" destination="SZ6-Z8-Xd8" id="Z8N-mN-Ez3"/>
                         <outlet property="weightField" destination="9u7-jV-4jI" id="hZ4-W2-3h1"/>
                     </connections>
                 </viewController>
@@ -68,4 +73,7 @@
             <point key="canvasLocation" x="130" y="300"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ship6.jpg" width="50" height="50"/>
+    </resources>
 </document>

@@ -50,6 +50,21 @@
     p.heightInM = [NSNumber numberWithDouble:self.heightField.text.doubleValue];
     p.weightInKG = [NSNumber numberWithDouble:self.weightField.text.doubleValue];
     self.bmiLabel.text = p.bmi.stringValue;
+    
+    static bool toggle = YES;
+    UIImage* newImage;
+    NSString* path;
+    
+    NSBundle *myBundle = [NSBundle mainBundle];
+    if (toggle) {
+        path = [myBundle pathForResource:@"ship3" ofType:@".jpg"];
+        newImage = [UIImage imageWithContentsOfFile:path];
+    } else {
+        path = [myBundle pathForResource:@"ship6" ofType:@".jpg"];
+        newImage = [UIImage imageWithContentsOfFile:path];
+    }
+    toggle = !toggle;
+    self.myImageView.image = newImage;
 }
 
 -(void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
