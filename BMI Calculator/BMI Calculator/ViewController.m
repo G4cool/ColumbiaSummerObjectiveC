@@ -9,6 +9,9 @@
 #import "ViewController.h"
 #import "Person.h"
 
+#define RGB(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
+#define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+
 @interface ViewController ()
 
 @end
@@ -18,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.view.backgroundColor = RGB(233, 233, 233);
     self.bmiLabel.textAlignment = NSTextAlignmentCenter;
 }
 
