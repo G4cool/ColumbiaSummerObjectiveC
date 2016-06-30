@@ -14,7 +14,8 @@
 @property (strong, nonatomic) NSNumber* heightInM;
 
 +(Person*) sharedPersonInstance;
--(NSNumber*) bmi;
 -(NSString*) description;
+-(NSNumber*) bmi;
+-(NSNumber*) weightClassification;
 
 @end

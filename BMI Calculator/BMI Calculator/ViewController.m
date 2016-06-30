@@ -51,6 +51,9 @@
     p.weightInKG = [NSNumber numberWithDouble:self.weightField.text.doubleValue];
     self.bmiLabel.text = p.bmi.stringValue;
     
+    // 1 = underweight, 2 = normal weight, 3 = overweight, 4 = class I obesity, 5 = class II obesity, 6 = class III obesity
+    NSNumber* weightClass = p.weightClassification;
+    
     static bool toggle = YES;
     UIImage* newImage;
     NSString* path;
