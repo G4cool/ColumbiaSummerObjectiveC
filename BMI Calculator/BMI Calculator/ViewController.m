@@ -23,6 +23,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = RGB(233, 233, 233);
     self.bmiLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:0 toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
 }
 
 - (void)didReceiveMemoryWarning {
