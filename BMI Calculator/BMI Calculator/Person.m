@@ -30,7 +30,7 @@ static Person* secretPerson;
 }
 
 -(NSNumber*) bmi {
-    return self.weightInKG/((self.heightInM.doubleValue)*(self.heightInM.doubleValue));
+    return [NSNumber numberWithDouble:self.weightInKG.doubleValue/((self.heightInM.doubleValue)*(self.heightInM.doubleValue))];
 }
 
 @end
