@@ -12,10 +12,12 @@
 
 @property (strong, nonatomic) NSNumber* weightInKG;
 @property (strong, nonatomic) NSNumber* heightInM;
+@property (strong, nonatomic) NSString* gender;
+@property (strong, nonatomic) NSNumber* age;
 
 +(Person*) sharedPersonInstance;
 -(NSString*) description;
 -(NSNumber*) bmi;
--(NSNumber*) weightClassification;
+-(NSNumber*) bmr;
 
 @end

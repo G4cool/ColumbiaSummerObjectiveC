@@ -11,7 +11,14 @@
 @interface ViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITextField *weightField;
 @property (strong, nonatomic) IBOutlet UITextField *heightField;
+@property (strong, nonatomic) IBOutlet UITextField *genderField;
+@property (strong, nonatomic) IBOutlet UITextField *ageField;
 @property (strong, nonatomic) IBOutlet UILabel *bmiLabel;
+@property (strong, nonatomic) IBOutlet UILabel *bmrLabel;
+@property (strong, nonatomic) IBOutlet UILabel *weightLabel;
+@property (strong, nonatomic) IBOutlet UILabel *heightLabel;
+@property (strong, nonatomic) IBOutlet UILabel *genderLabel;
+@property (strong, nonatomic) IBOutlet UILabel *ageLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *myImageView;
 

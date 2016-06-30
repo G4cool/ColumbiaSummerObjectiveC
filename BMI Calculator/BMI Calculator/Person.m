@@ -14,12 +14,16 @@ static Person* secretPerson;
 
 @synthesize weightInKG;
 @synthesize heightInM;
+@synthesize gender;
+@synthesize age;
 
 +(Person*) sharedPersonInstance {
     if (secretPerson == nil) {
         secretPerson = [[Person alloc] init];
         secretPerson.heightInM = @1.75;
         secretPerson.weightInKG = @75;
+        secretPerson.gender = @"female";
+        secretPerson.age = @26;
     }
     
     return secretPerson;
@@ -33,23 +37,15 @@ static Person* secretPerson;
     return [NSNumber numberWithDouble:self.weightInKG.doubleValue/((self.heightInM.doubleValue)*(self.heightInM.doubleValue))];
 }
 
--(NSNumber*) weightClassification: (NSNumber*) bmi {
-    NSNumber* weightClass;
-    if (bmi.doubleValue < 18.5) {
-        weightClass = @1;
-    } else if (bmi.doubleValue >= 18.5 && bmi.doubleValue < 25.0) {
-        weightClass = @2;
-    } else if (bmi.doubleValue >= 25.0 && bmi.doubleValue < 30.0) {
-        weightClass = @3;
-    } else if (bmi.doubleValue >= 30.0 && bmi.doubleValue < 35.0) {
-        weightClass = @4;
-    } else if (bmi.doubleValue >= 35.0 && bmi.doubleValue < 39.9) {
-        weightClass = @5;
-    } else if (bmi.doubleValue >= 40.0) {
-        weightClass = @6;
+-(NSNumber*) bmr {
+    double bmr;
+    if ([self.gender isEqual: @"Male"] || [self.gender isEqual: @"male"]) {
+        bmr = (10 * self.weightInKG.doubleValue) + (6.25 * (self.heightInM.doubleValue * 100)) - (5 * self.age.doubleValue) + 5;
+    } else if ([self.gender isEqual: @"Female"] || [self.gender isEqual: @"female"]) {
+        bmr = (10 * self.weightInKG.doubleValue) + (6.25 * (self.heightInM.doubleValue * 100)) - (5 * self.age.doubleValue) - 161;
     }
     
-    return weightClass;
+    return [NSNumber numberWithDouble:(bmr)];
 }
 
 @end

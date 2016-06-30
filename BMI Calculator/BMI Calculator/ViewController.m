@@ -22,22 +22,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = RGB(233, 233, 233);
+    self.weightLabel.textAlignment = NSTextAlignmentCenter;
+    self.heightLabel.textAlignment = NSTextAlignmentCenter;
     self.bmiLabel.textAlignment = NSTextAlignmentCenter;
-    //CGRect frameView = self.view.frame;
-    //CGRect frame = self.bmiLabel.frame;
-    //frame.origin.x = frameView.origin.x/2;
-    //frame.origin.y = frameView.origin.y/2;
-    //CGFloat selfHeight = self.view.bounds.size.height;
-    //CGFloat selfWidth = self.view.bounds.size.width;
-    //CGFloat boxHeight=box.bounds.size.height;
-    //CGFloat boxWidth=box.bounds.size.width;
-    //NSLog(@"%f", selfWidth);
-    //NSLog(@"%f", selfHeight);
-    //frame.origin.y = self.view.bounds.size.height/2;
-    //frame.origin.x = self.view.bounds.size.width/2;
-    //frame.origin.y = [[UIScreen mainScreen] bounds].size.height/2;
-    //frame.origin.x = [[UIScreen mainScreen] bounds].size.width/2;
-    //self.bmiLabel.frame = frame;
+    self.genderLabel.textAlignment = NSTextAlignmentCenter;
+    self.ageLabel.textAlignment = NSTextAlignmentCenter;
+    self.bmrLabel.textAlignment = NSTextAlignmentCenter;
+    self.weightField.placeholder = @"70";
+    self.heightField.placeholder = @"1.89";
+    self.genderField.placeholder = @"Female or Male";
+    self.ageField.placeholder = @"26";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,7 +43,12 @@
     Person* p = [Person sharedPersonInstance];
     p.heightInM = [NSNumber numberWithDouble:self.heightField.text.doubleValue];
     p.weightInKG = [NSNumber numberWithDouble:self.weightField.text.doubleValue];
+    p.gender = self.genderField.text;
+    p.age = [NSNumber numberWithDouble:self.ageField.text.doubleValue];
     self.bmiLabel.text = p.bmi.stringValue;
+    self.bmrLabel.text = p.bmr.stringValue;
+    
+    //NSNumber* weightClass = p.
     
     UIImage* newImage;
     NSString* path;
@@ -58,22 +57,23 @@
     
     // 1 = underweight, 2 = normal weight, 3 = overweight, 4 = class I obesity, 5 = class II obesity, 6 = class III obesity
     // Should update this so finds it based on image name b/c number correspond!
-    if (p.weightClassification.integerValue == 1) {
+    
+    if (p.bmi.doubleValue < 18.5) {
         path = [myBundle pathForResource:@"1" ofType:@".png"];
         newImage = [UIImage imageWithContentsOfFile:path];
-    } else if (p.weightClassification.integerValue == 2) {
+    } else if (p.bmi.doubleValue >= 18.5 && p.bmi.doubleValue < 25.0) {
         path = [myBundle pathForResource:@"2" ofType:@".png"];
         newImage = [UIImage imageWithContentsOfFile:path];
-    } else if (p.weightClassification.integerValue == 3) {
+    } else if (p.bmi.doubleValue >= 25.0 && p.bmi.doubleValue < 30.0) {
         path = [myBundle pathForResource:@"3" ofType:@".png"];
         newImage = [UIImage imageWithContentsOfFile:path];
-    } else if (p.weightClassification.integerValue == 4) {
+    } else if (p.bmi.doubleValue >= 30.0 && p.bmi.doubleValue < 35.0) {
         path = [myBundle pathForResource:@"4" ofType:@".png"];
         newImage = [UIImage imageWithContentsOfFile:path];
-    } else if (p.weightClassification.integerValue == 5) {
+    } else if (p.bmi.doubleValue >= 35.0 && p.bmi.doubleValue < 39.9) {
         path = [myBundle pathForResource:@"5" ofType:@".png"];
         newImage = [UIImage imageWithContentsOfFile:path];
-    } else if (p.weightClassification.integerValue == 6) {
+    } else if (p.bmi.doubleValue >= 40.0) {
         path = [myBundle pathForResource:@"6" ofType:@".png"];
         newImage = [UIImage imageWithContentsOfFile:path];
     }
