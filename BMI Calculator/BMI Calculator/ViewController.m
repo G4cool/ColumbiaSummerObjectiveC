@@ -26,7 +26,6 @@
 }
 
 - (IBAction)calculate:(id)sender {
-    //self.myLabel.text = self.myTextField.text;
     Person* p = [Person sharedPersonInstance];
     p.heightInM = [NSNumber numberWithDouble:self.heightField.text.doubleValue];
     p.weightInKG = [NSNumber numberWithDouble:self.weightField.text.doubleValue];
@@ -34,7 +33,6 @@
 }
 
 -(void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    NSLog(@"Touches Began!");
     [self.weightField resignFirstResponder];
     [self.heightField resignFirstResponder];
 }
