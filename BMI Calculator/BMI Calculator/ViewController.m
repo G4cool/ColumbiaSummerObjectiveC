@@ -24,6 +24,7 @@
     self.view.backgroundColor = RGB(233, 233, 233);
     self.weightLabel.textAlignment = NSTextAlignmentCenter;
     self.heightLabel.textAlignment = NSTextAlignmentCenter;
+    self.unitSystemLabel.textAlignment = NSTextAlignmentCenter;
     self.bmiLabel.textAlignment = NSTextAlignmentCenter;
     self.genderLabel.textAlignment = NSTextAlignmentCenter;
     self.ageLabel.textAlignment = NSTextAlignmentCenter;
@@ -56,8 +57,7 @@
     NSBundle *myBundle = [NSBundle mainBundle];
     
     // 1 = underweight, 2 = normal weight, 3 = overweight, 4 = class I obesity, 5 = class II obesity, 6 = class III obesity
-    // Should update this so finds it based on image name b/c number correspond!
-    
+    // Should update this so it finds based on image name b/c number correspond!
     if (p.bmi.doubleValue < 18.5) {
         path = [myBundle pathForResource:@"1" ofType:@".png"];
         newImage = [UIImage imageWithContentsOfFile:path];
@@ -84,6 +84,14 @@
 -(void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.weightField resignFirstResponder];
     [self.heightField resignFirstResponder];
+}
+
+- (IBAction)unitSystemSwitch:(id)sender {
+    if (self.unitSystemSwitch.on) {
+        self.unitSystemLabel.text = @"Unit system: Metric";
+    } else {
+        self.unitSystemLabel.text = @"Unit system: Imperial";
+    }
 }
 
 @end

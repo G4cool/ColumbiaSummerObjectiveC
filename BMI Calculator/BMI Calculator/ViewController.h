@@ -19,10 +19,13 @@
 @property (strong, nonatomic) IBOutlet UILabel *heightLabel;
 @property (strong, nonatomic) IBOutlet UILabel *genderLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ageLabel;
+@property (strong, nonatomic) IBOutlet UILabel *unitSystemLabel;
+@property (strong, nonatomic) IBOutlet UISwitch *unitSystemSwitch;
 
-@property (weak, nonatomic) IBOutlet UIImageView *myImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *myImageView; // ?
 
 - (IBAction)calculate:(id)sender;
+- (IBAction)unitSystemSwitch:(id)sender;
 
 @end
 
