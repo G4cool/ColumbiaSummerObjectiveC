@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITextField *weightField;
+@property (strong, nonatomic) IBOutlet UITextField *heightField;
+@property (strong, nonatomic) IBOutlet UILabel *bmiLabel;
 
+- (IBAction)calculate:(id)sender;
 
 @end
 

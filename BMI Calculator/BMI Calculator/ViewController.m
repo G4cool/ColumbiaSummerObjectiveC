@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Person.h"
 
 @interface ViewController ()
 
@@ -22,6 +23,21 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)calculate:(id)sender {
+    //self.myLabel.text = self.myTextField.text;
+    Person* p = [Person sharedPersonInstance];
+    p.heightInM = self.weightField.text;
+}
+
+- (IBAction)calculate:(id)sender {
+}
+
+-(void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"Touches Began!");
+    [self.weightField resignFirstResponder];
+    [self.heightField resignFirstResponder];
 }
 
 @end
