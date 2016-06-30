@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSNumber* heightInM;
 @property (strong, nonatomic) NSString* gender;
 @property (strong, nonatomic) NSNumber* age;
+@property (strong, nonatomic) NSString* units;
 
 +(Person*) sharedPersonInstance;
 -(NSString*) description;

@@ -16,6 +16,7 @@ static Person* secretPerson;
 @synthesize heightInM;
 @synthesize gender;
 @synthesize age;
+@synthesize units;
 
 +(Person*) sharedPersonInstance {
     if (secretPerson == nil) {
@@ -24,6 +25,7 @@ static Person* secretPerson;
         secretPerson.weightInKG = @75;
         secretPerson.gender = @"female";
         secretPerson.age = @26;
+        secretPerson.units = @"metric";
     }
     
     return secretPerson;
@@ -39,10 +41,19 @@ static Person* secretPerson;
 
 -(NSNumber*) bmr {
     double bmr;
-    if ([self.gender isEqual: @"Male"] || [self.gender isEqual: @"male"]) {
-        bmr = (10 * self.weightInKG.doubleValue) + (6.25 * (self.heightInM.doubleValue * 100)) - (5 * self.age.doubleValue) + 5;
-    } else if ([self.gender isEqual: @"Female"] || [self.gender isEqual: @"female"]) {
-        bmr = (10 * self.weightInKG.doubleValue) + (6.25 * (self.heightInM.doubleValue * 100)) - (5 * self.age.doubleValue) - 161;
+    if ([self.units isEqual: @"metric"]) {
+        if ([self.gender isEqual: @"male"]) {
+            bmr = (10 * self.weightInKG.doubleValue) + (6.25 * (self.heightInM.doubleValue * 100)) - (5 * self.age.doubleValue) + 5;
+        } else if ([self.gender isEqual: @"female"]) {
+            bmr = (10 * self.weightInKG.doubleValue) + (6.25 * (self.heightInM.doubleValue * 100)) - (5 * self.age.doubleValue) - 161;
+        }
+    } else if ([self.units isEqual: @"imperial"]) {
+        // FIX FOR IMPERIAL SYSTEM, CONVERT!!!!!
+        if ([self.gender isEqual: @"male"]) {
+            bmr = (10 * self.weightInKG.doubleValue) + (6.25 * (self.heightInM.doubleValue * 100)) - (5 * self.age.doubleValue) + 5;
+        } else if ([self.gender isEqual: @"female"]) {
+            bmr = (10 * self.weightInKG.doubleValue) + (6.25 * (self.heightInM.doubleValue * 100)) - (5 * self.age.doubleValue) - 161;
+        }
     }
     
     return [NSNumber numberWithDouble:(bmr)];

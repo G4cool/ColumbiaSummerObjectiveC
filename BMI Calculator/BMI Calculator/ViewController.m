@@ -22,12 +22,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = RGB(233, 233, 233);
-    self.weightLabel.textAlignment = NSTextAlignmentCenter;
-    self.heightLabel.textAlignment = NSTextAlignmentCenter;
-    self.unitSystemLabel.textAlignment = NSTextAlignmentCenter;
+    //self.weightLabel.textAlignment = NSTextAlignmentCenter;
+    //self.heightLabel.textAlignment = NSTextAlignmentCenter;
+    //self.unitSystemLabel.textAlignment = NSTextAlignmentCenter;
     self.bmiLabel.textAlignment = NSTextAlignmentCenter;
-    self.genderLabel.textAlignment = NSTextAlignmentCenter;
-    self.ageLabel.textAlignment = NSTextAlignmentCenter;
+    //self.genderLabel.textAlignment = NSTextAlignmentCenter;
+    //self.ageLabel.textAlignment = NSTextAlignmentCenter;
     self.bmrLabel.textAlignment = NSTextAlignmentCenter;
     self.weightField.placeholder = @"70";
     self.heightField.placeholder = @"1.89";
@@ -44,8 +44,18 @@
     Person* p = [Person sharedPersonInstance];
     p.heightInM = [NSNumber numberWithDouble:self.heightField.text.doubleValue];
     p.weightInKG = [NSNumber numberWithDouble:self.weightField.text.doubleValue];
-    p.gender = self.genderField.text;
+    if (self.unitSystemSwitch.on) {
+        p.gender = @"metric";
+    } else {
+        p.gender = @"imperial";
+    }
+    if (self.genderSwitch.on) {
+        p.gender = @"female";
+    } else {
+        p.gender = @"male";
+    }
     p.age = [NSNumber numberWithDouble:self.ageField.text.doubleValue];
+
     self.bmiLabel.text = p.bmi.stringValue;
     self.bmrLabel.text = p.bmr.stringValue;
     
@@ -81,17 +91,38 @@
     self.myImageView.image = newImage;
 }
 
--(void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+- (void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.weightField resignFirstResponder];
     [self.heightField resignFirstResponder];
 }
 
 - (IBAction)unitSystemSwitch:(id)sender {
     if (self.unitSystemSwitch.on) {
+        self.weightLabel.text = @"Weight (kg):";
+        self.heightLabel.text = @"Height (m):";
         self.unitSystemLabel.text = @"Unit system: Metric";
     } else {
+        self.weightLabel.text = @"Weight (lbs):";
+        self.heightLabel.text = @"Height (in):";
         self.unitSystemLabel.text = @"Unit system: Imperial";
     }
 }
 
+- (IBAction)genderSwitch:(id)sender {
+    if (self.genderSwitch.on) {
+        self.genderLabel.text = @"Gender: Female";
+    } else {
+        self.genderLabel.text = @"Gender: Male";
+    }
+}
+
 @end
+
+
+
+
+
+
+
+
+
