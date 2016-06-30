@@ -57,23 +57,24 @@
     NSBundle *myBundle = [NSBundle mainBundle];
     
     // 1 = underweight, 2 = normal weight, 3 = overweight, 4 = class I obesity, 5 = class II obesity, 6 = class III obesity
+    // Should update this so finds it based on image name b/c number correspond!
     if (p.weightClassification.integerValue == 1) {
-        path = [myBundle pathForResource:@"ship3" ofType:@".jpg"];
+        path = [myBundle pathForResource:@"1" ofType:@".png"];
         newImage = [UIImage imageWithContentsOfFile:path];
     } else if (p.weightClassification.integerValue == 2) {
-        path = [myBundle pathForResource:@"ship6" ofType:@".jpg"];
+        path = [myBundle pathForResource:@"2" ofType:@".png"];
         newImage = [UIImage imageWithContentsOfFile:path];
     } else if (p.weightClassification.integerValue == 3) {
-        path = [myBundle pathForResource:@"ship6" ofType:@".jpg"];
+        path = [myBundle pathForResource:@"3" ofType:@".png"];
         newImage = [UIImage imageWithContentsOfFile:path];
     } else if (p.weightClassification.integerValue == 4) {
-        path = [myBundle pathForResource:@"ship6" ofType:@".jpg"];
+        path = [myBundle pathForResource:@"4" ofType:@".png"];
         newImage = [UIImage imageWithContentsOfFile:path];
     } else if (p.weightClassification.integerValue == 5) {
-        path = [myBundle pathForResource:@"ship6" ofType:@".jpg"];
+        path = [myBundle pathForResource:@"5" ofType:@".png"];
         newImage = [UIImage imageWithContentsOfFile:path];
     } else if (p.weightClassification.integerValue == 6) {
-        path = [myBundle pathForResource:@"ship6" ofType:@".jpg"];
+        path = [myBundle pathForResource:@"6" ofType:@".png"];
         newImage = [UIImage imageWithContentsOfFile:path];
     }
     
