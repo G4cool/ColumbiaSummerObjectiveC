@@ -24,6 +24,7 @@
     self.view.backgroundColor = RGB(233, 233, 233);
     self.bmiLabel.textAlignment = NSTextAlignmentCenter;
     self.bmrLabel.textAlignment = NSTextAlignmentCenter;
+    self.weightToLoseLabel.textAlignment = NSTextAlignmentCenter;
     self.weightField.placeholder = @"70";
     self.heightField.placeholder = @"1.89";
     self.genderField.placeholder = @"Female or Male";
