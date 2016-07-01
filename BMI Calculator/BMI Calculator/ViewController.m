@@ -22,12 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = RGB(233, 233, 233);
-    //self.weightLabel.textAlignment = NSTextAlignmentCenter;
-    //self.heightLabel.textAlignment = NSTextAlignmentCenter;
-    //self.unitSystemLabel.textAlignment = NSTextAlignmentCenter;
     self.bmiLabel.textAlignment = NSTextAlignmentCenter;
-    //self.genderLabel.textAlignment = NSTextAlignmentCenter;
-    //self.ageLabel.textAlignment = NSTextAlignmentCenter;
     self.bmrLabel.textAlignment = NSTextAlignmentCenter;
     self.weightField.placeholder = @"70";
     self.heightField.placeholder = @"1.89";
