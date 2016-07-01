@@ -78,7 +78,18 @@ static Person* secretPerson;
 }
 
 -(NSNumber*) avgDailyCaloricIntake {
-    
+    double avgDailyCaloricIntake;
+    if ([self.activityLevel isEqual: @"Sedentary"]) {
+        
+    } else if {
+        
+    } else if {
+        
+    } else if {
+        
+    } else if {
+        
+    }
 }
 
 @end
