@@ -91,11 +91,11 @@ double inPlacelholder = 1.89 * 39.3701;
     p.age = [NSNumber numberWithDouble:self.ageField.text.doubleValue];
     
     if (self.unitSystemSwitch.on) {
-        self.bmiLabel.text = [NSString stringWithFormat:@"%.02f kg/m^2", p.bmi.doubleValue];
-        self.bmrLabel.text = [NSString stringWithFormat:@"%.02f W", p.bmr.doubleValue];
+        self.bmiLabel.text = [NSString stringWithFormat:@"BMI: %.02f kg/m^2", p.bmi.doubleValue];
+        self.bmrLabel.text = [NSString stringWithFormat:@"BMR: %.02f W", p.bmr.doubleValue];
     } else {
-        self.bmiLabel.text = [NSString stringWithFormat:@"%.02f lbs/in^2", p.bmi.doubleValue];
-        self.bmrLabel.text = [NSString stringWithFormat:@"%.02f W", p.bmr.doubleValue];
+        self.bmiLabel.text = [NSString stringWithFormat:@"BMI: %.02f lbs/in^2", p.bmi.doubleValue];
+        self.bmrLabel.text = [NSString stringWithFormat:@"BMR: %.02f W", p.bmr.doubleValue];
     }
     
     UIImage* newImage;
