@@ -17,6 +17,7 @@ static Person* secretPerson;
 @synthesize gender;
 @synthesize age;
 @synthesize units;
+@synthesize weightClass;
 
 +(Person*) sharedPersonInstance {
     if (secretPerson == nil) {
@@ -26,6 +27,7 @@ static Person* secretPerson;
         secretPerson.gender = @"female";
         secretPerson.age = @26;
         secretPerson.units = @"metric";
+        secretPerson.weightClass = @2;
     }
     
     return secretPerson;
@@ -36,7 +38,14 @@ static Person* secretPerson;
 }
 
 -(NSNumber*) bmi {
-    return [NSNumber numberWithDouble:self.weightInKG.doubleValue/((self.heightInM.doubleValue)*(self.heightInM.doubleValue))];
+    NSNumber* bmi;
+    if ([self.units isEqual: @"metric"]) {
+        bmi = [NSNumber numberWithDouble:self.weightInKG.doubleValue/((self.heightInM.doubleValue)*(self.heightInM.doubleValue))];
+    } else if ([self.units isEqual: @"imperial"]) {
+        bmi = [NSNumber numberWithDouble:(self.weightInKG.doubleValue * 703)/((self.heightInM.doubleValue)*(self.heightInM.doubleValue))];
+    }
+    
+    return bmi;
 }
 
 -(NSNumber*) bmr {
@@ -48,7 +57,6 @@ static Person* secretPerson;
             bmr = (10 * self.weightInKG.doubleValue) + (6.25 * (self.heightInM.doubleValue * 100)) - (5 * self.age.doubleValue) - 161;
         }
     } else if ([self.units isEqual: @"imperial"]) {
-        // FIX FOR IMPERIAL SYSTEM, CONVERT!!!!!
         if ([self.gender isEqual: @"male"]) {
             bmr = 66 + (6.23 * self.weightInKG.doubleValue) + (12.7 * self.heightInM.doubleValue) - (6.8 * self.age.doubleValue);
         } else if ([self.gender isEqual: @"female"]) {
@@ -56,7 +64,15 @@ static Person* secretPerson;
         }
     }
     
-    return [NSNumber numberWithDouble:(bmr)];
+    return [NSNumber numberWithDouble:bmr];
+}
+
+-(NSNumber*) weightToChangePerWeek {
+    double weightToChangePerWeek;
+    
+    weightToChangePerWeek = fabs(self.weightInKG.doubleValue - 21.75)/52;
+    
+    return [NSNumber numberWithDouble:weightToChangePerWeek];
 }
 
 @end

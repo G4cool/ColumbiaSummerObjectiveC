@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *unitSystemLabel;
 @property (strong, nonatomic) IBOutlet UISwitch *unitSystemSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *genderSwitch;
+@property (strong, nonatomic) IBOutlet UILabel *weightToLoseLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *myImageView; // ?
 

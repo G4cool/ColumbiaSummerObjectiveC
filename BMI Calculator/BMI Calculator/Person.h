@@ -15,10 +15,12 @@
 @property (strong, nonatomic) NSString* gender;
 @property (strong, nonatomic) NSNumber* age;
 @property (strong, nonatomic) NSString* units;
+@property (strong, nonatomic) NSNumber* weightClass;
 
 +(Person*) sharedPersonInstance;
 -(NSString*) description;
 -(NSNumber*) bmi;
 -(NSNumber*) bmr;
+-(NSNumber*) weightToChangePerWeek;
 
 @end
