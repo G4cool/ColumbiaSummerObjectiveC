@@ -76,7 +76,12 @@ static Person* secretPerson;
 -(NSNumber*) weightToChangePerWeek {
     double weightToChangePerWeek;
     
-    weightToChangePerWeek = fabs(self.weightInKG.doubleValue - 21.75)/52;
+    // FIX!!!!!
+    if ([self.units isEqual: @"metric"]) {
+        weightToChangePerWeek = (fabs(self.bmi.doubleValue - 21.75) * (self.heightInM.doubleValue) * (self.heightInM.doubleValue))/52;
+    } else if ([self.units isEqual: @"imperial"]) {
+        weightToChangePerWeek = (fabs(self.bmi.doubleValue - 21.75) * (self.heightInM.doubleValue) * (self.heightInM.doubleValue))/(703 * 52);
+    }
     
     return [NSNumber numberWithDouble:weightToChangePerWeek];
 }
