@@ -77,26 +77,16 @@ double lbsPlaceholder = 70 * 2.20462;
 double inPlacelholder = 1.89 * 39.3701;
 
 - (IBAction)calculate:(id)sender {
-    /*
+    // Sound effect on calculate
     CFBundleRef mainBundle = CFBundleGetMainBundle ();
     
     // Get the URL to the sound file to play.
-    CFURLRef soundFileURLRef = CFBundleCopyResourceURL (mainBundle, CFSTR ("Calculate"),CFSTR ("aif"),NULL);
+    CFURLRef soundFileURLRef = CFBundleCopyResourceURL (mainBundle, CFSTR ("Calculate"),CFSTR ("wav"),NULL);
     
     // Create a system sound object representing the sound file
     SystemSoundID soundFileObject;
     AudioServicesCreateSystemSoundID (soundFileURLRef, &soundFileObject);
     AudioServicesPlaySystemSound(soundFileObject);
-    */
-    
-    NSString *soundFilePath = [NSString stringWithFormat:@"%@/Calculate.aif",
-                               [[NSBundle mainBundle] resourcePath]];
-    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
-    
-    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL
-                                                                   error:nil];
-    
-    [player play];
     
     Person* p = [Person sharedPersonInstance];
     p.heightInM = [NSNumber numberWithDouble:self.heightField.text.doubleValue];
