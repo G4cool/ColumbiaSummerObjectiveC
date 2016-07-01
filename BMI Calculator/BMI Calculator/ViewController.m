@@ -92,10 +92,10 @@ double inPlacelholder = 1.89 * 39.3701;
     
     if (self.unitSystemSwitch.on) {
         self.bmiLabel.text = [NSString stringWithFormat:@"BMI: %.02f kg/m^2", p.bmi.doubleValue];
-        self.bmrLabel.text = [NSString stringWithFormat:@"BMR: %.02f W", p.bmr.doubleValue];
+        self.bmrLabel.text = [NSString stringWithFormat:@"BMR: %.02f cal", p.bmr.doubleValue]; // Double check unit
     } else {
         self.bmiLabel.text = [NSString stringWithFormat:@"BMI: %.02f lbs/in^2", p.bmi.doubleValue];
-        self.bmrLabel.text = [NSString stringWithFormat:@"BMR: %.02f W", p.bmr.doubleValue];
+        self.bmrLabel.text = [NSString stringWithFormat:@"BMR: %.02f cal", p.bmr.doubleValue]; // Double check unit
     }
     
     UIImage* newImage;
