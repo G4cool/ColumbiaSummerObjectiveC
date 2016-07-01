@@ -149,7 +149,7 @@ double inPlacelholder = 1.89 * 39.3701;
     }
     
     p.activityLevel = activityLevelPicked;
-    self.dailyCaloricIntakeLabel.text = p.avgDailyCaloricIntake.stringValue;
+    self.dailyCaloricIntakeLabel.text = @"Avg daily caloric intake: %.02f", [p avgDailyCaloricIntake]; // If you use p.avgDailyCaloricIntake, you will get the warning: "Property access results unused - getters should not be used for side effects"  
     
     self.myImageView.image = newImage;
 }
