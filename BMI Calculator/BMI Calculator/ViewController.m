@@ -48,9 +48,9 @@ double inPlacelholder = 1.89 * 39.3701;
     p.heightInM = [NSNumber numberWithDouble:self.heightField.text.doubleValue];
     p.weightInKG = [NSNumber numberWithDouble:self.weightField.text.doubleValue];
     if (self.unitSystemSwitch.on) {
-        p.gender = @"metric";
+        p.units = @"metric";
     } else {
-        p.gender = @"imperial";
+        p.units = @"imperial";
     }
     if (self.genderSwitch.on) {
         p.gender = @"female";
@@ -58,12 +58,9 @@ double inPlacelholder = 1.89 * 39.3701;
         p.gender = @"male";
     }
     p.age = [NSNumber numberWithDouble:self.ageField.text.doubleValue];
-
-    // LOWER PRECISION!!!!!
-    self.bmiLabel.text = p.bmi.stringValue;
-    self.bmrLabel.text = p.bmr.stringValue;
     
-    //NSNumber* weightClass = p.
+    self.bmiLabel.text = [NSString stringWithFormat:@"%.02f", p.bmi.doubleValue];
+    self.bmrLabel.text = [NSString stringWithFormat:@"%.02f", p.bmr.doubleValue];
     
     UIImage* newImage;
     NSString* path;
