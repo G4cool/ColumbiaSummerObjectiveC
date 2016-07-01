@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *weightField;
 @property (strong, nonatomic) IBOutlet UITextField *heightField;
-@property (strong, nonatomic) IBOutlet UITextField *genderField;
 @property (strong, nonatomic) IBOutlet UITextField *ageField;
 @property (strong, nonatomic) IBOutlet UILabel *bmiLabel;
 @property (strong, nonatomic) IBOutlet UILabel *bmrLabel;
@@ -23,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UISwitch *unitSystemSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *genderSwitch;
 @property (strong, nonatomic) IBOutlet UILabel *weightToLoseLabel;
+@property (strong, nonatomic) IBOutlet UIPickerView *activityPicker;
 
 @property (weak, nonatomic) IBOutlet UIImageView *myImageView; // ?
 

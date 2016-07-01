@@ -14,6 +14,10 @@
 
 @interface ViewController ()
 
+{
+    NSArray *_pickerData;
+}
+
 @end
 
 @implementation ViewController
@@ -21,19 +25,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    _pickerData = @[@"Sedentary", @"Lightly active", @"Moderately active", @"Very active", @"Extremely active"];
+    // Connect data
+    self.activityPicker.dataSource = self;
+    self.activityPicker.delegate = self;
+    
     self.view.backgroundColor = RGB(233, 233, 233);
     self.bmiLabel.textAlignment = NSTextAlignmentCenter;
     self.bmrLabel.textAlignment = NSTextAlignmentCenter;
     self.weightToLoseLabel.textAlignment = NSTextAlignmentCenter;
     self.weightField.placeholder = @"70";
     self.heightField.placeholder = @"1.89";
-    self.genderField.placeholder = @"Female or Male";
     self.ageField.placeholder = @"26";
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// The number of columns of data
+- (int)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+// The number of rows of data
+- (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return _pickerData.count;
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return _pickerData[row];
 }
 
 double lbsPlaceholder = 70 * 2.20462;
