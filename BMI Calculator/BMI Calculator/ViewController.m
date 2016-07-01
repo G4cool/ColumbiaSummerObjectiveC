@@ -145,11 +145,11 @@ double inPlacelholder = 1.89 * 39.3701;
             self.weightToLoseLabel.text = [NSString stringWithFormat:@"Weight to lose per week: %.02f lbs", p.weightToChangePerWeek.doubleValue];
         }
     } else {
-        self.weightToLoseLabel.text = [NSString stringWithFormat:@"Your weight is fine."];
+        self.weightToLoseLabel.text = [NSString stringWithFormat:@"You do not need to gain or lose weight."];
     }
     
     p.activityLevel = activityLevelPicked;
-    self.dailyCaloricIntakeLabel.text = @"Avg daily caloric intake: %.02f", [p avgDailyCaloricIntake]; // If you use p.avgDailyCaloricIntake, you will get the warning: "Property access results unused - getters should not be used for side effects"  
+    self.dailyCaloricIntakeLabel.text = [NSString stringWithFormat:@"Avg daily caloric intake: %.02f cal", p.avgDailyCaloricIntake.doubleValue];
     
     self.myImageView.image = newImage;
 }
