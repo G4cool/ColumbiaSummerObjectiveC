@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "Person.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 #define RGB(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 #define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
@@ -75,6 +76,16 @@ double lbsPlaceholder = 70 * 2.20462;
 double inPlacelholder = 1.89 * 39.3701;
 
 - (IBAction)calculate:(id)sender {
+    CFBundleRef mainBundle = CFBundleGetMainBundle ();
+    
+    // Get the URL to the sound file to play.
+    CFURLRef soundFileURLRef = CFBundleCopyResourceURL (mainBundle, CFSTR ("Wilhelm_tk4"),CFSTR ("wav"),NULL);
+    
+    // Create a system sound object representing the sound file
+    SystemSoundID soundFileObject;
+    AudioServicesCreateSystemSoundID (soundFileURLRef, &soundFileObject);
+    AudioServicesPlaySystemSound(soundFileObject);
+    
     Person* p = [Person sharedPersonInstance];
     p.heightInM = [NSNumber numberWithDouble:self.heightField.text.doubleValue];
     p.weightInKG = [NSNumber numberWithDouble:self.weightField.text.doubleValue];

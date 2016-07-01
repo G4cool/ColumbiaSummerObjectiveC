@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8125E98F1D26F77A00608693 /* Wilhelm_tk4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8125E98E1D26F77A00608693 /* Wilhelm_tk4.wav */; };
 		81EAF0DA1D2565BD00BE2B33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EAF0D91D2565BD00BE2B33 /* main.m */; };
 		81EAF0DD1D2565BD00BE2B33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EAF0DC1D2565BD00BE2B33 /* AppDelegate.m */; };
 		81EAF0E01D2565BD00BE2B33 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EAF0DF1D2565BD00BE2B33 /* ViewController.m */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8125E98E1D26F77A00608693 /* Wilhelm_tk4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Wilhelm_tk4.wav; sourceTree = "<group>"; };
 		81EAF0D51D2565BD00BE2B33 /* BMI Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BMI Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81EAF0D91D2565BD00BE2B33 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		81EAF0DB1D2565BD00BE2B33 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				81F00F261D25A2CF008D260B /* 4.png */,
 				81F00F271D25A2CF008D260B /* 5.png */,
 				81F00F281D25A2CF008D260B /* 6.png */,
+				8125E98E1D26F77A00608693 /* Wilhelm_tk4.wav */,
 				81EAF0E41D2565BD00BE2B33 /* Assets.xcassets */,
 				81EAF0E61D2565BD00BE2B33 /* LaunchScreen.storyboard */,
 				81EAF0E91D2565BD00BE2B33 /* Info.plist */,
@@ -162,6 +165,7 @@
 				81F00F2E1D25A2CF008D260B /* 6.png in Resources */,
 				81F00F2C1D25A2CF008D260B /* 4.png in Resources */,
 				81F00F2D1D25A2CF008D260B /* 5.png in Resources */,
+				8125E98F1D26F77A00608693 /* Wilhelm_tk4.wav in Resources */,
 				81EAF0E81D2565BD00BE2B33 /* LaunchScreen.storyboard in Resources */,
 				81EAF0E51D2565BD00BE2B33 /* Assets.xcassets in Resources */,
 				81F00F2A1D25A2CF008D260B /* 2.png in Resources */,
