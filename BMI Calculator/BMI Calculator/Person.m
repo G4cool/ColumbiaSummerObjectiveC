@@ -50,9 +50,9 @@ static Person* secretPerson;
     } else if ([self.units isEqual: @"imperial"]) {
         // FIX FOR IMPERIAL SYSTEM, CONVERT!!!!!
         if ([self.gender isEqual: @"male"]) {
-            bmr = (10 * self.weightInKG.doubleValue) + (6.25 * (self.heightInM.doubleValue * 100)) - (5 * self.age.doubleValue) + 5;
+            bmr = (10 * self.weightInKG.doubleValue * 2.20462) + (6.25 * (self.heightInM.doubleValue * 100) * 39.3701) - (5 * self.age.doubleValue) + 5;
         } else if ([self.gender isEqual: @"female"]) {
-            bmr = (10 * self.weightInKG.doubleValue) + (6.25 * (self.heightInM.doubleValue * 100)) - (5 * self.age.doubleValue) - 161;
+            bmr = (10 * self.weightInKG.doubleValue * 2.20462) + (6.25 * (self.heightInM.doubleValue * 100) * 39.3701) - (5 * self.age.doubleValue) - 161;
         }
     }
     
