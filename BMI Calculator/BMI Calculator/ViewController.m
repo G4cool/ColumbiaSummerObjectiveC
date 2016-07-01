@@ -62,6 +62,14 @@
     return _pickerData[row];
 }
 
+NSString* activityLevelPicked;
+
+// Catpure the picker view selection
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    activityLevelPicked = _pickerData[component][row];
+}
+
 double lbsPlaceholder = 70 * 2.20462;
 double inPlacelholder = 1.89 * 39.3701;
 
@@ -137,6 +145,9 @@ double inPlacelholder = 1.89 * 39.3701;
     } else {
         self.weightToLoseLabel.text = [NSString stringWithFormat:@"Your weight is fine."];
     }
+    
+    p.activityLevel = activityLevelPicked;
+    //self.dailyCaloricIntakeLabel =
     
     self.myImageView.image = newImage;
 }

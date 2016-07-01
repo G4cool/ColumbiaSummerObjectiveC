@@ -106,17 +106,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" id="o41-yC-vde">
-                                <rect key="frame" x="0.0" y="298" width="320" height="86"/>
+                                <rect key="frame" x="0.0" y="298" width="320" height="61"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="B9Y-G5-ayS">
-                                <rect key="frame" x="128" y="392" width="64" height="30"/>
+                                <rect key="frame" x="128" y="396" width="64" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Calculate"/>
                                 <connections>
                                     <action selector="calculate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2lf-U7-xDS"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avg daily caloric intake:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="S1B-AK-AbW">
+                                <rect key="frame" x="20" y="367" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -126,6 +133,7 @@
                         <outlet property="ageLabel" destination="5Bb-QI-ReB" id="b5J-JS-tZt"/>
                         <outlet property="bmiLabel" destination="yda-Vv-Lov" id="CnO-0X-ora"/>
                         <outlet property="bmrLabel" destination="cif-XN-4El" id="SNi-xX-Mte"/>
+                        <outlet property="dailyCaloricIntakeLabel" destination="S1B-AK-AbW" id="6Qs-dX-Jbi"/>
                         <outlet property="genderLabel" destination="mKz-cL-Odu" id="h9q-Ui-VJv"/>
                         <outlet property="genderSwitch" destination="z9z-H7-d5h" id="Kga-J5-y58"/>
                         <outlet property="heightField" destination="Oob-Nj-P84" id="gAK-5B-0hR"/>

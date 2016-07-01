@@ -18,6 +18,7 @@ static Person* secretPerson;
 @synthesize age;
 @synthesize units;
 @synthesize weightClass;
+@synthesize activityLevel;
 
 +(Person*) sharedPersonInstance {
     if (secretPerson == nil) {
@@ -28,6 +29,7 @@ static Person* secretPerson;
         secretPerson.age = @26;
         secretPerson.units = @"metric";
         secretPerson.weightClass = @2;
+        secretPerson.activityLevel = @"Moderately active";
     }
     
     return secretPerson;
@@ -73,6 +75,10 @@ static Person* secretPerson;
     weightToChangePerWeek = fabs(self.weightInKG.doubleValue - 21.75)/52;
     
     return [NSNumber numberWithDouble:weightToChangePerWeek];
+}
+
+-(NSNumber*) avgDailyCaloricIntake {
+    
 }
 
 @end

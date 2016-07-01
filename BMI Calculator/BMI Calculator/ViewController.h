@@ -23,6 +23,7 @@
 @property (strong, nonatomic) IBOutlet UISwitch *genderSwitch;
 @property (strong, nonatomic) IBOutlet UILabel *weightToLoseLabel;
 @property (strong, nonatomic) IBOutlet UIPickerView *activityPicker;
+@property (strong, nonatomic) IBOutlet UILabel *dailyCaloricIntakeLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *myImageView; // ?
 
