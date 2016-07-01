@@ -25,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		8125E98E1D26F77A00608693 /* Wilhelm_tk4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Wilhelm_tk4.wav; sourceTree = "<group>"; };
+		8125E9901D26FAD000608693 /* Calculate.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Calculate.aif; sourceTree = "<group>"; };
 		81EAF0D51D2565BD00BE2B33 /* BMI Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BMI Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81EAF0D91D2565BD00BE2B33 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		81EAF0DB1D2565BD00BE2B33 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -88,6 +89,7 @@
 				81F00F261D25A2CF008D260B /* 4.png */,
 				81F00F271D25A2CF008D260B /* 5.png */,
 				81F00F281D25A2CF008D260B /* 6.png */,
+				8125E9901D26FAD000608693 /* Calculate.aif */,
 				8125E98E1D26F77A00608693 /* Wilhelm_tk4.wav */,
 				81EAF0E41D2565BD00BE2B33 /* Assets.xcassets */,
 				81EAF0E61D2565BD00BE2B33 /* LaunchScreen.storyboard */,
