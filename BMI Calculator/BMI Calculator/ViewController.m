@@ -40,6 +40,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+double lbsPlaceholder = 70 * 2.20462;
+double inPlacelholder = 1.89 * 39.3701;
+
 - (IBAction)calculate:(id)sender {
     Person* p = [Person sharedPersonInstance];
     p.heightInM = [NSNumber numberWithDouble:self.heightField.text.doubleValue];
@@ -102,10 +105,14 @@
         self.weightLabel.text = @"Weight (kg):";
         self.heightLabel.text = @"Height (m):";
         self.unitSystemLabel.text = @"Unit system: Metric";
+        self.weightField.placeholder = @"70";
+        self.heightField.placeholder = @"1.89";
     } else {
         self.weightLabel.text = @"Weight (lbs):";
         self.heightLabel.text = @"Height (in):";
         self.unitSystemLabel.text = @"Unit system: Imperial";
+        self.weightField.placeholder = [NSString stringWithFormat:@"%f", lbsPlaceholder];
+        self.heightField.placeholder = [NSString stringWithFormat:@"%f", inPlacelholder];
     }
 }
 
