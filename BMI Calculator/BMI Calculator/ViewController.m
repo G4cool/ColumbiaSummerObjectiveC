@@ -68,7 +68,6 @@ NSString* activityLevelPicked;
 // Catpure the picker view selection
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSLog(@"capturing");
     activityLevelPicked = _pickerData[row];
 }
 
@@ -145,7 +144,7 @@ double inPlacelholder = 1.89 * 39.3701;
             self.weightToLoseLabel.text = [NSString stringWithFormat:@"Weight to lose per week: %.02f lbs", p.weightToChangePerWeek.doubleValue];
         }
     } else {
-        self.weightToLoseLabel.text = [NSString stringWithFormat:@"You do not need to gain or lose weight."];
+        self.weightToLoseLabel.text = [NSString stringWithFormat:@"You can keep your weight the same."];
     }
     
     p.activityLevel = activityLevelPicked;
