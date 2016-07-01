@@ -19,6 +19,7 @@ static Person* secretPerson;
 @synthesize units;
 @synthesize weightClass;
 @synthesize activityLevel;
+@synthesize bmrVal;
 
 +(Person*) sharedPersonInstance {
     if (secretPerson == nil) {
@@ -30,6 +31,7 @@ static Person* secretPerson;
         secretPerson.units = @"metric";
         secretPerson.weightClass = @2;
         secretPerson.activityLevel = @"Moderately active";
+        secretPerson.bmrVal = @42;
     }
     
     return secretPerson;
@@ -66,6 +68,8 @@ static Person* secretPerson;
         }
     }
     
+    self.bmrVal = [NSNumber numberWithDouble:bmr];
+    
     return [NSNumber numberWithDouble:bmr];
 }
 
@@ -80,16 +84,18 @@ static Person* secretPerson;
 -(NSNumber*) avgDailyCaloricIntake {
     double avgDailyCaloricIntake;
     if ([self.activityLevel isEqual: @"Sedentary"]) {
-        
-    } else if {
-        
-    } else if {
-        
-    } else if {
-        
-    } else if {
-        
+        avgDailyCaloricIntake = self.bmrVal.doubleValue * 1.2;
+    } else if ([self.activityLevel isEqual: @"Lightly active"]) {
+        avgDailyCaloricIntake = self.bmrVal.doubleValue * 1.375;
+    } else if ([self.activityLevel isEqual: @"Moderately active"]) {
+        avgDailyCaloricIntake = self.bmrVal.doubleValue * 1.55;
+    } else if ([self.activityLevel isEqual: @"Very active"]) {
+        avgDailyCaloricIntake = self.bmrVal.doubleValue * 1.725;
+    } else if ([self.activityLevel isEqual: @"Extremely active"]) {
+        avgDailyCaloricIntake = self.bmrVal.doubleValue * 1.9;
     }
+    
+    return [NSNumber numberWithDouble:avgDailyCaloricIntake];
 }
 
 @end

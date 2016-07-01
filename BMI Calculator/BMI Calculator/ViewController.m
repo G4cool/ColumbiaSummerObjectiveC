@@ -34,6 +34,7 @@
     self.bmiLabel.textAlignment = NSTextAlignmentCenter;
     self.bmrLabel.textAlignment = NSTextAlignmentCenter;
     self.weightToLoseLabel.textAlignment = NSTextAlignmentCenter;
+    self.dailyCaloricIntakeLabel.textAlignment = NSTextAlignmentCenter;
     self.weightField.placeholder = @"70";
     self.heightField.placeholder = @"1.89";
     self.ageField.placeholder = @"26";
@@ -147,7 +148,7 @@ double inPlacelholder = 1.89 * 39.3701;
     }
     
     p.activityLevel = activityLevelPicked;
-    //self.dailyCaloricIntakeLabel =
+    self.dailyCaloricIntakeLabel.text = p.avgDailyCaloricIntake.stringValue;
     
     self.myImageView.image = newImage;
 }

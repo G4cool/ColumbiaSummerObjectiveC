@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSString* units;
 @property (strong, nonatomic) NSNumber* weightClass;
 @property (strong, nonatomic) NSString* activityLevel;
+@property (strong, nonatomic) NSNumber* bmrVal;
 
 +(Person*) sharedPersonInstance;
 -(NSString*) description;
