@@ -46,13 +46,13 @@
 }
 
 // The number of columns of data
-- (int)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     return 1;
 }
 
 // The number of rows of data
-- (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     return _pickerData.count;
 }
@@ -68,7 +68,8 @@ NSString* activityLevelPicked;
 // Catpure the picker view selection
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    activityLevelPicked = _pickerData[component][row];
+    NSLog(@"capturing");
+    activityLevelPicked = _pickerData[row];
 }
 
 double lbsPlaceholder = 70 * 2.20462;
