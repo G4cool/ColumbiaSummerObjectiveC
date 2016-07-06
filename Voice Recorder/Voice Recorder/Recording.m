@@ -13,10 +13,16 @@ static Recording* initialRecording;
 @implementation Recording
     @synthesize date;
     +(Recording*) iniWithDate:(NSDate*) aDate {
-        if (initialRecording) {
+        if (initialRecording == nil) {
+            initialRecording = [[Recording alloc] init];
             initialRecording.date = aDate;
         }
+        
         return initialRecording;
+    }
+
+    -(NSString*) description {
+        return [NSString stringWithFormat:@"%p %@", self, self.date];
     }
 
     -(NSString*) path {

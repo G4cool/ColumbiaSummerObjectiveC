@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Recording : NSObject <NSSecureCoding>
+@interface Recording : NSObject <NSCoding>
     @property (strong, nonatomic) NSDate* date;
     // Always save in ~/Documents/yyyyMMddHHmmss
     @property (readonly, nonatomic) NSString* path; // readonly ==> There is no setter (?)
     @property (readonly, nonatomic) NSURL* url; // readonly ==> There is no setter (?)
-    -(Recording*) initWithDate:(NSDate*) aDate;
+    +(Recording*) initWithDate:(NSDate*) aDate;
 @end

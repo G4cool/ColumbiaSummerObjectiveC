@@ -58,6 +58,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.progressBar = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+    
+    self.progressBar.center = self.view.center;
+    [self.view addSubview:self.progressBar];
+}
+
+- (void)updateUI:(NSTimer *)timer
+{
+    static int count =0; count++;
+    
+    if (count <=10)
+    {
+        self.progressBar.progress = (float)count/10.0f;
+    } else
+    {
+        [self.myTimer invalidate];
+        self.myTimer = nil;
+    } 
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,4 +83,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)startButton:(id)sender {
+    self.myTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateUI:) userInfo:nil repeats:YES]; }
+
+- (IBAction)stopButton:(id)sender {
+}
 @end
+
+
+
+
+
+
+
+
+
+
+
