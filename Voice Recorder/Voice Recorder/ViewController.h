@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (nonatomic, strong) NSTimer *myTimer;
+@property (strong, nonatomic) IBOutlet UIButton *startButton;
+@property (strong, nonatomic) IBOutlet UIButton *stopButton;
+@property (nonatomic, strong) IBOutlet UIProgressView *progressBar;
 
 - (IBAction)startButton:(id)sender;
 - (IBAction)stopButton:(id)sender;

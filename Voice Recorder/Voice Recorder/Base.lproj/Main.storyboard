@@ -29,15 +29,12 @@
                                     <action selector="stopButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pNU-Sd-S1r"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="g9f-ww-w8X">
-                                <rect key="frame" x="20" y="69" width="280" height="2"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="progressBar" destination="g9f-ww-w8X" id="ZNm-7x-w6g"/>
+                        <outlet property="startButton" destination="gvH-bV-c1x" id="bwC-iu-iIM"/>
+                        <outlet property="stopButton" destination="9X8-EW-Hic" id="kGh-MH-bbS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

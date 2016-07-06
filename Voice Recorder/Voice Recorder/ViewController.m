@@ -60,6 +60,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.progressBar = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
     
+    //self.startButton.center = self.view.center;
+    //self.stopButton.center = self.view.center;
     self.progressBar.center = self.view.center;
     [self.view addSubview:self.progressBar];
 }
