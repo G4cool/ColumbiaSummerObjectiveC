@@ -65,12 +65,16 @@
  5. Set up timer to update ProgressView & expire the Recording session (?)
  
  StopButton Pressed
- 1. Turn off the timer
+ 1. Turn off the timer for ProgressView
  2. Clearn up Recording Session
  3. Set currentRecodring to nil
+ 4. Reset ProgressView
  
  didFinish // when timer finishes
- 1. 
+ 1. Turn off timer for ProgressView
+ 2. Clean up session
+ 3. Set currentRecording to nil
+ 4. Reset ProgressView
 */
 
 
