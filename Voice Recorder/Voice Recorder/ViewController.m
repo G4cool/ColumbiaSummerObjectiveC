@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+#import "Recording.h"
 
 @interface ViewController ()
 
@@ -151,16 +152,21 @@
         
         
         NSDate* now = [NSDate date];
-        
+    
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"YYYY-MM-dd"];
+        NSLog(@"The date is %@",[formatter stringFromDate:now]);
+    
+        NSLog(@"im here");
         self.currentRecording = [[Recording alloc] initWithDate: now];
-        [self.recordings addObject: self.currentRecording];
+        [self.listOfRecordings addObject: self.currentRecording];
         
         NSLog(@"%@",self.currentRecording);
         
         err = nil;
         
         self.recorder = [[AVAudioRecorder alloc]
-                         initWithURL:self.currentRecording.urlPath
+                         initWithURL:self.currentRecording.url
                          settings:recordingSettings
                          error:&err];
         
@@ -183,8 +189,8 @@
             return;
         }
         
-        //prepare to record
-        [self.recorder setDelegate:self];
+        // Prepare to record
+        //[self.recorder setDelegate:self];
         [self.recorder prepareToRecord];
         self.recorder.meteringEnabled = YES;
         
@@ -207,8 +213,8 @@
             return;
         }
         
-        // start recording
-        [recorder recordForDuration:(NSTimeInterval)5];
+        // Start recording
+        [self.recorder recordForDuration:(NSTimeInterval)5];
     self.myTimer = [NSTimer scheduledTimerWithTimeInterval:(1/10) target:self selector:@selector(updateUI:) userInfo:nil repeats:YES]; }
 
 - (IBAction)stopButton:(id)sender {

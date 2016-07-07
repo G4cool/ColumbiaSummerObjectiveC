@@ -12,8 +12,10 @@ static Recording* initialRecording;
 
 @implementation Recording
     @synthesize date;
-    @synthesize recordings;
-    +(Recording*) iniWithDate:(NSDate*) aDate {
+    @synthesize path;
+    @synthesize url;
+    -(Recording*) iniWithDate:(NSDate*) aDate {
+        NSLog(@"i got to here");
         if (initialRecording == nil) {
             initialRecording = [[Recording alloc] init];
             initialRecording.date = aDate;
@@ -34,7 +36,7 @@ static Recording* initialRecording;
         return [NSString stringWithFormat:@"%@/Documents/%@.caf", home, dateString]; // .caf ==> Core Audio File
     }
 
-    -(NSURL*) url:(NSString*) path {
+    -(NSURL*) url{
         //NSURL *baseURL = [NSURL fileURLWithString:@"%@", path];
         //NSURL *URL = [NSURL URLWithString:@"folder/file.html" relativeToURL:baseURL];
         NSURL *URL = [[NSURL alloc] initWithString:path];

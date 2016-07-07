@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Recording.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface ViewController : UIViewController
 @property (nonatomic, strong) NSTimer *myTimer;
@@ -16,6 +17,8 @@
 @property (nonatomic, strong) IBOutlet UIProgressView *progressBar; // nonatomic means that changes might make a difference (??, maybe other?)
 @property (strong) Recording* currentRecording;
 @property (strong) NSMutableArray* listOfRecordings;
+
+@property (strong, nonatomic) AVAudioRecorder *recorder;
 
 @property (strong, nonatomic) NSMutableArray* otherListOfPresidents;
 
