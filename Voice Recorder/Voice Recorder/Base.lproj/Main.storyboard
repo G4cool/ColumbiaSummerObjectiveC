@@ -5,6 +5,22 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="xZ5-VB-09e">
+            <objects>
+                <navigationController id="YfO-7x-Oi8" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vmo-ut-J3l">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="taZ-DQ-boM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aMV-xK-gQs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-283" y="333"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -32,14 +48,31 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="lbz-Dy-euc"/>
                     <connections>
                         <outlet property="startButton" destination="gvH-bV-c1x" id="bwC-iu-iIM"/>
                         <outlet property="stopButton" destination="9X8-EW-Hic" id="kGh-MH-bbS"/>
+                        <segue destination="Era-K9-Z0s" kind="push" id="Fow-PH-rFb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="202" y="300"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="dd1-Fn-P32">
+            <objects>
+                <viewController id="Era-K9-Z0s" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="w7H-Ff-mR4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZtC-TL-daO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cSj-VD-Q3D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="665" y="195"/>
         </scene>
     </scenes>
 </document>

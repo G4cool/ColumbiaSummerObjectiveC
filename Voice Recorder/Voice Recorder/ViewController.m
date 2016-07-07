@@ -62,7 +62,12 @@
  2. Set currentRecodring to new Recording
  3. Insert currentRecording into recordingList
  4. Set up recording session
- 5. Set up timer to update ProgressView
+ 5. Set up timer to update ProgressView & expire the Recording session (?)
+ 
+ StopButton Pressed
+ 1. Turn off the timer
+ 2. Clearn up Recording Session
+ 3. Set currentRecodring to nil
 */
 
 
