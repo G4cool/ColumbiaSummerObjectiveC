@@ -14,8 +14,9 @@ static Recording* initialRecording;
     @synthesize date;
     @synthesize path;
     @synthesize url;
-    -(Recording*) iniWithDate:(NSDate*) aDate {
+    -(Recording*) initWithDate:(NSDate*) aDate {
         NSLog(@"i got to here");
+        
         if (initialRecording == nil) {
             initialRecording = [[Recording alloc] init];
             initialRecording.date = aDate;
