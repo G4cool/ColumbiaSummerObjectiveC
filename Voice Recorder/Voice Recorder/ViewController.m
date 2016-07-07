@@ -61,6 +61,8 @@
  1. Make a Recording Object
  2. Set currentRecodring to new Recording
  3. Insert currentRecording into recordingList
+ 4. Set up recording session
+ 5. Set up timer to update ProgressView
 */
 
 
