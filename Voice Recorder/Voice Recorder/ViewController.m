@@ -68,13 +68,11 @@
 
 - (void)updateUI:(NSTimer *)timer
 {
-    static int count =0; count++;
+    static int count = 0; count++;
     
-    if (count <=10)
-    {
+    if (count <= 10) {
         self.progressBar.progress = (float)count/10.0f;
-    } else
-    {
+    } else {
         [self.myTimer invalidate];
         self.myTimer = nil;
     } 
