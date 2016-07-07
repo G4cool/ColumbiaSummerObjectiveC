@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="YfO-7x-Oi8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -47,15 +47,23 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="5xy-jr-aF0" appends="YES" id="qbu-0C-pmx"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="lbz-Dy-euc"/>
                     <connections>
                         <outlet property="startButton" destination="gvH-bV-c1x" id="bwC-iu-iIM"/>
                         <outlet property="stopButton" destination="9X8-EW-Hic" id="kGh-MH-bbS"/>
-                        <segue destination="Era-K9-Z0s" kind="push" id="Fow-PH-rFb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="5xy-jr-aF0">
+                    <connections>
+                        <segue destination="Era-K9-Z0s" kind="push" id="Ed8-Rg-xnE"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="202" y="300"/>
         </scene>
