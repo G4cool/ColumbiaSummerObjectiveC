@@ -68,6 +68,9 @@
  1. Turn off the timer
  2. Clearn up Recording Session
  3. Set currentRecodring to nil
+ 
+ didFinish // when timer finishes
+ 1. 
 */
 
 
