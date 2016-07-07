@@ -52,6 +52,15 @@
  @end
  
  Recording* r = [[Recording alloc] iniWithDate [NSDate today]];
+ 
+ 
+ 
+ 
+ 
+ 
+ 1. Make a Recording Object
+ 2. Set currentRecodring to new Recording
+ 3. Insert currentRecording into recordingList
 */
 
 
