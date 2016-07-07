@@ -78,6 +78,12 @@
     } 
 }
 
+- (void) stopTimer
+{
+    [self.myTimer invalidate];
+    self.myTimer = nil;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -87,6 +93,8 @@
     self.myTimer = [NSTimer scheduledTimerWithTimeInterval:(1/10) target:self selector:@selector(updateUI:) userInfo:nil repeats:YES]; }
 
 - (IBAction)stopButton:(id)sender {
+    //self.myTimer = [self performSelectorOnMainThread:@selector(stopTimer) withObject:nil waitUntilDone:YES];
+    [self performSelectorOnMainThread:@selector(stopTimer) withObject:nil waitUntilDone:YES];
 }
 @end
 
