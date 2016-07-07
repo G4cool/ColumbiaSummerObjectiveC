@@ -15,8 +15,6 @@ static Recording* initialRecording;
     @synthesize path;
     @synthesize url;
     -(Recording*) initWithDate:(NSDate*) aDate {
-        NSLog(@"i got to here");
-        
         if (initialRecording == nil) {
             initialRecording = [[Recording alloc] init];
             initialRecording.date = aDate;
@@ -40,7 +38,9 @@ static Recording* initialRecording;
     -(NSURL*) url{
         //NSURL *baseURL = [NSURL fileURLWithString:@"%@", path];
         //NSURL *URL = [NSURL URLWithString:@"folder/file.html" relativeToURL:baseURL];
+        NSLog(@"url working?");
         NSURL *URL = [[NSURL alloc] initWithString:path];
+        NSLog(@"url working?");
         return [URL absoluteURL];
     }
 @end

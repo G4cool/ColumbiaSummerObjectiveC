@@ -152,12 +152,7 @@
         
         
         NSDate* now = [NSDate date];
-    
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"YYYY-MM-dd"];
-        NSLog(@"The date is %@",[formatter stringFromDate:now]);
-    
-        NSLog(@"im here");
+        
         self.currentRecording = [[Recording alloc] initWithDate: now];
         [self.listOfRecordings addObject: self.currentRecording];
         
