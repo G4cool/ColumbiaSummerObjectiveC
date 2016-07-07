@@ -17,6 +17,8 @@
 @property (strong) Recording* currentRecording;
 @property (strong) NSMutableArray* listOfRecordings;
 
+@property (strong, nonatomic) NSMutableArray* otherListOfPresidents;
+
 - (IBAction)startButton:(id)sender;
 - (IBAction)stopButton:(id)sender;
 

@@ -13,5 +13,6 @@
     // Always save in ~/Documents/yyyyMMddHHmmss
     @property (readonly, nonatomic) NSString* path; // readonly ==> There is no setter (?)
     @property (readonly, nonatomic) NSURL* url; // readonly ==> There is no setter (?)
-    +(Recording*) initWithDate:(NSDate*) aDate;
+    @property (strong, nonatomic) NSMutableArray* recordings;
+    -(Recording*) initWithDate:(NSDate*) aDate;
 @end

@@ -10,4 +10,6 @@
 
 @interface SavesViewController : UIViewController
 
+@property (strong, nonatomic) NSMutableArray* listOfPresidents;
+
 @end

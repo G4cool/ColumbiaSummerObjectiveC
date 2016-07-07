@@ -12,6 +12,7 @@ static Recording* initialRecording;
 
 @implementation Recording
     @synthesize date;
+    @synthesize recordings;
     +(Recording*) iniWithDate:(NSDate*) aDate {
         if (initialRecording == nil) {
             initialRecording = [[Recording alloc] init];

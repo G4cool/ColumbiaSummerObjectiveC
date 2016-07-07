@@ -7,16 +7,46 @@
 //
 
 #import "SavesViewController.h"
+#import "ViewController.h"
 
 @interface SavesViewController ()
 
+@property (strong, nonatomic) IBOutlet UILabel *addressLabel;
+
 @end
 
+
+
 @implementation SavesViewController
+
+@synthesize listOfPresidents;
+
+-(SavesViewController*) initWithCoder:(NSCoder *) aDecoder {
+    self = [super initWithCoder: aDecoder];
+    if(self) {
+        self.listOfPresidents = [[NSMutableArray alloc] init];
+        [self.listOfPresidents addObject:@"Washington"];
+        [self.listOfPresidents addObject:@"Licoln"];
+        [self.listOfPresidents addObject:@"LBJ"];
+    }
+    
+    return self;
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    ViewController* pvc = (ViewController*) segue.destinationViewController;
+    pvc.otherListOfPresidents = self.listOfPresidents;
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    NSLog(@"Archive my list of recordings to a file!");
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.addressLabel.text = [NSString stringWithFormat:@"%p", self];
+    NSLog(@"%@", self.listOfPresidents.description);
 }
 
 - (void)didReceiveMemoryWarning {

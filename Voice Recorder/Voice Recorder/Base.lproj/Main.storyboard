@@ -67,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="202" y="300"/>
         </scene>
-        <!--View Controller-->
+        <!--Saves View Controller-->
         <scene sceneID="dd1-Fn-P32">
             <objects>
-                <viewController id="Era-K9-Z0s" sceneMemberID="viewController">
+                <viewController id="Era-K9-Z0s" customClass="SavesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w7H-Ff-mR4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
