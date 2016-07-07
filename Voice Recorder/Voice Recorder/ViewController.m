@@ -70,8 +70,8 @@
 {
     static int count = 0; count++;
     
-    if (count <= 10) {
-        self.progressBar.progress = (float)count/10.0f;
+    if (count <= 100000000) { // 100000000 works
+        self.progressBar.progress = (float)count/100000.0f; // 100000.0f works
     } else {
         [self.myTimer invalidate];
         self.myTimer = nil;
@@ -84,7 +84,7 @@
 }
 
 - (IBAction)startButton:(id)sender {
-    self.myTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateUI:) userInfo:nil repeats:YES]; }
+    self.myTimer = [NSTimer scheduledTimerWithTimeInterval:(1/10) target:self selector:@selector(updateUI:) userInfo:nil repeats:YES]; }
 
 - (IBAction)stopButton:(id)sender {
 }
