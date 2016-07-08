@@ -106,7 +106,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = @"Placeholder text";
+    cell.textLabel.text = [self.scientists objectAtIndex:indexPath.row];
     
     return cell;
 }
