@@ -137,7 +137,7 @@
         
         [recordingSettings setValue:@(kAudioFormatLinearPCM) forKey:AVFormatIDKey];
         
-        [recordingSettings setValue:@4100.0 forKey:AVSampleRateKey];
+        [recordingSettings setValue:@44100.0 forKey:AVSampleRateKey];
         
         [recordingSettings setValue:@1 forKey:AVNumberOfChannelsKey];
         
