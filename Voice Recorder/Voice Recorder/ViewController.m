@@ -210,7 +210,8 @@
         
         // Start recording
         [self.recorder recordForDuration:(NSTimeInterval)5];
-    self.myTimer = [NSTimer scheduledTimerWithTimeInterval:(1/10) target:self selector:@selector(updateUI:) userInfo:nil repeats:YES]; }
+    self.myTimer = [NSTimer scheduledTimerWithTimeInterval:(1/10) target:self selector:@selector(updateUI:) userInfo:nil repeats:YES];
+}
 
 - (IBAction)stopButton:(id)sender {
     //self.myTimer = [self performSelectorOnMainThread:@selector(stopTimer) withObject:nil waitUntilDone:YES];
