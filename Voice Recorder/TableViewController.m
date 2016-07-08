@@ -8,6 +8,7 @@
 
 #import "TableViewController.h"
 #import "ViewController.h"
+#import "Recording.h"
 
 @interface TableViewController ()
 
@@ -19,6 +20,7 @@
 
 @synthesize listOfPresidents;
 @synthesize scientists;
+@synthesize recordings;
 
 /*
 -(TableViewController*) initWithCoder:(NSCoder *) aDecoder {
@@ -69,6 +71,7 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     ViewController* pvc = (ViewController*) segue.destinationViewController;
     pvc.otherListOfPresidents = self.listOfPresidents;
+    pvc.listOfRecordings = self.recordings;
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -106,14 +109,22 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = [self.scientists objectAtIndex:indexPath.row];
+    //cell.textLabel.text = [self.recordings objectAtIndex:indexPath.row];
+    Recording* r = [self.recordings objectAtIndex:indexPath.row];
+    NSLog(@"FUCKING WORK: %@", r.description);
+    //NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    //[formatter setDateFormat:@"yyyyMMddHHmmss"];
+    //NSLog(@"The description is %@",[formatter stringFromDate:r.date]);
+    //cell.textLabel.text = [NSString stringWithFormat:@"%p %@", r, r.date];
+    //cell.textLabel.text = self.recordings[objectAtIndex:indexPath.row];
+    cell.textLabel.text = r.description;
     
     return cell;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Play the audio file that maps onto the cell
-    // Recording* r = [sef.recordingsList objectAtIndex: indexPath.row];
+    // Recording* r = [self.recordingsList objectAtIndex: indexPath.row];
     // [self play: r];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // If don't want fade, change animated to NO
 }

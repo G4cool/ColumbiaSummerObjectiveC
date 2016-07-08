@@ -12,6 +12,7 @@ static Recording* initialRecording;
 
 @implementation Recording
     @synthesize date;
+    @synthesize description;
     @synthesize path;
     @synthesize url;
     -(Recording*) initWithDate:(NSDate*) aDate {
@@ -24,6 +25,10 @@ static Recording* initialRecording;
     }
 
     -(NSString*) description {
+        NSLog(@"PLEASE");
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyyMMddHHmmss"];
+        NSLog(@"The description is %@",[formatter stringFromDate:self.date]);
         return [NSString stringWithFormat:@"%p %@", self, self.date];
     }
 

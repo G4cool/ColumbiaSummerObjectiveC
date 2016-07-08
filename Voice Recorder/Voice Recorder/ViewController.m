@@ -164,7 +164,11 @@
                          initWithURL:self.currentRecording.url
                          settings:recordingSettings
                          error:&err];
-        
+    
+        NSString* filePath = [self.currentRecording.url path];
+        NSLog(@"the url: %@", self.currentRecording.url);
+        NSLog(@"the path: %@", filePath);
+    
         if(!self.recorder){
             NSLog(@"recorder: %@ %ld %@",
                   [err domain], [err code], [[err userInfo] description]);
