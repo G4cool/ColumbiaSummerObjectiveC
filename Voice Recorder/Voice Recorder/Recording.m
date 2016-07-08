@@ -32,15 +32,26 @@ static Recording* initialRecording;
         NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyyMMddHHmmss"];
         NSString* dateString = [formatter stringFromDate:self.date];
+        NSLog(@"dateString: %@", dateString);
         return [NSString stringWithFormat:@"%@/Documents/%@.caf", home, dateString]; // .caf ==> Core Audio File
     }
 
     -(NSURL*) url{
         //NSURL *baseURL = [NSURL fileURLWithString:@"%@", path];
         //NSURL *URL = [NSURL URLWithString:@"folder/file.html" relativeToURL:baseURL];
+        NSString* home = NSHomeDirectory();
+        NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyyMMddHHmmss"];
+        NSString* dateString = [formatter stringFromDate:self.date];
+        NSLog(@"dateString: %@", dateString);
+        NSString* pathForURL =  [NSString stringWithFormat:@"%@/Documents/%@.caf", home, dateString]; // .caf ==> Core Audio File
         NSLog(@"url working?");
-        NSURL *URL = [[NSURL alloc] initWithString:path];
+        NSLog(@"%@", pathForURL);
+        NSURL *URL = [[NSURL alloc] initWithString:pathForURL];
         NSLog(@"url working?");
+        NSString* filePath = [URL path];
+        NSLog(@"the url: %@", URL);
+        NSLog(@"the path: %@", filePath);
         return [URL absoluteURL];
     }
 @end
