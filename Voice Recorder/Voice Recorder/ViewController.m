@@ -288,6 +288,7 @@
 
 - (IBAction)stopButton:(id)sender {
     //self.myTimer = [self performSelectorOnMainThread:@selector(stopTimer) withObject:nil waitUntilDone:YES];
+    [recorder stop];
     [self performSelectorOnMainThread:@selector(stopTimer) withObject:nil waitUntilDone:YES];
     /*
     Recording* exampleRecording = self.listOfRecordings[0];

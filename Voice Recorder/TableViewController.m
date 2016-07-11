@@ -109,16 +109,33 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
-    return [self.recordings count];
+    NSMutableArray* arrayListOfRecordSound;
+    
+    NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath_ = [searchPaths objectAtIndex: 0];
+    
+    //NSMutableArray* arrayListOfRecordSound;
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    //if ([fileManager fileExistsAtPath:[self recordingFolder]])
+    //{
+    
+    arrayListOfRecordSound=[[NSMutableArray alloc]initWithArray:[fileManager  contentsOfDirectoryAtPath:documentPath_ error:nil]];
+
+    
+    return [arrayListOfRecordSound count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell" forIndexPath:indexPath];
     
+    NSMutableArray* arrayListOfRecordSound;
+    
     NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentPath_ = [searchPaths objectAtIndex: 0];
     
-    NSMutableArray* arrayListOfRecordSound;
+    //NSMutableArray* arrayListOfRecordSound;
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
@@ -127,7 +144,7 @@
         
         arrayListOfRecordSound=[[NSMutableArray alloc]initWithArray:[fileManager  contentsOfDirectoryAtPath:documentPath_ error:nil]];
         
-        NSLog(@"====%@",arrayListOfRecordSound);
+        //NSLog(@"====%@",arrayListOfRecordSound);
         
     //}
     
@@ -165,19 +182,20 @@
     
     // Configure the cell...
     //cell.textLabel.text = [self.recordings objectAtIndex:indexPath.row];
-    NSString* archive = [NSString stringWithFormat:@"%@/Documents/arrayArchive", NSHomeDirectory()];
+    //NSString* archive = [NSString stringWithFormat:@"%@/Documents/arrayArchive", NSHomeDirectory()];
     //NSString* archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/Recordings"];
-    if([[NSFileManager defaultManager] fileExistsAtPath: archive]){
+    //if([[NSFileManager defaultManager] fileExistsAtPath: archive]){
         //Recording* r = [self.recordings objectAtIndex:indexPath.row];
-        recordings = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
-        Recording* r = [self.recordings objectAtIndex:indexPath.row];
-        cell.textLabel.text = r.description;
-        [[NSFileManager defaultManager] removeItemAtPath:archive error:nil];
-    }else{
+        //recordings = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
+        //Recording* r = [self.recordings objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [arrayListOfRecordSound objectAtIndex:indexPath.row];
+        //[[NSFileManager defaultManager] removeItemAtPath:archive error:nil];
+    //}else{
         // Doesn't exist!
-        NSLog(@"No file to open!!");
-        exit(1);
-    }
+        //NSLog(@"No file to open!!");
+        //exit(1);
+    //}
     //Recording* r = [self.recordings objectAtIndex:indexPath.row];
     //NSLog(@"FUCKING WORK: %@", r.description);
     //NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
