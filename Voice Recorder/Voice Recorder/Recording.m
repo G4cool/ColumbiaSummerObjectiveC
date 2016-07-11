@@ -11,6 +11,7 @@
 static Recording* initialRecording;
 
 @implementation Recording
+    @synthesize dateString;
     @synthesize date;
     @synthesize description;
     @synthesize path;
@@ -29,6 +30,14 @@ static Recording* initialRecording;
         self.url = [decoder decodeObjectForKey:@"url"];
     }
     return self;
+}
+
+- (NSString *) dateString
+{
+    // return a formatted string for a file name
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"ddMMMYY_hhmmssa";
+    return [[formatter stringFromDate:[NSDate date]] stringByAppendingString:@".aif"];
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {

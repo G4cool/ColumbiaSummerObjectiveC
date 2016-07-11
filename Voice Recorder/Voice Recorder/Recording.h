@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Recording : NSObject <NSCoding>
+    @property (strong, nonatomic) NSString* dateString;
     @property (strong, nonatomic) NSDate* date;
     // Always save in ~/Documents/yyyyMMddHHmmss
     @property (strong, nonatomic) NSString* description;

@@ -122,6 +122,14 @@
 
 //listOfRecordings = [[NSMutableArray alloc]init];
 
+- (NSString *) dateString
+{
+    // return a formatted string for a file name
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"ddMMMYY_hhmmssa";
+    return [[formatter stringFromDate:[NSDate date]] stringByAppendingString:@".aif"];
+}
+
 - (IBAction)startButton:(id)sender {
     listOfRecordings = [[NSMutableArray alloc]init];
         AVAudioSession* audioSession = [AVAudioSession sharedInstance];
@@ -156,7 +164,15 @@
         
         [recordingSettings setValue:@(AVAudioQualityHigh)
                              forKey:AVEncoderAudioQualityKey];
-        
+    
+    NSArray *searchPaths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath_ = [searchPaths objectAtIndex: 0];
+    
+    NSString *pathToSave = [documentPath_ stringByAppendingPathComponent:[self dateString]];
+    
+    // File URL
+    NSURL *url = [NSURL fileURLWithPath:pathToSave];//FILEPATH];
+    
         
         NSDate* now = [NSDate date];
         
@@ -167,10 +183,15 @@
         
         err = nil;
         
-        self.recorder = [[AVAudioRecorder alloc]
+        /*self.recorder = [[AVAudioRecorder alloc]
                          initWithURL:self.currentRecording.url
                          settings:recordingSettings
-                         error:&err];
+                         error:&err];*/
+    recorder = [[AVAudioRecorder alloc] initWithURL:url settings:recordingSettings error:&err];
+    
+    // Initialize degate, metering, etc.
+    recorder.delegate = self;
+    recorder.meteringEnabled = YES;
     
         //NSString* filePath = [self.currentRecording.url path];
         //NSLog(@"the url: %@", self.currentRecording.url);
@@ -227,10 +248,19 @@
         }
         
         // Start recording
-        [self.recorder recordForDuration:(NSTimeInterval)5];
+        //[self.recorder recordForDuration:(NSTimeInterval)5];
     self.myTimer = [NSTimer scheduledTimerWithTimeInterval:(1/10) target:self selector:@selector(updateUI:) userInfo:nil repeats:YES];
     
     [self.listOfRecordings addObject: self.currentRecording];
+    
+    //NSString* archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/Recordings"];
+    NSString* archive = [NSString stringWithFormat:@"%@/Documents/arrayArchive", NSHomeDirectory()];
+    [NSKeyedArchiver archiveRootObject: self.listOfRecordings toFile: archive];
+    
+    assert([[NSFileManager defaultManager] fileExistsAtPath: archive]);
+    
+    //archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/Recordings"];
+    archive = [NSString stringWithFormat:@"%@/Documents/arrayArchive", NSHomeDirectory()];
     
     /*
     NSLog(@"Example description: %@", self.currentRecording.description);

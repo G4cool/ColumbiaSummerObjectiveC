@@ -115,16 +115,77 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell" forIndexPath:indexPath];
     
+    NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath_ = [searchPaths objectAtIndex: 0];
+    
+    NSMutableArray* arrayListOfRecordSound;
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    //if ([fileManager fileExistsAtPath:[self recordingFolder]])
+    //{
+        
+        arrayListOfRecordSound=[[NSMutableArray alloc]initWithArray:[fileManager  contentsOfDirectoryAtPath:documentPath_ error:nil]];
+        
+        NSLog(@"====%@",arrayListOfRecordSound);
+        
+    //}
+    
+    NSString  *selectedSound =  [documentPath_ stringByAppendingPathComponent:[arrayListOfRecordSound objectAtIndex:0]];
+    
+    NSURL   *url =[NSURL fileURLWithPath:selectedSound];
+    
+    //Start playback
+    AVAudioPlayer *player;
+    player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    
+    /*
+    if (!player)
+    {
+        NSLog(@"Error establishing player for %@: %@", recorder.url, error.localizedFailureReason);
+        return;
+    }
+     */
+    
+    player.delegate = self;
+    
+    // Change audio session for playback
+    /*
+    if (![[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil])
+    {
+        NSLog(@"Error updating audio session: %@", error.localizedFailureReason);
+        return;
+    }
+     */
+    
+    self.title = @"Playing back recording...";
+    
+    [player prepareToPlay];
+    [player play];
+    
     // Configure the cell...
     //cell.textLabel.text = [self.recordings objectAtIndex:indexPath.row];
-    Recording* r = [self.recordings objectAtIndex:indexPath.row];
-    NSLog(@"FUCKING WORK: %@", r.description);
+    NSString* archive = [NSString stringWithFormat:@"%@/Documents/arrayArchive", NSHomeDirectory()];
+    //NSString* archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/Recordings"];
+    if([[NSFileManager defaultManager] fileExistsAtPath: archive]){
+        //Recording* r = [self.recordings objectAtIndex:indexPath.row];
+        recordings = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
+        Recording* r = [self.recordings objectAtIndex:indexPath.row];
+        cell.textLabel.text = r.description;
+        [[NSFileManager defaultManager] removeItemAtPath:archive error:nil];
+    }else{
+        // Doesn't exist!
+        NSLog(@"No file to open!!");
+        exit(1);
+    }
+    //Recording* r = [self.recordings objectAtIndex:indexPath.row];
+    //NSLog(@"FUCKING WORK: %@", r.description);
     //NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     //[formatter setDateFormat:@"yyyyMMddHHmmss"];
     //NSLog(@"The description is %@",[formatter stringFromDate:r.date]);
     //cell.textLabel.text = [NSString stringWithFormat:@"%p %@", r, r.date];
     //cell.textLabel.text = self.recordings[objectAtIndex:indexPath.row];
-    cell.textLabel.text = r.description;
+    //cell.textLabel.text = r.description;
     
     return cell;
 }
@@ -133,7 +194,14 @@
     // Play the audio file that maps onto the cell
     // Recording* r = [self.recordingsList objectAtIndex: indexPath.row];
     // [self play: r];
+    AVAudioPlayer *player;
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // If don't want fade, change animated to NO
+    Recording* r = [self.recordings objectAtIndex:indexPath.row];
+    //if (!recorder.recording){
+        player = [[AVAudioPlayer alloc] initWithContentsOfURL:r.url error:nil];
+        [player setDelegate:self];
+        [player play];
+    //}
 }
 
 /*
