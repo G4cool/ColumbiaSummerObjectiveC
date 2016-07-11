@@ -68,6 +68,7 @@
     return self;
 }
 
+/*
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     //NSLog(@"hello from the other side: %@", recordings[0]);
     ViewController* pvc = (ViewController*) segue.destinationViewController;
@@ -76,6 +77,7 @@
     pvc.listOfRecordings = self.recordings;
     //NSLog(@"hello from the other side: %@", recordings[0]);
 }
+ */
 
 - (void) viewWillDisappear:(BOOL)animated {
     NSLog(@"Archive my list of recordings to a file!");
@@ -107,7 +109,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
-    return [self.scientists count];
+    return [self.recordings count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

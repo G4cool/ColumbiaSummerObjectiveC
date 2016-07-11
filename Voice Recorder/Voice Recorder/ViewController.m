@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import "Recording.h"
+#import "TableViewController.h"
 
 @interface ViewController ()
 
@@ -246,6 +247,13 @@
     
     NSLog(@"First one in listOfRecordings%@", descriptionOfOne);
      */
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //NSLog(@"hello from the other side: %@", recordings[0]);
+    TableViewController* pvc = (TableViewController*) segue.destinationViewController;
+    pvc.recordings = self.listOfRecordings;
+    //NSLog(@"hello from the other side: %@", recordings[0]);
 }
 
 - (IBAction)stopButton:(id)sender {

@@ -24,6 +24,17 @@ static Recording* initialRecording;
         return initialRecording;
     }
 
+- (id)initWithCoder:(NSCoder *)decoder {
+    if (self = [super init]) {
+        self.url = [decoder decodeObjectForKey:@"url"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeObject:url forKey:@"url"];
+}
+
     -(NSString*) description {
         //NSLog(@"PLEASE");
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
