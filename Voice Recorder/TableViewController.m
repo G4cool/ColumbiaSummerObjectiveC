@@ -69,10 +69,12 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //NSLog(@"hello from the other side: %@", recordings[0]);
     ViewController* pvc = (ViewController*) segue.destinationViewController;
     pvc.otherListOfPresidents = self.listOfPresidents;
+    recordings = [[NSMutableArray alloc]init];
     pvc.listOfRecordings = self.recordings;
-    NSLog(@"hello from the other side: %@", recordings[0]);
+    //NSLog(@"hello from the other side: %@", recordings[0]);
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -84,6 +86,8 @@
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
+    
+    NSLog(@"hello from the other side: %@", recordings[0]);
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
