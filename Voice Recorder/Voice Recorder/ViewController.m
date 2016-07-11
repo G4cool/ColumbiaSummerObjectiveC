@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <Foundation/Foundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 #import "Recording.h"
 #import "TableViewController.h"
@@ -127,7 +128,7 @@
     // return a formatted string for a file name
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"ddMMMYY_hhmmssa";
-    return [[formatter stringFromDate:[NSDate date]] stringByAppendingString:@".aif"];
+    return [[formatter stringFromDate:[NSDate date]] stringByAppendingString:@".caf"];
 }
 
 - (IBAction)startButton:(id)sender {

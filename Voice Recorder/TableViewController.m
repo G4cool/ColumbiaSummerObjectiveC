@@ -89,7 +89,7 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    NSLog(@"hello from the other side: %@", recordings[0]);
+    //NSLog(@"hello from the other side: %@", recordings[0]);
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -231,9 +231,10 @@
     
     //}
     
-    NSString  *selectedSound =  [documentPath_ stringByAppendingPathComponent:[arrayListOfRecordSound objectAtIndex:0]];
+    NSString  *selectedSound =  [documentPath_ stringByAppendingPathComponent:[arrayListOfRecordSound objectAtIndex:indexPath.row]];
+    NSLog(@"%@", selectedSound);
     
-    NSURL   *url =[NSURL fileURLWithPath:selectedSound];
+    NSURL *url =[NSURL fileURLWithPath:selectedSound];
     AVAudioPlayer *player;
     player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
     
@@ -251,6 +252,16 @@
     //self.title = @"Playing back recording...";
     
     [player prepareToPlay];
+    [player play];
+    
+    NSString *soundFilePath = [NSString stringWithFormat:@"%@/test.m4a",
+                               [[NSBundle mainBundle] resourcePath]];
+    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
+    
+    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL
+                                                                   error:nil];
+    player.numberOfLoops = -1; //Infinite
+    
     [player play];
     //}
 }
