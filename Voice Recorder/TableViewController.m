@@ -72,6 +72,7 @@
     ViewController* pvc = (ViewController*) segue.destinationViewController;
     pvc.otherListOfPresidents = self.listOfPresidents;
     pvc.listOfRecordings = self.recordings;
+    NSLog(@"hello from the other side: %@", recordings[0]);
 }
 
 - (void) viewWillDisappear:(BOOL)animated {

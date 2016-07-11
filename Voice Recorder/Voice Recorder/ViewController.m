@@ -81,6 +81,9 @@
 */
 
 @synthesize otherListOfPresidents;
+@synthesize listOfRecordings;
+@synthesize recorder;
+@synthesize currentRecording;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -116,7 +119,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+//listOfRecordings = [[NSMutableArray alloc]init];
+
 - (IBAction)startButton:(id)sender {
+    listOfRecordings = [[NSMutableArray alloc]init];
         AVAudioSession* audioSession = [AVAudioSession sharedInstance];
         NSError* err = nil;
         [audioSession setCategory: AVAudioSessionCategoryRecord error: &err];
@@ -154,7 +160,7 @@
         NSDate* now = [NSDate date];
         
         self.currentRecording = [[Recording alloc] initWithDate: now];
-        [self.listOfRecordings addObject: self.currentRecording];
+        //[self.listOfRecordings addObject: self.currentRecording];
         
         NSLog(@"%@",self.currentRecording);
         
@@ -165,9 +171,16 @@
                          settings:recordingSettings
                          error:&err];
     
-        NSString* filePath = [self.currentRecording.url path];
-        NSLog(@"the url: %@", self.currentRecording.url);
-        NSLog(@"the path: %@", filePath);
+        //NSString* filePath = [self.currentRecording.url path];
+        //NSLog(@"the url: %@", self.currentRecording.url);
+        //[self.listOfRecordings addObject:self.currentRecording.url];
+        //NSLog(@"Index: %lu", (unsigned long)[self.listOfRecordings indexOfObject:self.currentRecording.url]);
+    //NSUInteger indexThing = [self.listOfRecordings indexOfObject:self.currentRecording.url]; // No pointer
+    //NSLog(@"What is here: %@", self.listOfRecordings[indexThing]);
+        //NSLog(@"The size: %d", ((sizeof self.currentRecording) / (sizeof self.currentRecording[0])));
+        //NSLog(@"the path: %@", filePath);
+    //NSLog(@"what is here: %@", self.listOfRecordings[0]);
+    //NSLog(@"what is here: %@", [self.listOfRecordings objectAtIndex:0]);
     
         if(!self.recorder){
             NSLog(@"recorder: %@ %ld %@",
@@ -215,11 +228,35 @@
         // Start recording
         [self.recorder recordForDuration:(NSTimeInterval)5];
     self.myTimer = [NSTimer scheduledTimerWithTimeInterval:(1/10) target:self selector:@selector(updateUI:) userInfo:nil repeats:YES];
+    
+    [self.listOfRecordings addObject: self.currentRecording];
+    
+    /*
+    NSLog(@"Example description: %@", self.currentRecording.description);
+    Recording* exampleRecording = self.listOfRecordings[[self.listOfRecordings indexOfObject:self.currentRecording]];
+    NSLog(@"Index: %lu", (unsigned long)[self.listOfRecordings indexOfObject:self.currentRecording]);
+    NSString* descriptionOfOne = exampleRecording.description;
+    
+    NSLog(@"First one in listOfRecordings: %@", descriptionOfOne);
+    */
+    
+    /*
+    Recording* exampleRecording = self.listOfRecordings[0];
+    NSString* descriptionOfOne = exampleRecording.description;
+    
+    NSLog(@"First one in listOfRecordings%@", descriptionOfOne);
+     */
 }
 
 - (IBAction)stopButton:(id)sender {
     //self.myTimer = [self performSelectorOnMainThread:@selector(stopTimer) withObject:nil waitUntilDone:YES];
     [self performSelectorOnMainThread:@selector(stopTimer) withObject:nil waitUntilDone:YES];
+    /*
+    Recording* exampleRecording = self.listOfRecordings[0];
+    NSString* descriptionOfOne = exampleRecording.description;
+    
+    NSLog(@"First one in listOfRecordings%@", descriptionOfOne);
+     */
 }
 @end
 
