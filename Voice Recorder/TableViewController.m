@@ -153,8 +153,8 @@
     NSURL   *url =[NSURL fileURLWithPath:selectedSound];
     
     //Start playback
-    AVAudioPlayer *player;
-    player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    //AVAudioPlayer *player;
+    //player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
     
     /*
     if (!player)
@@ -164,7 +164,7 @@
     }
      */
     
-    player.delegate = self;
+    //player.delegate = self;
     
     // Change audio session for playback
     /*
@@ -175,10 +175,10 @@
     }
      */
     
-    self.title = @"Playing back recording...";
+    //self.title = @"Playing back recording...";
     
-    [player prepareToPlay];
-    [player play];
+    //[player prepareToPlay];
+    //[player play];
     
     // Configure the cell...
     //cell.textLabel.text = [self.recordings objectAtIndex:indexPath.row];
@@ -212,13 +212,46 @@
     // Play the audio file that maps onto the cell
     // Recording* r = [self.recordingsList objectAtIndex: indexPath.row];
     // [self play: r];
+    
+    NSMutableArray* arrayListOfRecordSound;
+    
+    NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath_ = [searchPaths objectAtIndex: 0];
+    
+    //NSMutableArray* arrayListOfRecordSound;
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    //if ([fileManager fileExistsAtPath:[self recordingFolder]])
+    //{
+    
+    arrayListOfRecordSound=[[NSMutableArray alloc]initWithArray:[fileManager  contentsOfDirectoryAtPath:documentPath_ error:nil]];
+    
+    //NSLog(@"====%@",arrayListOfRecordSound);
+    
+    //}
+    
+    NSString  *selectedSound =  [documentPath_ stringByAppendingPathComponent:[arrayListOfRecordSound objectAtIndex:0]];
+    
+    NSURL   *url =[NSURL fileURLWithPath:selectedSound];
     AVAudioPlayer *player;
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES]; // If don't want fade, change animated to NO
-    Recording* r = [self.recordings objectAtIndex:indexPath.row];
-    //if (!recorder.recording){
-        player = [[AVAudioPlayer alloc] initWithContentsOfURL:r.url error:nil];
-        [player setDelegate:self];
-        [player play];
+    player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    
+    player.delegate = self;
+    
+    // Change audio session for playback
+    /*
+     if (![[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil])
+     {
+     NSLog(@"Error updating audio session: %@", error.localizedFailureReason);
+     return;
+     }
+     */
+    
+    //self.title = @"Playing back recording...";
+    
+    [player prepareToPlay];
+    [player play];
     //}
 }
 
