@@ -86,6 +86,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    AVAudioSession* audioSession = [AVAudioSession sharedInstance];
+    NSError* err = nil;
+    [audioSession setCategory: AVAudioSessionCategoryPlayback error: &err];
+    if(err){
+        NSLog(@"audioSession: %@ %ld %@",
+              [err domain], [err code], [[err userInfo] description]);
+        return;
+    }
+    err = nil;
+    [audioSession setActive:YES error:&err];
+    if(err){
+        NSLog(@"audioSession: %@ %ld %@",
+              [err domain], [err code], [[err userInfo] description]);
+        return;
+    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -115,26 +130,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell" forIndexPath:indexPath];
     
-    /*
-    NSMutableArray* arrayListOfRecordSound;
-    
-    NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentPath_ = [searchPaths objectAtIndex: 0];
-    
-    //NSMutableArray* arrayListOfRecordSound;
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    //if ([fileManager fileExistsAtPath:[self recordingFolder]])
-    //{
-        
-    arrayListOfRecordSound=[[NSMutableArray alloc]initWithArray:[fileManager  contentsOfDirectoryAtPath:documentPath_ error:nil]];
-        
-        //NSLog(@"====%@",arrayListOfRecordSound);
-        
-    //}
-     */
-    
     NSString* path = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsTwo"];
     
     Recording* r = [recordings objectAtIndex:indexPath.row];
@@ -143,58 +138,7 @@
     
     NSURL *url =[NSURL fileURLWithPath:selectedSound];
     
-    //Start playback
-    //AVAudioPlayer *player;
-    //player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
-    
-    /*
-    if (!player)
-    {
-        NSLog(@"Error establishing player for %@: %@", recorder.url, error.localizedFailureReason);
-        return;
-    }
-     */
-    
-    //player.delegate = self;
-    
-    // Change audio session for playback
-    /*
-    if (![[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil])
-    {
-        NSLog(@"Error updating audio session: %@", error.localizedFailureReason);
-        return;
-    }
-     */
-    
-    //self.title = @"Playing back recording...";
-    
-    //[player prepareToPlay];
-    //[player play];
-    
-    // Configure the cell...
-    //cell.textLabel.text = [self.recordings objectAtIndex:indexPath.row];
-    //NSString* archive = [NSString stringWithFormat:@"%@/Documents/arrayArchive", NSHomeDirectory()];
-    //NSString* archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/Recordings"];
-    //if([[NSFileManager defaultManager] fileExistsAtPath: archive]){
-        //Recording* r = [self.recordings objectAtIndex:indexPath.row];
-        //recordings = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
-        //Recording* r = [self.recordings objectAtIndex:indexPath.row];
-    
     cell.textLabel.text = r.description;
-        //[[NSFileManager defaultManager] removeItemAtPath:archive error:nil];
-    //}else{
-        // Doesn't exist!
-        //NSLog(@"No file to open!!");
-        //exit(1);
-    //}
-    //Recording* r = [self.recordings objectAtIndex:indexPath.row];
-    //NSLog(@"FUCKING WORK: %@", r.description);
-    //NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    //[formatter setDateFormat:@"yyyyMMddHHmmss"];
-    //NSLog(@"The description is %@",[formatter stringFromDate:r.date]);
-    //cell.textLabel.text = [NSString stringWithFormat:@"%p %@", r, r.date];
-    //cell.textLabel.text = self.recordings[objectAtIndex:indexPath.row];
-    //cell.textLabel.text = r.description;
     
     return cell;
 }
@@ -209,14 +153,23 @@
     Recording* r = [recordings objectAtIndex:indexPath.row];
     
     NSString *selectedSound = [path stringByAppendingPathComponent:r.description];
+    NSString* realSound = [selectedSound stringByAppendingString:@".caf"];
     
-    NSURL *url =[NSURL fileURLWithPath:selectedSound];
-    NSLog(@"%@", selectedSound);
+    NSURL *url =[NSURL fileURLWithPath:realSound];
+    NSLog(@"selectedSound: %@", realSound);
     
-    AVAudioPlayer *player;
-    player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    /*
+    NSString *soundPath = [[NSBundle mainBundle] pathForResource:selectedSound ofType:@"caf"];
+    NSLog(@"soundPath:  %@", soundPath);
+    SystemSoundID soundID;
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:soundPath], &soundID);
+    AudioServicesPlaySystemSound(soundID);
+     */
     
-    player.delegate = self;
+    //AVAudioPlayer *player;
+    //player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    
+    //player.delegate = self;
     
     // Change audio session for playback
     /*
@@ -229,8 +182,8 @@
     
     //self.title = @"Playing back recording...";
     
-    [player prepareToPlay];
-    [player play];
+    //[player prepareToPlay];
+    //[player play];
     
     /*
     NSString *soundFilePath = [NSString stringWithFormat:@"%@/test.m4a",

@@ -169,8 +169,8 @@
         [recordingSettings setValue:@(AVAudioQualityHigh)
                              forKey:AVEncoderAudioQualityKey];
     
-    NSArray *searchPaths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentPath_ = [searchPaths objectAtIndex: 0];
+    //NSArray *searchPaths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    //NSString *documentPath_ = [searchPaths objectAtIndex: 0];
     
     //NSString *pathToSave = [documentPath_ stringByAppendingPathComponent:[self dateString]];
     
@@ -190,11 +190,18 @@
     
     NSLog(@"path of currentRecording: %@", self.currentRecording.path);
     
-    NSString *pathToSave = [documentPath_ stringByAppendingPathComponent:self.currentRecording.description];
+    //NSString *pathToSave = [documentPath_ stringByAppendingPathComponent:self.currentRecording.description];
     
     //recorder = [[AVAudioRecorder alloc] initWithURL:url settings:recordingSettings error:&err];
     
+    NSString* typePath = [@"/Users/Luca/Desktop/Universal/RecordingsTwo" stringByAppendingPathComponent:@"test.aif"]; // Be consistent with .caf and .aif
+    
+    NSLog(@"typePath: %@", typePath);
+    
+    NSURL* typeURL = [NSURL fileURLWithPath:typePath];
+    
     recorder = [[AVAudioRecorder alloc] initWithURL:self.currentRecording.url settings:recordingSettings error:&err];
+    //recorder = [[AVAudioRecorder alloc] initWithURL:typeURL settings:recordingSettings error:&err];
     NSLog(@"pure string of url: %@", [self.currentRecording.url absoluteString]);
     NSLog(@"path of url: %@", [self.currentRecording.url path]);
     //recorder = [[AVAudioRecorder alloc] initWithURL: [NSURL fileURLWithPath:@"/Users/Luca/Desktop/Universal/RecordingsTwo/arrayArchive"] settings:recordingSettings error:&err];

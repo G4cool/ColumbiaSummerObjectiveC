@@ -57,7 +57,8 @@ static Recording* initialRecording;
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyyMMddHHmmss"];
         //NSLog(@"The description is %@",[formatter stringFromDate:self.date]);
-        return [NSString stringWithFormat:@"%@", self.date];
+        NSString* dateStringVar = [formatter stringFromDate:self.date];
+        return [NSString stringWithFormat:@"%@", dateStringVar];
     }
 
     -(NSString*) path {
