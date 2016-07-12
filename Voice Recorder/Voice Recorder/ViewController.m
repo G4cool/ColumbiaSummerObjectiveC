@@ -47,7 +47,6 @@
         NSString* dateString = [formatter stringFromDate:self.date];
         return [NSString stringWithFormat:@"%@/Documents/%@.caf", home, dateString]; // .caf ==> Core Audio File
     }
- 
     -(NSURL*) url:(NSString*) path {
         //NSURL *baseURL = [NSURL fileURLWithString:@"%@", path];
         //NSURL *URL = [NSURL URLWithString:@"folder/file.html" relativeToURL:baseURL];
@@ -134,7 +133,7 @@
 
 - (IBAction)startButton:(id)sender {
     NSString* archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsTwo/arrayArchive"];
-    NSString* pathForRecordings = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsThree"];
+    //NSString* pathForRecordings = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsThree"];
     
     //listOfRecordings = [[NSMutableArray alloc]init];
         AVAudioSession* audioSession = [AVAudioSession sharedInstance];
@@ -169,15 +168,6 @@
         
         [recordingSettings setValue:@(AVAudioQualityHigh)
                              forKey:AVEncoderAudioQualityKey];
-    
-    //NSArray *searchPaths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    //NSString *documentPath_ = [searchPaths objectAtIndex: 0];
-    
-    //NSString *pathToSave = [documentPath_ stringByAppendingPathComponent:[self dateString]];
-    
-    // File URL
-    //NSURL *url = [NSURL fileURLWithPath:pathToSave];//FILEPATH];
-    
         
         NSDate* now = [NSDate date];
         
@@ -187,19 +177,13 @@
         
         err = nil;
     
-    //self.currentRecording.path = archive;
-    
     NSLog(@"path of currentRecording: %@", self.currentRecording.path);
     
-    //NSString *pathToSave = [documentPath_ stringByAppendingPathComponent:self.currentRecording.description];
+    //NSString* typePath = [@"/Users/Luca/Desktop/Universal/RecordingsThree" stringByAppendingPathComponent:@"test.aif"]; // Be consistent with .caf and .aif
     
-    //recorder = [[AVAudioRecorder alloc] initWithURL:url settings:recordingSettings error:&err];
+    //NSLog(@"typePath: %@", typePath);
     
-    NSString* typePath = [@"/Users/Luca/Desktop/Universal/RecordingsThree" stringByAppendingPathComponent:@"test.aif"]; // Be consistent with .caf and .aif
-    
-    NSLog(@"typePath: %@", typePath);
-    
-    NSURL* typeURL = [NSURL fileURLWithPath:typePath];
+    //NSURL* typeURL = [NSURL fileURLWithPath:typePath];
     
     recorder = [[AVAudioRecorder alloc] initWithURL:self.currentRecording.url settings:recordingSettings error:&err];
     //recorder = [[AVAudioRecorder alloc] initWithURL:typeURL settings:recordingSettings error:&err];

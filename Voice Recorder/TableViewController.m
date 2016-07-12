@@ -21,6 +21,7 @@
 @synthesize listOfPresidents;
 @synthesize scientists;
 @synthesize recordings;
+@synthesize player;
 
 /*
 -(TableViewController*) initWithCoder:(NSCoder *) aDecoder {
@@ -124,40 +125,27 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number
-    return [recordings count];
+    return [self.recordings count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell" forIndexPath:indexPath];
     
-    NSString* path = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsThree"];
+    //NSString* path = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsThree"];
     
-    Recording* r = [recordings objectAtIndex:indexPath.row];
-    
-    NSString *selectedSound = [path stringByAppendingPathComponent:r.description];
-    
-    NSURL *url =[NSURL fileURLWithPath:selectedSound];
+    Recording* r = [self.recordings objectAtIndex:indexPath.row];
     
     cell.textLabel.text = r.description;
     
     return cell;
 }
 
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Play the audio file that maps onto the cell
-    // Recording* r = [self.recordingsList objectAtIndex: indexPath.row];
-    // [self play: r];
+- (void) play: (Recording*) rec {
     
-    NSString* path = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsThree"];
+    //NSString* path = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsThree"];
     
-    Recording* r = [recordings objectAtIndex:indexPath.row];
-    
-    NSString *selectedSound = [path stringByAppendingPathComponent:r.description];
-    NSString* realSound = [selectedSound stringByAppendingString:@".caf"];
-    
-    NSAssert([[NSFileManager defaultManager] fileExistsAtPath: realSound], @"Doesn't exist");
     NSError *error;
-    AVAudioPlayer* player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:realSound] error:&error];
+    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:rec.path] error:&error];
     if(error){
         NSLog(@"playing audio: %@ %ld %@", [error domain], [error code], [[error userInfo] description]);
         return;
@@ -169,9 +157,15 @@
         return;
     }
     [player play];
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Play the audio file that maps onto the cell
+    // Recording* r = [self.recordingsList objectAtIndex: indexPath.row];
+    // [self play: r];
     
-    NSURL *url =[NSURL fileURLWithPath:realSound];
-    NSLog(@"selectedSound: %@", realSound);
+    [self play: [self.recordings objectAtIndex:indexPath.row]];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     /*
     NSString *soundPath = [[NSBundle mainBundle] pathForResource:selectedSound ofType:@"caf"];
