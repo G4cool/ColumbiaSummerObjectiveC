@@ -134,6 +134,7 @@
 
 - (IBAction)startButton:(id)sender {
     NSString* archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsTwo/arrayArchive"];
+    NSString* pathForRecordings = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsThree"];
     
     //listOfRecordings = [[NSMutableArray alloc]init];
         AVAudioSession* audioSession = [AVAudioSession sharedInstance];
@@ -194,7 +195,7 @@
     
     //recorder = [[AVAudioRecorder alloc] initWithURL:url settings:recordingSettings error:&err];
     
-    NSString* typePath = [@"/Users/Luca/Desktop/Universal/RecordingsTwo" stringByAppendingPathComponent:@"test.aif"]; // Be consistent with .caf and .aif
+    NSString* typePath = [@"/Users/Luca/Desktop/Universal/RecordingsThree" stringByAppendingPathComponent:@"test.aif"]; // Be consistent with .caf and .aif
     
     NSLog(@"typePath: %@", typePath);
     

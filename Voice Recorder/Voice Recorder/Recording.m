@@ -41,7 +41,7 @@ static Recording* initialRecording;
     // return a formatted string for a file name
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"ddMMMYY_hhmmssa";
-    return [[formatter stringFromDate:[NSDate date]] stringByAppendingString:@".aif"];
+    return [[formatter stringFromDate:[NSDate date]] stringByAppendingString:@".caf"];
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
@@ -67,7 +67,7 @@ static Recording* initialRecording;
         [formatter setDateFormat:@"yyyyMMddHHmmss"];
         NSString* dateStringVar = [formatter stringFromDate:self.date];
         //NSLog(@"dateString: %@", dateString);
-        return [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsTwo/%@.caf", dateStringVar]; // .caf ==> Core Audio File
+        return [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsThree/%@.caf", dateStringVar]; // .caf ==> Core Audio File
     }
 
     -(NSURL*) url{
@@ -78,7 +78,7 @@ static Recording* initialRecording;
         [formatter setDateFormat:@"yyyyMMddHHmmss"];
         NSString* dateStringVar = [formatter stringFromDate:self.date];
        // NSLog(@"dateString: %@", dateString);
-        NSString* pathForURL = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsTwo/%@.caf", dateStringVar]; // .caf ==> Core Audio File
+        NSString* pathForURL = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsThree/%@.caf", dateStringVar]; // .caf ==> Core Audio File
         //NSLog(@"url working?");
         //NSLog(@"%@", pathForURL);
         //NSURL *URL = [[NSURL alloc] initWithString:pathForURL];

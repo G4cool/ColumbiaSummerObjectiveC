@@ -130,7 +130,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell" forIndexPath:indexPath];
     
-    NSString* path = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsTwo"];
+    NSString* path = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsThree"];
     
     Recording* r = [recordings objectAtIndex:indexPath.row];
     
@@ -148,7 +148,7 @@
     // Recording* r = [self.recordingsList objectAtIndex: indexPath.row];
     // [self play: r];
     
-    NSString* path = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsTwo"];
+    NSString* path = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsThree"];
     
     Recording* r = [recordings objectAtIndex:indexPath.row];
     
