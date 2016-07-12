@@ -172,10 +172,10 @@
     NSArray *searchPaths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentPath_ = [searchPaths objectAtIndex: 0];
     
-    NSString *pathToSave = [documentPath_ stringByAppendingPathComponent:[self dateString]];
+    //NSString *pathToSave = [documentPath_ stringByAppendingPathComponent:[self dateString]];
     
     // File URL
-    NSURL *url = [NSURL fileURLWithPath:pathToSave];//FILEPATH];
+    //NSURL *url = [NSURL fileURLWithPath:pathToSave];//FILEPATH];
     
         
         NSDate* now = [NSDate date];
@@ -186,8 +186,18 @@
         
         err = nil;
     
-    recorder = [[AVAudioRecorder alloc] initWithURL:url settings:recordingSettings error:&err];
-    //recorder = [[AVAudioRecorder alloc] initWithURL:self.currentRecording.url settings:recordingSettings error:&err];
+    //self.currentRecording.path = archive;
+    
+    NSLog(@"path of currentRecording: %@", self.currentRecording.path);
+    
+    NSString *pathToSave = [documentPath_ stringByAppendingPathComponent:self.currentRecording.description];
+    
+    //recorder = [[AVAudioRecorder alloc] initWithURL:url settings:recordingSettings error:&err];
+    
+    recorder = [[AVAudioRecorder alloc] initWithURL:self.currentRecording.url settings:recordingSettings error:&err];
+    NSLog(@"pure string of url: %@", [self.currentRecording.url absoluteString]);
+    NSLog(@"path of url: %@", [self.currentRecording.url path]);
+    //recorder = [[AVAudioRecorder alloc] initWithURL: [NSURL fileURLWithPath:@"/Users/Luca/Desktop/Universal/RecordingsTwo/arrayArchive"] settings:recordingSettings error:&err];
     
     recorder.delegate = self;
     recorder.meteringEnabled = YES;
@@ -263,7 +273,7 @@
     
     if([[NSFileManager defaultManager] fileExistsAtPath: archive]){
         listOfRecordings = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
-        [[NSFileManager defaultManager] removeItemAtPath:archive error:nil];
+        //[[NSFileManager defaultManager] removeItemAtPath:archive error:nil];
     }else{
         // Doesn't exist!
         NSLog(@"No file to open!!");

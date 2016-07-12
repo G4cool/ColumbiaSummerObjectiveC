@@ -108,28 +108,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    NSMutableArray* arrayListOfRecordSound;
-    
-    NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentPath_ = [searchPaths objectAtIndex: 0];
-    
-    //NSMutableArray* arrayListOfRecordSound;
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    //if ([fileManager fileExistsAtPath:[self recordingFolder]])
-    //{
-    
-    arrayListOfRecordSound=[[NSMutableArray alloc]initWithArray:[fileManager  contentsOfDirectoryAtPath:documentPath_ error:nil]];
-
-    
-    return [arrayListOfRecordSound count];
+#warning Incomplete implementation, return the number
+    return [recordings count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell" forIndexPath:indexPath];
     
+    /*
     NSMutableArray* arrayListOfRecordSound;
     
     NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -142,15 +128,20 @@
     //if ([fileManager fileExistsAtPath:[self recordingFolder]])
     //{
         
-        arrayListOfRecordSound=[[NSMutableArray alloc]initWithArray:[fileManager  contentsOfDirectoryAtPath:documentPath_ error:nil]];
+    arrayListOfRecordSound=[[NSMutableArray alloc]initWithArray:[fileManager  contentsOfDirectoryAtPath:documentPath_ error:nil]];
         
         //NSLog(@"====%@",arrayListOfRecordSound);
         
     //}
+     */
     
-    NSString  *selectedSound =  [documentPath_ stringByAppendingPathComponent:[arrayListOfRecordSound objectAtIndex:0]];
+    NSString* path = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsTwo"];
     
-    NSURL   *url =[NSURL fileURLWithPath:selectedSound];
+    Recording* r = [recordings objectAtIndex:indexPath.row];
+    
+    NSString *selectedSound = [path stringByAppendingPathComponent:r.description];
+    
+    NSURL *url =[NSURL fileURLWithPath:selectedSound];
     
     //Start playback
     //AVAudioPlayer *player;
@@ -189,7 +180,7 @@
         //recordings = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
         //Recording* r = [self.recordings objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [arrayListOfRecordSound objectAtIndex:indexPath.row];
+    cell.textLabel.text = r.description;
         //[[NSFileManager defaultManager] removeItemAtPath:archive error:nil];
     //}else{
         // Doesn't exist!
@@ -213,28 +204,15 @@
     // Recording* r = [self.recordingsList objectAtIndex: indexPath.row];
     // [self play: r];
     
-    NSMutableArray* arrayListOfRecordSound;
+    NSString* path = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsTwo"];
     
-    NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentPath_ = [searchPaths objectAtIndex: 0];
+    Recording* r = [recordings objectAtIndex:indexPath.row];
     
-    //NSMutableArray* arrayListOfRecordSound;
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    //if ([fileManager fileExistsAtPath:[self recordingFolder]])
-    //{
-    
-    arrayListOfRecordSound=[[NSMutableArray alloc]initWithArray:[fileManager  contentsOfDirectoryAtPath:documentPath_ error:nil]];
-    
-    //NSLog(@"====%@",arrayListOfRecordSound);
-    
-    //}
-    
-    NSString  *selectedSound =  [documentPath_ stringByAppendingPathComponent:[arrayListOfRecordSound objectAtIndex:indexPath.row]];
-    NSLog(@"%@", selectedSound);
+    NSString *selectedSound = [path stringByAppendingPathComponent:r.description];
     
     NSURL *url =[NSURL fileURLWithPath:selectedSound];
+    NSLog(@"%@", selectedSound);
+    
     AVAudioPlayer *player;
     player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
     

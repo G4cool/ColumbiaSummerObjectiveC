@@ -57,16 +57,16 @@ static Recording* initialRecording;
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyyMMddHHmmss"];
         //NSLog(@"The description is %@",[formatter stringFromDate:self.date]);
-        return [NSString stringWithFormat:@"%p %@", self, self.date];
+        return [NSString stringWithFormat:@"%@", self.date];
     }
 
     -(NSString*) path {
-        NSString* home = NSHomeDirectory();
+        //NSString* home = NSHomeDirectory();
         NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyyMMddHHmmss"];
-        NSString* dateString = [formatter stringFromDate:self.date];
+        NSString* dateStringVar = [formatter stringFromDate:self.date];
         //NSLog(@"dateString: %@", dateString);
-        return [NSString stringWithFormat:@"%@/Documents/%@.caf", home, dateString]; // .caf ==> Core Audio File
+        return [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsTwo/%@.caf", dateStringVar]; // .caf ==> Core Audio File
     }
 
     -(NSURL*) url{
@@ -75,16 +75,17 @@ static Recording* initialRecording;
         NSString* home = NSHomeDirectory();
         NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyyMMddHHmmss"];
-        NSString* dateString = [formatter stringFromDate:self.date];
+        NSString* dateStringVar = [formatter stringFromDate:self.date];
        // NSLog(@"dateString: %@", dateString);
-        NSString* pathForURL =  [NSString stringWithFormat:@"%@/Documents/%@.caf", home, dateString]; // .caf ==> Core Audio File
+        NSString* pathForURL = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsTwo/%@.caf", dateStringVar]; // .caf ==> Core Audio File
         //NSLog(@"url working?");
         //NSLog(@"%@", pathForURL);
-        NSURL *URL = [[NSURL alloc] initWithString:pathForURL];
+        //NSURL *URL = [[NSURL alloc] initWithString:pathForURL];
         //NSLog(@"url working?");
-        NSString* filePath = [URL path];
+        //NSString* filePath = [URL path];
         //NSLog(@"the url: %@", URL);
         //NSLog(@"the path: %@", filePath);
-        return [URL absoluteURL];
+        //return [URL absoluteURL];
+        return [NSURL fileURLWithPath:pathForURL];
     }
 @end
