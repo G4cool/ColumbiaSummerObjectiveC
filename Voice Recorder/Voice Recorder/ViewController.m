@@ -132,6 +132,18 @@
 }
 
 - (IBAction)startButton:(id)sender {
+    NSString* archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsTwo/arrayArchive"];
+    /*
+     if([[NSFileManager defaultManager] fileExistsAtPath: archive]){
+        self.listOfRecordings = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
+        [[NSFileManager defaultManager] removeItemAtPath:archive error:nil];
+    }else{
+        // Doesn't exist!
+        NSLog(@"No file to open!!");
+        //exit(1);
+    }
+     */
+    
     listOfRecordings = [[NSMutableArray alloc]init];
         AVAudioSession* audioSession = [AVAudioSession sharedInstance];
         NSError* err = nil;
@@ -179,6 +191,11 @@
         
         self.currentRecording = [[Recording alloc] initWithDate: now];
         //[self.listOfRecordings addObject: self.currentRecording];
+    
+    //NSString* archive = [NSString stringWithFormat:@"%@/Documents/arrayArchive", NSHomeDirectory()];
+    //archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsTwo/arrayArchive"];
+    
+    //self.currentRecording.path = archive;
         
         NSLog(@"%@",self.currentRecording);
         
@@ -189,6 +206,7 @@
                          settings:recordingSettings
                          error:&err];*/
     recorder = [[AVAudioRecorder alloc] initWithURL:url settings:recordingSettings error:&err];
+    //recorder = [[AVAudioRecorder alloc] initWithURL:self.currentRecording.url settings:recordingSettings error:&err];
     
     // Initialize degate, metering, etc.
     recorder.delegate = self;
@@ -252,32 +270,72 @@
         //[self.recorder recordForDuration:(NSTimeInterval)5];
     self.myTimer = [NSTimer scheduledTimerWithTimeInterval:(1/10) target:self selector:@selector(updateUI:) userInfo:nil repeats:YES];
     
-    [self.listOfRecordings addObject: self.currentRecording];
+    /*
+    [NSKeyedArchiver archiveRootObject: self.listOfRecordings toFile: archive];
+    
+    assert([[NSFileManager defaultManager] fileExistsAtPath: archive]);
+    
+    archive = [NSString stringWithFormat:@"%@/Documents/arrayArchive", NSHomeDirectory()];
+     */
+    
+    if([[NSFileManager defaultManager] fileExistsAtPath: archive]){
+        listOfRecordings = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
+        [[NSFileManager defaultManager] removeItemAtPath:archive error:nil];
+    }else{
+        // Doesn't exist!
+        NSLog(@"No file to open!!");
+        //exit(1);
+    }
+    
+    NSLog(@"listOfRecordings: %@", listOfRecordings);
+    
+    [listOfRecordings addObject: self.currentRecording];
+    
+    NSLog(@"listOfRecordings after adding: %@", listOfRecordings);
     
     NSLog(@"The original: %@", self.currentRecording);
     /*for(NSString* s in startingArray){
      NSLog(@"%@", s);
      }*/
     
-    NSString* archive = [NSString stringWithFormat:@"%@/Documents/arrayArchive", NSHomeDirectory()];
+    /*
     [NSKeyedArchiver archiveRootObject: self.currentRecording toFile: archive];
     
     assert([[NSFileManager defaultManager] fileExistsAtPath: archive]);
     
     archive = [NSString stringWithFormat:@"%@/Documents/arrayArchive", NSHomeDirectory()];
+     */
     
+    [NSKeyedArchiver archiveRootObject: listOfRecordings toFile: archive];
     
-    Recording *secondRecording;
+    assert([[NSFileManager defaultManager] fileExistsAtPath: archive]);
+    
+    //archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsTwo/arrayArchive"];
+    
     if([[NSFileManager defaultManager] fileExistsAtPath: archive]){
-        secondRecording = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
+        listOfRecordings = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
         [[NSFileManager defaultManager] removeItemAtPath:archive error:nil];
     }else{
         // Doesn't exist!
         NSLog(@"No file to open!!");
         exit(1);
     }
+    
+    NSLog(@"listOfRecordings again: %@", listOfRecordings);
+    
+    /*
+    Recording *secondRecording;
+    if([[NSFileManager defaultManager] fileExistsAtPath: archive]){
+        secondRecording = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
+        //[[NSFileManager defaultManager] removeItemAtPath:archive error:nil];
+    }else{
+        // Doesn't exist!
+        NSLog(@"No file to open!!");
+        exit(1);
+    }
+     */
 
-    NSLog(@"Reopen: %@", secondRecording);
+    //NSLog(@"Reopen: %@", secondRecording);
     
 }
 
