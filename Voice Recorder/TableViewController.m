@@ -155,6 +155,21 @@
     NSString *selectedSound = [path stringByAppendingPathComponent:r.description];
     NSString* realSound = [selectedSound stringByAppendingString:@".caf"];
     
+    NSAssert([[NSFileManager defaultManager] fileExistsAtPath: realSound], @"Doesn't exist");
+    NSError *error;
+    AVAudioPlayer* player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:realSound] error:&error];
+    if(error){
+        NSLog(@"playing audio: %@ %ld %@", [error domain], [error code], [[error userInfo] description]);
+        return;
+    }else{
+        player.delegate = self;
+    }
+    if([player prepareToPlay] == NO){
+        NSLog(@"Not prepared to play!");
+        return;
+    }
+    [player play];
+    
     NSURL *url =[NSURL fileURLWithPath:realSound];
     NSLog(@"selectedSound: %@", realSound);
     

@@ -15,7 +15,6 @@
 		818402D11D2D51BC003B5A34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 818402D01D2D51BC003B5A34 /* Assets.xcassets */; };
 		818402D41D2D51BC003B5A34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 818402D21D2D51BC003B5A34 /* LaunchScreen.storyboard */; };
 		818402DD1D2D60B0003B5A34 /* Recording.m in Sources */ = {isa = PBXBuildFile; fileRef = 818402DC1D2D60B0003B5A34 /* Recording.m */; };
-		818BA3A51D2EB2BE0049830A /* SavesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818BA3A41D2EB2BE0049830A /* SavesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,8 +32,6 @@
 		818402D51D2D51BC003B5A34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		818402DB1D2D60B0003B5A34 /* Recording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recording.h; sourceTree = "<group>"; };
 		818402DC1D2D60B0003B5A34 /* Recording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recording.m; sourceTree = "<group>"; };
-		818BA3A31D2EB2BE0049830A /* SavesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavesViewController.h; sourceTree = "<group>"; };
-		818BA3A41D2EB2BE0049830A /* SavesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +70,6 @@
 				818402CB1D2D51BC003B5A34 /* ViewController.m */,
 				81046E861D2FF44C00BBE807 /* TableViewController.h */,
 				81046E871D2FF44C00BBE807 /* TableViewController.m */,
-				818BA3A31D2EB2BE0049830A /* SavesViewController.h */,
-				818BA3A41D2EB2BE0049830A /* SavesViewController.m */,
 				818402DB1D2D60B0003B5A34 /* Recording.h */,
 				818402DC1D2D60B0003B5A34 /* Recording.m */,
 				818402CD1D2D51BC003B5A34 /* Main.storyboard */,
@@ -164,7 +159,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				818BA3A51D2EB2BE0049830A /* SavesViewController.m in Sources */,
 				81046E881D2FF44C00BBE807 /* TableViewController.m in Sources */,
 				818402CC1D2D51BC003B5A34 /* ViewController.m in Sources */,
 				818402C91D2D51BC003B5A34 /* AppDelegate.m in Sources */,
