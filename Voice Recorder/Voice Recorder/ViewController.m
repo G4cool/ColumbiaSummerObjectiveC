@@ -254,30 +254,31 @@
     
     [self.listOfRecordings addObject: self.currentRecording];
     
-    //NSString* archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/Recordings"];
+    NSLog(@"The original: %@", self.currentRecording);
+    /*for(NSString* s in startingArray){
+     NSLog(@"%@", s);
+     }*/
+    
     NSString* archive = [NSString stringWithFormat:@"%@/Documents/arrayArchive", NSHomeDirectory()];
-    [NSKeyedArchiver archiveRootObject: self.listOfRecordings toFile: archive];
+    [NSKeyedArchiver archiveRootObject: self.currentRecording toFile: archive];
     
     assert([[NSFileManager defaultManager] fileExistsAtPath: archive]);
     
-    //archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/Recordings"];
     archive = [NSString stringWithFormat:@"%@/Documents/arrayArchive", NSHomeDirectory()];
     
-    /*
-    NSLog(@"Example description: %@", self.currentRecording.description);
-    Recording* exampleRecording = self.listOfRecordings[[self.listOfRecordings indexOfObject:self.currentRecording]];
-    NSLog(@"Index: %lu", (unsigned long)[self.listOfRecordings indexOfObject:self.currentRecording]);
-    NSString* descriptionOfOne = exampleRecording.description;
     
-    NSLog(@"First one in listOfRecordings: %@", descriptionOfOne);
-    */
+    Recording *secondRecording;
+    if([[NSFileManager defaultManager] fileExistsAtPath: archive]){
+        secondRecording = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
+        [[NSFileManager defaultManager] removeItemAtPath:archive error:nil];
+    }else{
+        // Doesn't exist!
+        NSLog(@"No file to open!!");
+        exit(1);
+    }
+
+    NSLog(@"Reopen: %@", secondRecording);
     
-    /*
-    Recording* exampleRecording = self.listOfRecordings[0];
-    NSString* descriptionOfOne = exampleRecording.description;
-    
-    NSLog(@"First one in listOfRecordings%@", descriptionOfOne);
-     */
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

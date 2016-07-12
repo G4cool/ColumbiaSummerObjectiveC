@@ -254,6 +254,7 @@
     [player prepareToPlay];
     [player play];
     
+    /*
     NSString *soundFilePath = [NSString stringWithFormat:@"%@/test.m4a",
                                [[NSBundle mainBundle] resourcePath]];
     NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
@@ -263,6 +264,7 @@
     player.numberOfLoops = -1; //Infinite
     
     [player play];
+     */
     //}
 }
 

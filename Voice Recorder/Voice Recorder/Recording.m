@@ -27,7 +27,11 @@ static Recording* initialRecording;
 
 - (id)initWithCoder:(NSCoder *)decoder {
     if (self = [super init]) {
-        self.url = [decoder decodeObjectForKey:@"url"];
+        self.url = [decoder decodeObjectOfClass: [Recording class] forKey: @"url"];
+        self.dateString = [decoder decodeObjectOfClass: [Recording class] forKey: @"dateString"];
+        self.date = [decoder decodeObjectOfClass: [Recording class] forKey: @"date"];
+        self.path = [decoder decodeObjectOfClass: [Recording class] forKey: @"path"];
+        self.description = [decoder decodeObjectOfClass: [Recording class] forKey: @"description"];
     }
     return self;
 }
@@ -41,7 +45,11 @@ static Recording* initialRecording;
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
-    [encoder encodeObject:url forKey:@"url"];
+    [encoder encodeObject: self.url forKey: @"url"];
+    [encoder encodeObject: self.dateString forKey: @"dateString"];
+    [encoder encodeObject: self.date forKey: @"date"];
+    [encoder encodeObject: self.path forKey: @"path"];
+    [encoder encodeObject: self.description forKey: @"description"];
 }
 
     -(NSString*) description {
