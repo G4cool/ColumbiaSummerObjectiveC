@@ -21,6 +21,7 @@
 @synthesize listOfPresidents;
 @synthesize scientists;
 @synthesize recordings;
+@synthesize player;
 
 /*
  -(TableViewController*) initWithCoder:(NSCoder *) aDecoder {
@@ -124,7 +125,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number
-    return [recordings count];
+    return [self.recordings count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -135,8 +136,6 @@
     Recording* r = [recordings objectAtIndex:indexPath.row];
     
     NSString *selectedSound = [path stringByAppendingPathComponent:r.description];
-    
-    NSURL *url =[NSURL fileURLWithPath:selectedSound];
     
     cell.textLabel.text = r.description;
     
@@ -154,7 +153,7 @@
     
     NSString *selectedSound = [path stringByAppendingPathComponent:r.description];
     NSString* realSound = [selectedSound stringByAppendingString:@".caf"];
-    
+    /*
     NSAssert([[NSFileManager defaultManager] fileExistsAtPath: realSound], @"Doesn't exist");
     NSError *error;
     AVAudioPlayer* player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:realSound] error:&error];
@@ -172,6 +171,26 @@
     
     NSURL *url =[NSURL fileURLWithPath:realSound];
     NSLog(@"selectedSound: %@", realSound);
+     */
+    ///*
+    NSLog(@"Playing %@", r.description);
+    NSAssert([[NSFileManager defaultManager] fileExistsAtPath: r.path], @"Doesn't exist");
+    NSError *error;
+    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL: r.url error:&error];
+    if(error){
+        NSLog(@"playing audio: %@ %ld %@", [error domain], [error code], [[error userInfo] description]);
+        return;
+    }else{
+        player.delegate = self;
+    }
+    if([player prepareToPlay] == NO){
+        NSLog(@"Not prepared to play!");
+        return;
+    }
+    NSLog(@"CMON TABLE");
+    [player play];
+    NSLog(@"YES TABLE");
+    // */
     
     /*
      NSString *soundPath = [[NSBundle mainBundle] pathForResource:selectedSound ofType:@"caf"];

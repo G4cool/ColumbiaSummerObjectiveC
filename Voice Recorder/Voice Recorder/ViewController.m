@@ -87,6 +87,7 @@
 @synthesize recorder;
 @synthesize currentRecording;
 @synthesize player;
+@synthesize recordingBool;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -134,6 +135,20 @@
 }
 
 - (IBAction)startButton:(id)sender {
+    if (recordingBool == NO) {
+        recordingBool = YES;
+    NSString* archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingList/recordingList"];
+    if([[NSFileManager defaultManager] fileExistsAtPath: archive]){
+        self.listOfRecordings = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
+        [[NSFileManager defaultManager] removeItemAtPath:archive error:nil];
+    }else{
+        // Doesn't exist!
+        NSLog(@"No file to open!!");
+        //exit(1);
+    }
+    
+    NSLog(@"self.listOfRecordings: %@", self.listOfRecordings);
+    
     AVAudioSession* audioSession = [AVAudioSession sharedInstance];
     NSError* err = nil;
     [audioSession setCategory: AVAudioSessionCategoryRecord error: &err];
@@ -235,6 +250,7 @@
                     selector:@selector(updateUI:)
                   userInfo:nil
                   repeats:YES];
+    }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -246,6 +262,11 @@
 
 - (IBAction)stopButton:(id)sender {
     [self performSelectorOnMainThread:@selector(stopTimer) withObject:nil waitUntilDone:YES];
+    
+    NSString* archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingList/recordingList"];
+    [NSKeyedArchiver archiveRootObject: self.listOfRecordings toFile: archive];
+    
+    assert([[NSFileManager defaultManager] fileExistsAtPath: archive]);
     
     NSLog(@"Playing %@", self.currentRecording.description);
     NSAssert([[NSFileManager defaultManager] fileExistsAtPath: self.currentRecording.path], @"Doesn't exist");
@@ -264,6 +285,8 @@
     NSLog(@"CMON");
     [player play];
     NSLog(@"YES");
+    
+    self.recordingBool = NO;
 }
 
 @end

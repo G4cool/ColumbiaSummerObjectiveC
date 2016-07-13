@@ -19,6 +19,7 @@
  
  @property (strong, nonatomic) Currency* home;
  @property (strong, nonatomic) Currency* foreign;
+ @property (strong, nonatomic) NSDate* expiresOn;
  @property (assign, nonatomic) float rate;
  
  -(bool) updateRate;
@@ -33,6 +34,17 @@
  -(NSString*) description;
  -(EXchangeRate*) initWithHome:(Currency*) aHome
     foreign: (Currency*) aForeign // ???
+ 
+ // Currency:
+ @interface Currency NSObject <NSCoding>
+ @property (strong, nonatomic) NSString* name;
+ @property (strong, nonatomic) NSString* alphaCode;
+ @property (strong, nonatomic) NSString* symbol;
+ @property (strong, nonatomic) NSNumberFormatter* formatter;
+ -(Currency* initWithName:(NSString*) aName
+    alphaCode:(NSString*) aCode
+    symbol:(NSString*) aSymbol
+    decimalPLaces:(NSNumber*) places;
  
 */
 

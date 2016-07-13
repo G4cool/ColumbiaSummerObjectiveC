@@ -23,6 +23,8 @@
 
 @property (strong, nonatomic) NSMutableArray* otherListOfPresidents;
 
+@property (assign, nonatomic) BOOL recordingBool;
+
 - (IBAction)startButton:(id)sender;
 - (IBAction)stopButton:(id)sender;
 

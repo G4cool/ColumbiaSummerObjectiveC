@@ -15,5 +15,6 @@
 @property (strong, nonatomic) NSMutableArray* listOfPresidents;
 @property (strong, nonatomic) NSMutableArray* scientists;
 @property (strong, nonatomic) NSMutableArray* recordings;
+@property (strong, nonatomic) AVAudioPlayer* player;
 
 @end
