@@ -10,13 +10,13 @@
 #import "Recording.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface ViewController : UIViewController <AVAudioPlayerDelegate>
+@interface ViewController : UIViewController
 @property (nonatomic, strong) NSTimer *myTimer;
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UIButton *stopButton;
 @property (nonatomic, strong) IBOutlet UIProgressView *progressBar; // nonatomic means that changes might make a difference (??, maybe other?)
 @property (strong) Recording* currentRecording;
-@property (weak, nonatomic) NSMutableArray* listOfRecordings;
+@property (strong) NSMutableArray* listOfRecordings;
 
 @property (strong, nonatomic) AVAudioRecorder *recorder;
 
@@ -26,4 +26,3 @@
 - (IBAction)stopButton:(id)sender;
 
 @end
-

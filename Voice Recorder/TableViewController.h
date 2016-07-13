@@ -7,14 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import "Recording.h"
 
-@interface TableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate>
+@interface TableViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray* listOfPresidents;
 @property (strong, nonatomic) NSMutableArray* scientists;
-@property (weak, nonatomic) NSMutableArray* recordings;
-@property (strong, nonatomic) AVAudioPlayer* player;
+@property (strong, nonatomic) NSMutableArray* recordings;
 
 @end

@@ -23,36 +23,37 @@
 // Recorder class code:
 /*
  @interface Recordign NSObject <NSSecureCoding> // ???
-    @property (strong, nonatomic) NSDate* date;
-    // always save in ~/Documents/yyyyMMddHHmmss
-    @property (readonly, nonatomic) NSString* path; // readonly ==> There is no setter (?)
-    @property (readonly, nonatomic) NSURL* url; // readonly ==> There is no setter (?)
-    -(Recording*) initWithDate:(NSDate*) aDate;
+ @property (strong, nonatomic) NSDate* date;
+ // always save in ~/Documents/yyyyMMddHHmmss
+ @property (readonly, nonatomic) NSString* path; // readonly ==> There is no setter (?)
+ @property (readonly, nonatomic) NSURL* url; // readonly ==> There is no setter (?)
+ -(Recording*) initWithDate:(NSDate*) aDate;
  @end
  
  @implementation Recording
-    @synthesize date;
-    -(Recording*) iniWithDate:(NSDate*) aDate {
-        self = [super init];
-        if (self) {
-            self.date = aDate;
-        }
-        return self;
-    }
+ @synthesize date;
+ -(Recording*) iniWithDate:(NSDate*) aDate {
+ self = [super init];
+ if (self) {
+ self.date = aDate;
+ }
+ return self;
+ }
  
-    -(NSString*) path {
-        NSString* home = NSHomeDirectory();
-        NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyyMMddHHmmss"];
-        NSString* dateString = [formatter stringFromDate:self.date];
-        return [NSString stringWithFormat:@"%@/Documents/%@.caf", home, dateString]; // .caf ==> Core Audio File
-    }
-    -(NSURL*) url:(NSString*) path {
-        //NSURL *baseURL = [NSURL fileURLWithString:@"%@", path];
-        //NSURL *URL = [NSURL URLWithString:@"folder/file.html" relativeToURL:baseURL];
-        NSURL *URL = [NSURL initWithString:@"%@", path];
-        return [URL absoluteURL];
-    }
+ -(NSString*) path {
+ NSString* home = NSHomeDirectory();
+ NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+ [formatter setDateFormat:@"yyyyMMddHHmmss"];
+ NSString* dateString = [formatter stringFromDate:self.date];
+ return [NSString stringWithFormat:@"%@/Documents/%@.caf", home, dateString]; // .caf ==> Core Audio File
+ }
+ 
+ -(NSURL*) url:(NSString*) path {
+ //NSURL *baseURL = [NSURL fileURLWithString:@"%@", path];
+ //NSURL *URL = [NSURL URLWithString:@"folder/file.html" relativeToURL:baseURL];
+ NSURL *URL = [NSURL initWithString:@"%@", path];
+ return [URL absoluteURL];
+ }
  @end
  
  Recording* r = [[Recording alloc] iniWithDate [NSDate today]];
@@ -79,7 +80,7 @@
  2. Clean up session
  3. Set currentRecording to nil
  4. Reset ProgressView
-*/
+ */
 
 @synthesize otherListOfPresidents;
 @synthesize listOfRecordings;
@@ -107,7 +108,7 @@
     } else {
         [self.myTimer invalidate];
         self.myTimer = nil;
-    } 
+    }
 }
 
 - (void) stopTimer
@@ -133,57 +134,72 @@
 
 - (IBAction)startButton:(id)sender {
     NSString* archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsTwo/arrayArchive"];
-    //NSString* pathForRecordings = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsThree"];
+    NSString* pathForRecordings = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsThree"];
     
     //listOfRecordings = [[NSMutableArray alloc]init];
-        AVAudioSession* audioSession = [AVAudioSession sharedInstance];
-        NSError* err = nil;
-        [audioSession setCategory: AVAudioSessionCategoryRecord error: &err];
-        if(err){
-            NSLog(@"audioSession: %@ %ld %@",
-                  [err domain], [err code], [[err userInfo] description]);
-            return;
-        }
-        err = nil;
-        [audioSession setActive:YES error:&err];
-        if(err){
-            NSLog(@"audioSession: %@ %ld %@",
-                  [err domain], [err code], [[err userInfo] description]);
-            return;
-        }
-        
-        NSMutableDictionary* recordingSettings = [[NSMutableDictionary alloc] init];
-        
-        [recordingSettings setValue:@(kAudioFormatLinearPCM) forKey:AVFormatIDKey];
-        
-        [recordingSettings setValue:@44100.0 forKey:AVSampleRateKey];
-        
-        [recordingSettings setValue:@1 forKey:AVNumberOfChannelsKey];
-        
-        [recordingSettings setValue:@16 forKey:AVLinearPCMBitDepthKey];
-        
-        [recordingSettings setValue:@(NO) forKey:AVLinearPCMIsBigEndianKey];
-        
-        [recordingSettings setValue:@(NO) forKey:AVLinearPCMIsFloatKey];
-        
-        [recordingSettings setValue:@(AVAudioQualityHigh)
-                             forKey:AVEncoderAudioQualityKey];
-        
-        NSDate* now = [NSDate date];
-        
-        self.currentRecording = [[Recording alloc] initWithDate: now];
-        
-        NSLog(@"%@",self.currentRecording);
-        
-        err = nil;
+    AVAudioSession* audioSession = [AVAudioSession sharedInstance];
+    NSError* err = nil;
+    [audioSession setCategory: AVAudioSessionCategoryRecord error: &err];
+    if(err){
+        NSLog(@"audioSession: %@ %ld %@",
+              [err domain], [err code], [[err userInfo] description]);
+        return;
+    }
+    err = nil;
+    [audioSession setActive:YES error:&err];
+    if(err){
+        NSLog(@"audioSession: %@ %ld %@",
+              [err domain], [err code], [[err userInfo] description]);
+        return;
+    }
+    
+    NSMutableDictionary* recordingSettings = [[NSMutableDictionary alloc] init];
+    
+    [recordingSettings setValue:@(kAudioFormatLinearPCM) forKey:AVFormatIDKey];
+    
+    [recordingSettings setValue:@44100.0 forKey:AVSampleRateKey];
+    
+    [recordingSettings setValue:@1 forKey:AVNumberOfChannelsKey];
+    
+    [recordingSettings setValue:@16 forKey:AVLinearPCMBitDepthKey];
+    
+    [recordingSettings setValue:@(NO) forKey:AVLinearPCMIsBigEndianKey];
+    
+    [recordingSettings setValue:@(NO) forKey:AVLinearPCMIsFloatKey];
+    
+    [recordingSettings setValue:@(AVAudioQualityHigh)
+                         forKey:AVEncoderAudioQualityKey];
+    
+    //NSArray *searchPaths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    //NSString *documentPath_ = [searchPaths objectAtIndex: 0];
+    
+    //NSString *pathToSave = [documentPath_ stringByAppendingPathComponent:[self dateString]];
+    
+    // File URL
+    //NSURL *url = [NSURL fileURLWithPath:pathToSave];//FILEPATH];
+    
+    
+    NSDate* now = [NSDate date];
+    
+    self.currentRecording = [[Recording alloc] initWithDate: now];
+    
+    NSLog(@"%@",self.currentRecording);
+    
+    err = nil;
+    
+    //self.currentRecording.path = archive;
     
     NSLog(@"path of currentRecording: %@", self.currentRecording.path);
     
-    //NSString* typePath = [@"/Users/Luca/Desktop/Universal/RecordingsThree" stringByAppendingPathComponent:@"test.aif"]; // Be consistent with .caf and .aif
+    //NSString *pathToSave = [documentPath_ stringByAppendingPathComponent:self.currentRecording.description];
     
-    //NSLog(@"typePath: %@", typePath);
+    //recorder = [[AVAudioRecorder alloc] initWithURL:url settings:recordingSettings error:&err];
     
-    //NSURL* typeURL = [NSURL fileURLWithPath:typePath];
+    NSString* typePath = [@"/Users/Luca/Desktop/Universal/RecordingsThree" stringByAppendingPathComponent:@"test.aif"]; // Be consistent with .caf and .aif
+    
+    NSLog(@"typePath: %@", typePath);
+    
+    NSURL* typeURL = [NSURL fileURLWithPath:typePath];
     
     recorder = [[AVAudioRecorder alloc] initWithURL:self.currentRecording.url settings:recordingSettings error:&err];
     //recorder = [[AVAudioRecorder alloc] initWithURL:typeURL settings:recordingSettings error:&err];
@@ -195,51 +211,51 @@
     recorder.meteringEnabled = YES;
     
     
-        if(!self.recorder){
-            NSLog(@"recorder: %@ %ld %@",
-                  [err domain], [err code], [[err userInfo] description]);
-            UIAlertController* alert = [UIAlertController
-                                        alertControllerWithTitle:@"Warning"
-                                        message:[err localizedDescription]
-                                        preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* defaultAction = [UIAlertAction
-                                            actionWithTitle:@"OK"
-                                            style:UIAlertActionStyleDefault
-                                            handler:^(UIAlertAction * action) {}];
-            
-            [alert addAction:defaultAction];
-            [self presentViewController:alert animated:YES completion:nil];
-            
-            return;
-        }
+    if(!self.recorder){
+        NSLog(@"recorder: %@ %ld %@",
+              [err domain], [err code], [[err userInfo] description]);
+        UIAlertController* alert = [UIAlertController
+                                    alertControllerWithTitle:@"Warning"
+                                    message:[err localizedDescription]
+                                    preferredStyle:UIAlertControllerStyleAlert];
         
-        // Prepare to record
-        //[self.recorder setDelegate:self];
-        [self.recorder prepareToRecord];
-        self.recorder.meteringEnabled = YES;
+        UIAlertAction* defaultAction = [UIAlertAction
+                                        actionWithTitle:@"OK"
+                                        style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction * action) {}];
         
-        BOOL audioHWAvailable = audioSession.inputAvailable;
-        if( !audioHWAvailable ){
-            UIAlertController* cantRecordAlert = [UIAlertController
-                                                  alertControllerWithTitle:@"Warning"
-                                                  message:@"Audio input hardware not available."
-                                                  preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* defaultAction = [UIAlertAction
-                                            actionWithTitle:@"OK"
-                                            style:UIAlertActionStyleDefault
-                                            handler:^(UIAlertAction * action) {}];
-            
-            [cantRecordAlert addAction:defaultAction];
-            [self presentViewController:cantRecordAlert animated:YES completion:nil];
-            
-            
-            return;
-        }
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
         
-        // Start recording
-        //[self.recorder recordForDuration:(NSTimeInterval)5];
+        return;
+    }
+    
+    // Prepare to record
+    //[self.recorder setDelegate:self];
+    [self.recorder prepareToRecord];
+    self.recorder.meteringEnabled = YES;
+    
+    BOOL audioHWAvailable = audioSession.inputAvailable;
+    if( !audioHWAvailable ){
+        UIAlertController* cantRecordAlert = [UIAlertController
+                                              alertControllerWithTitle:@"Warning"
+                                              message:@"Audio input hardware not available."
+                                              preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction
+                                        actionWithTitle:@"OK"
+                                        style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction * action) {}];
+        
+        [cantRecordAlert addAction:defaultAction];
+        [self presentViewController:cantRecordAlert animated:YES completion:nil];
+        
+        
+        return;
+    }
+    
+    // Start recording
+    //[self.recorder recordForDuration:(NSTimeInterval)5];
     self.myTimer = [NSTimer scheduledTimerWithTimeInterval:(1/10) target:self selector:@selector(updateUI:) userInfo:nil repeats:YES];
     
     if([[NSFileManager defaultManager] fileExistsAtPath: archive]){
@@ -289,14 +305,3 @@
     [self performSelectorOnMainThread:@selector(stopTimer) withObject:nil waitUntilDone:YES];
 }
 @end
-
-
-
-
-
-
-
-
-
-
-
