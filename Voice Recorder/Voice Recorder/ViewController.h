@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSMutableArray* listOfRecordings;
 
 @property (strong, nonatomic) AVAudioRecorder *recorder;
+@property (strong, nonatomic) AVAudioPlayer* player;
 
 @property (strong, nonatomic) NSMutableArray* otherListOfPresidents;
 

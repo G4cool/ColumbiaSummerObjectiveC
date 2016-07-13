@@ -22,8 +22,18 @@
  @property (assign, nonatomic) float rate;
  
  -(bool) updateRate;
- 
  @end
+ 
+ 
+ // Exchange rate object:
+ -(NSString*) exchangeToHome: (NSNumber*) value;
+ -(NSString*) exchangeToForeign: (NSNumber*) value;
+ -(void) reverse;
+ -(NSString*) nume;
+ -(NSString*) description;
+ -(EXchangeRate*) initWithHome:(Currency*) aHome
+    foreign: (Currency*) aForeign // ???
+ 
 */
 
 @implementation ViewController

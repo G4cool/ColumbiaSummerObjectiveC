@@ -86,6 +86,7 @@
 @synthesize listOfRecordings;
 @synthesize recorder;
 @synthesize currentRecording;
+@synthesize player;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -153,7 +154,7 @@
     
     [recordingSettings setValue:@(kAudioFormatLinearPCM) forKey:AVFormatIDKey];
     
-    [recordingSettings setValue:@4100.0 forKey:AVSampleRateKey];
+    [recordingSettings setValue:@44100.0 forKey:AVSampleRateKey];
     
     [recordingSettings setValue:@1 forKey:AVNumberOfChannelsKey];
     
@@ -181,8 +182,6 @@
                      settings:recordingSettings
                      error:&err];
     
-    NSLog(@"path: %@", [self.currentRecording.url path]);
-    
     if(!self.recorder){
         NSLog(@"recorder: %@ %ld %@",
               [err domain], [err code], [[err userInfo] description]);
@@ -202,8 +201,8 @@
         return;
     }
     
-    // Prepare to record
-    //[self.recorder setDelegate:self];
+    //prepare to record
+    [self.recorder setDelegate:self];
     [self.recorder prepareToRecord];
     self.recorder.meteringEnabled = YES;
     
@@ -226,9 +225,16 @@
         return;
     }
     
-    // Start recording
-    [self.recorder recordForDuration:(NSTimeInterval)5];
-    self.myTimer = [NSTimer scheduledTimerWithTimeInterval:(1/10) target:self selector:@selector(updateUI:) userInfo:nil repeats:YES];
+    // start recording
+    [recorder recordForDuration:(NSTimeInterval)5];
+    
+    self.progressBar.progress = 0.0;
+    self.myTimer = [NSTimer
+                  scheduledTimerWithTimeInterval:0.2
+                  target:self
+                    selector:@selector(updateUI:)
+                  userInfo:nil
+                  repeats:YES];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -240,6 +246,24 @@
 
 - (IBAction)stopButton:(id)sender {
     [self performSelectorOnMainThread:@selector(stopTimer) withObject:nil waitUntilDone:YES];
+    
+    NSLog(@"Playing %@", self.currentRecording.description);
+    NSAssert([[NSFileManager defaultManager] fileExistsAtPath: self.currentRecording.path], @"Doesn't exist");
+    NSError *error;
+    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL: self.currentRecording.url error:&error];
+    if(error){
+        NSLog(@"playing audio: %@ %ld %@", [error domain], [error code], [[error userInfo] description]);
+        return;
+    }else{
+        player.delegate = self;
+    }
+    if([player prepareToPlay] == NO){
+        NSLog(@"Not prepared to play!");
+        return;
+    }
+    NSLog(@"CMON");
+    [player play];
+    NSLog(@"YES");
 }
 
 @end
