@@ -7,9 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Currency.h"
+#import "ExchangeRate.h"
 
 @interface ViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITextField *homeField;
+@property (strong, nonatomic) IBOutlet UITextField *foreignField;
 
+- (IBAction)homeFieldChange:(id)sender;
+- (IBAction)foreignFieldChange:(id)sender;
+- (IBAction)usdHomeSelect:(id)sender;
+- (IBAction)cadHomeSelect:(id)sender;
+- (IBAction)usdForeignSelect:(id)sender;
+- (IBAction)cadForeignSelect:(id)sender;
 
 @end
 

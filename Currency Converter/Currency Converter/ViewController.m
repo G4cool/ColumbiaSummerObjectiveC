@@ -19,7 +19,7 @@
  
  @property (strong, nonatomic) Currency* home;
  @property (strong, nonatomic) Currency* foreign;
- @property (strong, nonatomic) NSDate* expiresOn;
+ @property (strong, nonatomic) NSDate* expiresOn; // expires on
  @property (assign, nonatomic) float rate;
  
  -(bool) updateRate;
@@ -60,4 +60,39 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)homeFieldChange:(id)sender {
+    
+}
+
+- (IBAction)foreignFieldChange:(id)sender {
+    
+}
+
+- (IBAction)usdHomeSelect:(id)sender {
+    
+}
+
+- (IBAction)cadHomeSelect:(id)sender {
+    
+}
+
+- (IBAction)usdForeignSelect:(id)sender {
+    
+}
+
+- (IBAction)cadForeignSelect:(id)sender {
+    
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+

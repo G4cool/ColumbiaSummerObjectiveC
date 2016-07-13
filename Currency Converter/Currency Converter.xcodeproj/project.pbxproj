@@ -13,6 +13,8 @@
 		81C4B8681D3687B0005D6511 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81C4B8661D3687B0005D6511 /* Main.storyboard */; };
 		81C4B86A1D3687B0005D6511 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81C4B8691D3687B0005D6511 /* Assets.xcassets */; };
 		81C4B86D1D3687B0005D6511 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81C4B86B1D3687B0005D6511 /* LaunchScreen.storyboard */; };
+		81C4B8761D3699BD005D6511 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C4B8751D3699BD005D6511 /* Currency.m */; };
+		81C4B8791D369C3A005D6511 /* ExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C4B8781D369C3A005D6511 /* ExchangeRate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,10 @@
 		81C4B8691D3687B0005D6511 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81C4B86C1D3687B0005D6511 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81C4B86E1D3687B0005D6511 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81C4B8741D3699BD005D6511 /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
+		81C4B8751D3699BD005D6511 /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
+		81C4B8771D369C3A005D6511 /* ExchangeRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRate.h; sourceTree = "<group>"; };
+		81C4B8781D369C3A005D6511 /* ExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,10 @@
 				81C4B8611D3687AF005D6511 /* AppDelegate.m */,
 				81C4B8631D3687AF005D6511 /* ViewController.h */,
 				81C4B8641D3687AF005D6511 /* ViewController.m */,
+				81C4B8741D3699BD005D6511 /* Currency.h */,
+				81C4B8751D3699BD005D6511 /* Currency.m */,
+				81C4B8771D369C3A005D6511 /* ExchangeRate.h */,
+				81C4B8781D369C3A005D6511 /* ExchangeRate.m */,
 				81C4B8661D3687B0005D6511 /* Main.storyboard */,
 				81C4B8691D3687B0005D6511 /* Assets.xcassets */,
 				81C4B86B1D3687B0005D6511 /* LaunchScreen.storyboard */,
@@ -149,8 +159,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81C4B8761D3699BD005D6511 /* Currency.m in Sources */,
 				81C4B8651D3687AF005D6511 /* ViewController.m in Sources */,
 				81C4B8621D3687AF005D6511 /* AppDelegate.m in Sources */,
+				81C4B8791D369C3A005D6511 /* ExchangeRate.m in Sources */,
 				81C4B85F1D3687AF005D6511 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
