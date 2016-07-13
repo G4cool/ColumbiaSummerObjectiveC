@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ViewController.h"
 #import "Currency.h"
 
-@interface ExchangeRate : NSObject <NSCoding
+@interface ExchangeRate : NSObject <NSCoding>
 
 @property (strong, nonatomic) Currency* home;
 @property (strong, nonatomic) Currency* foreign;

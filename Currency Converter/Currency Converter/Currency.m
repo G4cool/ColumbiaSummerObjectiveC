@@ -10,4 +10,10 @@
 
 @implementation Currency
 
+@synthesize name;
+@synthesize alphaCode;
+@synthesize symbol;
+@synthesize formatter;
+@synthesize value;
+
 @end

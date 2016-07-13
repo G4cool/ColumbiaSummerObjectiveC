@@ -14,6 +14,10 @@
 @property (strong, nonatomic) IBOutlet UITextField *homeField;
 @property (strong, nonatomic) IBOutlet UITextField *foreignField;
 
+@property (strong, nonatomic) Currency* homeCurrency;
+@property (strong, nonatomic) Currency* foreignCurrency;
+@property (strong, nonatomic) ExchangeRate* exchangeRate;
+
 - (IBAction)homeFieldChange:(id)sender;
 - (IBAction)foreignFieldChange:(id)sender;
 - (IBAction)usdHomeSelect:(id)sender;
