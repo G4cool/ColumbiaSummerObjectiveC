@@ -133,10 +133,6 @@
 }
 
 - (IBAction)startButton:(id)sender {
-    NSString* archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsTwo/arrayArchive"];
-    NSString* pathForRecordings = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingsThree"];
-    
-    //listOfRecordings = [[NSMutableArray alloc]init];
     AVAudioSession* audioSession = [AVAudioSession sharedInstance];
     NSError* err = nil;
     [audioSession setCategory: AVAudioSessionCategoryRecord error: &err];
@@ -157,7 +153,7 @@
     
     [recordingSettings setValue:@(kAudioFormatLinearPCM) forKey:AVFormatIDKey];
     
-    [recordingSettings setValue:@44100.0 forKey:AVSampleRateKey];
+    [recordingSettings setValue:@4100.0 forKey:AVSampleRateKey];
     
     [recordingSettings setValue:@1 forKey:AVNumberOfChannelsKey];
     
@@ -170,46 +166,22 @@
     [recordingSettings setValue:@(AVAudioQualityHigh)
                          forKey:AVEncoderAudioQualityKey];
     
-    //NSArray *searchPaths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    //NSString *documentPath_ = [searchPaths objectAtIndex: 0];
-    
-    //NSString *pathToSave = [documentPath_ stringByAppendingPathComponent:[self dateString]];
-    
-    // File URL
-    //NSURL *url = [NSURL fileURLWithPath:pathToSave];//FILEPATH];
-    
     
     NSDate* now = [NSDate date];
     
     self.currentRecording = [[Recording alloc] initWithDate: now];
+    [self.listOfRecordings addObject: self.currentRecording];
     
     NSLog(@"%@",self.currentRecording);
     
     err = nil;
     
-    //self.currentRecording.path = archive;
+    self.recorder = [[AVAudioRecorder alloc]
+                     initWithURL:self.currentRecording.url
+                     settings:recordingSettings
+                     error:&err];
     
-    NSLog(@"path of currentRecording: %@", self.currentRecording.path);
-    
-    //NSString *pathToSave = [documentPath_ stringByAppendingPathComponent:self.currentRecording.description];
-    
-    //recorder = [[AVAudioRecorder alloc] initWithURL:url settings:recordingSettings error:&err];
-    
-    NSString* typePath = [@"/Users/Luca/Desktop/Universal/RecordingsThree" stringByAppendingPathComponent:@"test.aif"]; // Be consistent with .caf and .aif
-    
-    NSLog(@"typePath: %@", typePath);
-    
-    NSURL* typeURL = [NSURL fileURLWithPath:typePath];
-    
-    recorder = [[AVAudioRecorder alloc] initWithURL:self.currentRecording.url settings:recordingSettings error:&err];
-    //recorder = [[AVAudioRecorder alloc] initWithURL:typeURL settings:recordingSettings error:&err];
-    NSLog(@"pure string of url: %@", [self.currentRecording.url absoluteString]);
-    NSLog(@"path of url: %@", [self.currentRecording.url path]);
-    //recorder = [[AVAudioRecorder alloc] initWithURL: [NSURL fileURLWithPath:@"/Users/Luca/Desktop/Universal/RecordingsTwo/arrayArchive"] settings:recordingSettings error:&err];
-    
-    recorder.delegate = self;
-    recorder.meteringEnabled = YES;
-    
+    NSLog(@"path: %@", [self.currentRecording.url path]);
     
     if(!self.recorder){
         NSLog(@"recorder: %@ %ld %@",
@@ -255,41 +227,8 @@
     }
     
     // Start recording
-    //[self.recorder recordForDuration:(NSTimeInterval)5];
+    [self.recorder recordForDuration:(NSTimeInterval)5];
     self.myTimer = [NSTimer scheduledTimerWithTimeInterval:(1/10) target:self selector:@selector(updateUI:) userInfo:nil repeats:YES];
-    
-    if([[NSFileManager defaultManager] fileExistsAtPath: archive]){
-        listOfRecordings = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
-        [[NSFileManager defaultManager] removeItemAtPath:archive error:nil];
-    }else{
-        // Doesn't exist!
-        NSLog(@"No file to open!!");
-        //exit(1);
-    }
-    
-    NSLog(@"listOfRecordings: %@", listOfRecordings);
-    
-    [listOfRecordings addObject: self.currentRecording];
-    
-    NSLog(@"listOfRecordings after adding: %@", listOfRecordings);
-    
-    NSLog(@"The original: %@", self.currentRecording);
-    
-    [NSKeyedArchiver archiveRootObject: listOfRecordings toFile: archive];
-    
-    assert([[NSFileManager defaultManager] fileExistsAtPath: archive]);
-    
-    if([[NSFileManager defaultManager] fileExistsAtPath: archive]){
-        listOfRecordings = [NSKeyedUnarchiver unarchiveObjectWithFile:archive];
-        //[[NSFileManager defaultManager] removeItemAtPath:archive error:nil];
-    }else{
-        // Doesn't exist!
-        NSLog(@"No file to open!!");
-        exit(1);
-    }
-    
-    NSLog(@"listOfRecordings again: %@", listOfRecordings);
-    
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -300,8 +239,12 @@
 }
 
 - (IBAction)stopButton:(id)sender {
-    //self.myTimer = [self performSelectorOnMainThread:@selector(stopTimer) withObject:nil waitUntilDone:YES];
-    [recorder stop];
     [self performSelectorOnMainThread:@selector(stopTimer) withObject:nil waitUntilDone:YES];
 }
+
 @end
+
+
+
+
+
