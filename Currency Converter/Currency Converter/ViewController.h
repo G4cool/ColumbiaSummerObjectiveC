@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Currency.h"
 #import "ExchangeRate.h"
+#import "URLFetcher.h"
 
 @interface ViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITextField *homeField;

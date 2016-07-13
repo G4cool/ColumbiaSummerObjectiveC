@@ -13,6 +13,7 @@
 @property (strong, nonatomic) NSString* name;
 @property (strong, nonatomic) NSString* alphaCode; // USD, CAD, etc.
 @property (strong, nonatomic) NSString* symbol;
+@property (strong, nonatomic) NSNumber* decimalPlaces;
 @property (strong, nonatomic) NSNumberFormatter* formatter;
 @property (strong, nonatomic) NSNumber* value;
 -(Currency*) initWithName:(NSString*) aName

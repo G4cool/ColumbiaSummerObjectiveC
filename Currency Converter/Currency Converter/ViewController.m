@@ -57,12 +57,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    URLFetcher* f = [[URLFetcher alloc] init];
+    [f fetch];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    
     self.homeCurrency = [[Currency alloc] init];
     self.foreignCurrency = [[Currency alloc] init];
     //Currency* foreignCurrencyHere = [[Currency alloc] init];
     //ExchangeRate* exchangeRate = [[ExchangeRate alloc]init];
-    self.exchangeRate.home = self.homeCurrency;
-    self.exchangeRate.foreign = self.foreignCurrency;
+    self.exchangeRate.homeCurrency = self.homeCurrency;
+    self.exchangeRate.foreignCurrency = self.foreignCurrency;
 }
 
 - (void)didReceiveMemoryWarning {

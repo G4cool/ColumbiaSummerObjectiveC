@@ -11,8 +11,8 @@
 
 @interface ExchangeRate : NSObject <NSCoding>
 
-@property (strong, nonatomic) Currency* home;
-@property (strong, nonatomic) Currency* foreign;
+@property (strong, nonatomic) Currency* homeCurrency;
+@property (strong, nonatomic) Currency* foreignCurrency;
 @property (strong, nonatomic) NSDate* expiresOn; // expires on
 @property (assign, nonatomic) float rate;
 
@@ -22,7 +22,9 @@
 -(void) reverse;
 -(NSString*) name;
 -(NSString*) description;
--(ExchangeRate*) initWithHome:(Currency*) aHome
-                      foreign:(Currency*) aForeign;
+-(ExchangeRate*) initWithHomeCurrency:(Currency*) aHome
+                      foreignCurrency:(Currency*) aForeign;
+-(NSURL*) exchangeRateURL;
++(NSArray*) allExchangeRates;
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		811C2C131D36C94C00B7C651 /* URLFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 811C2C121D36C94C00B7C651 /* URLFetcher.m */; };
 		81C4B85F1D3687AF005D6511 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C4B85E1D3687AF005D6511 /* main.m */; };
 		81C4B8621D3687AF005D6511 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C4B8611D3687AF005D6511 /* AppDelegate.m */; };
 		81C4B8651D3687AF005D6511 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C4B8641D3687AF005D6511 /* ViewController.m */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		811C2C111D36C94C00B7C651 /* URLFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLFetcher.h; sourceTree = "<group>"; };
+		811C2C121D36C94C00B7C651 /* URLFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLFetcher.m; sourceTree = "<group>"; };
 		81C4B85A1D3687AF005D6511 /* Currency Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Currency Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C4B85E1D3687AF005D6511 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		81C4B8601D3687AF005D6511 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -72,6 +75,8 @@
 				81C4B8751D3699BD005D6511 /* Currency.m */,
 				81C4B8771D369C3A005D6511 /* ExchangeRate.h */,
 				81C4B8781D369C3A005D6511 /* ExchangeRate.m */,
+				811C2C111D36C94C00B7C651 /* URLFetcher.h */,
+				811C2C121D36C94C00B7C651 /* URLFetcher.m */,
 				81C4B8661D3687B0005D6511 /* Main.storyboard */,
 				81C4B8691D3687B0005D6511 /* Assets.xcassets */,
 				81C4B86B1D3687B0005D6511 /* LaunchScreen.storyboard */,
@@ -162,6 +167,7 @@
 				81C4B8761D3699BD005D6511 /* Currency.m in Sources */,
 				81C4B8651D3687AF005D6511 /* ViewController.m in Sources */,
 				81C4B8621D3687AF005D6511 /* AppDelegate.m in Sources */,
+				811C2C131D36C94C00B7C651 /* URLFetcher.m in Sources */,
 				81C4B8791D369C3A005D6511 /* ExchangeRate.m in Sources */,
 				81C4B85F1D3687AF005D6511 /* main.m in Sources */,
 			);
@@ -312,6 +318,7 @@
 				81C4B8731D3687B0005D6511 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
