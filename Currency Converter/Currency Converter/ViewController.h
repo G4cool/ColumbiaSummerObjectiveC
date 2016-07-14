@@ -43,5 +43,7 @@
 - (IBAction)cadForeignSelect:(id)sender;
 - (IBAction)eurForeignSelect:(id)sender;
 
+- (IBAction)calculate:(id)sender;
+
 @end
 

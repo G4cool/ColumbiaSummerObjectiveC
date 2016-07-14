@@ -158,6 +158,21 @@ static Currency* myForeignCurrency = nil;
     [self getRate];
 }
 
+- (IBAction)calculate:(id)sender {
+    NSNumberFormatter *format = [[NSNumberFormatter alloc] init];
+    format.numberStyle = NSNumberFormatterDecimalStyle;
+    self.homeCurrency.value = [format numberFromString:self.homeField.text];
+    self.foreignCurrency.value = [format numberFromString:self.foreignField.text];
+    
+    [self getRate];
+    
+    self.foreignCurrency.value = [NSNumber numberWithFloat:(self.homeCurrency.value.floatValue * self.rateView)];
+    
+    float roundedVal = floorf(self.foreignCurrency.value.floatValue * 100 + 0.5) / 100;
+    
+    self.foreignField.text = [NSString stringWithFormat:@"%.02f", roundedVal];
+}
+
 @end
 
 
