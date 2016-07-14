@@ -98,8 +98,8 @@ static Currency* myForeignCurrency = nil;
     
     NSString* jsonString = [URLFetcher data];
     //NSLog(@"Rate value: %@", jsonDictionary[@"Rate"]);
-    //NSString *jsonPrefix = @"Rate = \"";
-    //NSString *jsonSuffix = @"\";";
+    NSString *jsonPrefix = @"Rate = \"";
+    NSString *jsonSuffix = @"\";";
     //NSString *jsonPrefix = @"count";
     //NSString *jsonSuffix = @"1";
     NSRange jsonRange = NSMakeRange(jsonPrefix.length,
