@@ -100,33 +100,33 @@ static Currency* myForeignCurrency = nil;
 }
 
 - (IBAction)usdHomeSelect:(id)sender {
-    self.homeCurrencyLabel.text = self.homeCurrency.alphaCode;
     NSLog(@"Home: USD");
     self.homeCurrency.alphaCode = @"USD";
     myHomeCurrency = self.homeCurrency;
+    self.homeCurrencyLabel.text = self.homeCurrency.alphaCode;
     self.exchangeRate.homeCurrency = self.homeCurrency;
 }
 
 - (IBAction)cadHomeSelect:(id)sender {
-    self.homeCurrencyLabel.text = self.homeCurrency.alphaCode;
     NSLog(@"Home: CAD");
     self.homeCurrency.alphaCode = @"CAD";
+    self.homeCurrencyLabel.text = self.homeCurrency.alphaCode;
     myHomeCurrency = self.homeCurrency;
     self.exchangeRate.homeCurrency = self.homeCurrency;
 }
 
 - (IBAction)usdForeignSelect:(id)sender {
-    self.foreignCurrencyLabel.text = self.foreignCurrency.alphaCode;
     NSLog(@"Foreign: USD");
     self.foreignCurrency.alphaCode = @"USD";
+    self.foreignCurrencyLabel.text = self.foreignCurrency.alphaCode;
     myForeignCurrency = self.foreignCurrency;
     self.exchangeRate.foreignCurrency = self.foreignCurrency;
 }
 
 - (IBAction)cadForeignSelect:(id)sender {
-    self.foreignCurrencyLabel.text = self.foreignCurrency.alphaCode;
     NSLog(@"Foreign: CAD");
     self.foreignCurrency.alphaCode = @"CAD";
+    self.foreignCurrencyLabel.text = self.foreignCurrency.alphaCode;
     myForeignCurrency = self.foreignCurrency;
     self.exchangeRate.foreignCurrency = self.foreignCurrency;
 }
