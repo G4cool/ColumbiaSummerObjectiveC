@@ -41,8 +41,10 @@ static NSString* dataHereAgain = nil;
                                                         id obj = [NSJSONSerialization JSONObjectWithData: data
                                                                                                  options: 0
                                                                                                    error: nil];
+                                                        //NSLog(@"Rate value from URLFetcher.m: %@", obj[@"Rate"]);
                                                         if ([obj isKindOfClass: [NSDictionary class]]) {
                                                             NSDictionary *dict = (NSDictionary*)obj;
+                                                            //NSLog(@"Rate value from URLFetcher.m: %@", dict[@"Rate"]);
                                                             NSLog(@"%@", [dict description]);
                                                             dataToTransfer = [dict description];
                                                             self.dataHere = dataToTransfer;
