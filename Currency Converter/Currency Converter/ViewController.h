@@ -15,6 +15,9 @@
     Currency* homeCurrencyForTransfer;
     Currency* foreignCurrencyForTransfer;
 }
+@property (strong, nonatomic) IBOutlet UILabel *homeCurrencyLabel;
+@property (strong, nonatomic) IBOutlet UILabel *foreignCurrencyLabel;
+
 @property (strong, nonatomic) IBOutlet UITextField *homeField;
 @property (strong, nonatomic) IBOutlet UITextField *foreignField;
 
