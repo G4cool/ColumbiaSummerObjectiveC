@@ -8,12 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface URLFetcher : NSObject
+@interface URLFetcher : NSObject {
+    NSString* dataToTransfer;
+}
 
 @property (strong) NSMutableDictionary *completionHandlerDictionary;
 @property (strong) NSURLSessionConfiguration *ephemeralConfigObject;
+@property (strong, nonatomic) NSString* dataHere;
 
 -(URLFetcher*) init;
++(NSString*) data;
 -(void) fetch;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "URLFetcher.h"
 
 @interface ViewController ()
 
@@ -94,6 +95,14 @@ static Currency* myForeignCurrency = nil;
     URLFetcher* f = [[URLFetcher alloc] init];
     [f fetch];
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    
+    NSString* responseString = [URLFetcher data];
+    NSLog(@"The json in ViewController.m: %@", responseString);
+    NSData *dataHere = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+    id json = [NSJSONSerialization JSONObjectWithData:dataHere options:0 error:nil];
+    NSDictionary* rateDictionary = [json objectForKey:@"Rate"];
+    NSString* rate = [NSString stringWithFormat:@"%@", rateDictionary];
+    NSLog(@"The rate is %@", rate);
 }
 
 - (IBAction)foreignFieldChange:(id)sender {
@@ -104,6 +113,14 @@ static Currency* myForeignCurrency = nil;
     URLFetcher* f = [[URLFetcher alloc] init];
     [f fetch];
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    
+    NSString* responseString = [URLFetcher data];
+    NSLog(@"The json in ViewController.m: %@", responseString);
+    NSData *dataHere = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+    id json = [NSJSONSerialization JSONObjectWithData:dataHere options:0 error:nil];
+    NSDictionary* rateDictionary = [json objectForKey:@"Rate"];
+    NSString* rate = [NSString stringWithFormat:@"%@", rateDictionary];
+    NSLog(@"The rate is %@", rate);
 }
 
 - (IBAction)usdHomeSelect:(id)sender {
