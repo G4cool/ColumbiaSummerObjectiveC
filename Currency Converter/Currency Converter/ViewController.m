@@ -72,7 +72,9 @@ static Currency* myForeignCurrency = nil;
     
     self.foreignCurrency.value = [NSNumber numberWithFloat:(self.homeCurrency.value.floatValue * rateResult.floatValue)];
     
-    self.foreignField.text = [NSString stringWithFormat:@"%f", self.foreignCurrency.value.floatValue];
+    float roundedVal = floorf(self.foreignCurrency.value.floatValue * 100 + 0.5) / 100;
+    
+    self.foreignField.text = [NSString stringWithFormat:@"%.02f", roundedVal];
 }
 
 - (IBAction)foreignFieldChange:(id)sender {
@@ -96,7 +98,9 @@ static Currency* myForeignCurrency = nil;
     
     self.homeCurrency.value = [NSNumber numberWithFloat:(self.foreignCurrency.value.floatValue * (1.0/rateResult.floatValue))];
     
-    self.homeField.text = [NSString stringWithFormat:@"%f", self.homeCurrency.value.floatValue];
+    float roundedVal = floorf(self.homeCurrency.value.floatValue * 100 + 0.5) / 100;
+    
+    self.homeField.text = [NSString stringWithFormat:@"%.02f", roundedVal];
 }
 
 - (IBAction)usdHomeSelect:(id)sender {
