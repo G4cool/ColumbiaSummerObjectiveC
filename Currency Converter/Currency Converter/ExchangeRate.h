@@ -16,6 +16,12 @@
 @property (strong, nonatomic) NSDate* expiresOn; // expires on
 @property (assign, nonatomic) float rate;
 
+@property (strong) NSMutableDictionary *completionHandlerDictionary;
+@property (strong) NSURLSessionConfiguration *ephemeralConfigObject;
+
+-(URLFetcher*) init;
+-(void) fetch;
+
 -(bool) updateRate;
 -(NSString*) exchangeToHome: (NSNumber*) value;
 -(NSString*) exchangeToForeign: (NSNumber*) value;
