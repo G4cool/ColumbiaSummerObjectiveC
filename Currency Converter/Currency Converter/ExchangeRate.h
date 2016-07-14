@@ -13,11 +13,12 @@
 
 @property (strong, nonatomic) Currency* homeCurrency;
 @property (strong, nonatomic) Currency* foreignCurrency;
+//@property (nonatomic, copy) Currency* homeCurrency;
+//@property (nonatomic, copy) Currency* foreignCurrency;
+//@property (nonatomic, copy) ViewController *aReference;
+//@property (nonatomic, copy) ViewController *aForeignCurrencyReference;
 @property (strong, nonatomic) NSDate* expiresOn; // expires on
 @property (assign, nonatomic) float rate;
-
-@property (strong) NSMutableDictionary *completionHandlerDictionary;
-@property (strong) NSURLSessionConfiguration *ephemeralConfigObject;
 
 -(bool) updateRate;
 -(NSString*) exchangeToHome: (NSNumber*) value;
@@ -29,8 +30,5 @@
                       foreignCurrency:(Currency*) aForeign;
 -(NSURL*) exchangeRateURL;
 +(NSArray*) allExchangeRates;
-
--(URLFetcher*) init;
--(void) fetch;
 
 @end

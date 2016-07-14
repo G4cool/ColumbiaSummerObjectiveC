@@ -52,20 +52,31 @@
  
 */
 
+static Currency* myHomeCurrency = nil;
+static Currency* myForeignCurrency = nil;
+
 @implementation ViewController
+
+@synthesize homeCurrency;
+@synthesize foreignCurrency;
+@synthesize exchangeRate;
+
++ (Currency*) getHomeCurrency {
+    return myHomeCurrency;
+}
+
++ (Currency*) getForeignCurrency {
+    return myForeignCurrency;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    URLFetcher* f = [[URLFetcher alloc] init];
-    [f fetch];
-    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
-    
     self.homeCurrency = [[Currency alloc] init];
     self.foreignCurrency = [[Currency alloc] init];
-    //Currency* foreignCurrencyHere = [[Currency alloc] init];
-    //ExchangeRate* exchangeRate = [[ExchangeRate alloc]init];
+    myHomeCurrency = self.homeCurrency;
+    myForeignCurrency = self.foreignCurrency;
     self.exchangeRate.homeCurrency = self.homeCurrency;
     self.exchangeRate.foreignCurrency = self.foreignCurrency;
 }
@@ -76,31 +87,51 @@
 }
 
 - (IBAction)homeFieldChange:(id)sender {
-    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-    f.numberStyle = NSNumberFormatterDecimalStyle;
-    self.homeCurrency.value = [f numberFromString:self.homeField.text];
+    NSNumberFormatter *format = [[NSNumberFormatter alloc] init];
+    format.numberStyle = NSNumberFormatterDecimalStyle;
+    self.homeCurrency.value = [format numberFromString:self.homeField.text];
+    
+    URLFetcher* f = [[URLFetcher alloc] init];
+    [f fetch];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
 }
 
 - (IBAction)foreignFieldChange:(id)sender {
-    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-    f.numberStyle = NSNumberFormatterDecimalStyle;
-    self.foreignCurrency.value = [f numberFromString:self.foreignField.text];
+    NSNumberFormatter *format = [[NSNumberFormatter alloc] init];
+    format.numberStyle = NSNumberFormatterDecimalStyle;
+    self.foreignCurrency.value = [format numberFromString:self.foreignField.text];
+    
+    URLFetcher* f = [[URLFetcher alloc] init];
+    [f fetch];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
 }
 
 - (IBAction)usdHomeSelect:(id)sender {
+    NSLog(@"Home: USD");
     self.homeCurrency.alphaCode = @"USD";
+    myHomeCurrency = self.homeCurrency;
+    self.exchangeRate.homeCurrency = self.homeCurrency;
 }
 
 - (IBAction)cadHomeSelect:(id)sender {
+    NSLog(@"Home: CAD");
     self.homeCurrency.alphaCode = @"CAD";
+    myHomeCurrency = self.homeCurrency;
+    self.exchangeRate.homeCurrency = self.homeCurrency;
 }
 
 - (IBAction)usdForeignSelect:(id)sender {
+    NSLog(@"Foreign: USD");
     self.foreignCurrency.alphaCode = @"USD";
+    myForeignCurrency = self.foreignCurrency;
+    self.exchangeRate.foreignCurrency = self.foreignCurrency;
 }
 
 - (IBAction)cadForeignSelect:(id)sender {
+    NSLog(@"Foreign: CAD");
     self.foreignCurrency.alphaCode = @"CAD";
+    myForeignCurrency = self.foreignCurrency;
+    self.exchangeRate.foreignCurrency = self.foreignCurrency;
 }
 
 @end

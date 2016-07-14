@@ -11,13 +11,19 @@
 #import "ExchangeRate.h"
 #import "URLFetcher.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+    Currency* homeCurrencyForTransfer;
+    Currency* foreignCurrencyForTransfer;
+}
 @property (strong, nonatomic) IBOutlet UITextField *homeField;
 @property (strong, nonatomic) IBOutlet UITextField *foreignField;
 
 @property (strong, nonatomic) Currency* homeCurrency;
 @property (strong, nonatomic) Currency* foreignCurrency;
 @property (strong, nonatomic) ExchangeRate* exchangeRate;
+
++ (Currency*) getHomeCurrency;
++ (Currency*) getForeignCurrency;
 
 - (IBAction)homeFieldChange:(id)sender;
 - (IBAction)foreignFieldChange:(id)sender;
