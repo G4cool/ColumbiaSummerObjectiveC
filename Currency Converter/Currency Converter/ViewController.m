@@ -96,29 +96,26 @@ static Currency* myForeignCurrency = nil;
     [f fetch];
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
     
-    NSString* jsonString = [URLFetcher data];
-    //NSLog(@"Rate value: %@", jsonDictionary[@"Rate"]);
-    NSString *jsonPrefix = @"Rate = \"";
-    NSString *jsonSuffix = @"\";";
-    //NSString *jsonPrefix = @"count";
-    //NSString *jsonSuffix = @"1";
-    NSRange jsonRange = NSMakeRange(jsonPrefix.length,
-                                      jsonString.length - jsonPrefix.length - jsonSuffix.length);
-    NSString *rateString = [jsonString substringWithRange:jsonRange];
-    NSLog(@"Rate substring: %@", rateString); // -> "hello World"
-    /*
-    NSLog(@"The json in ViewController.m: %@", responseString);
-    NSData *dataHere = [responseString dataUsingEncoding:NSUTF8StringEncoding];
-    id json = [NSJSONSerialization JSONObjectWithData:dataHere options:0 error:nil];
-    NSString* jsonString = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
-    NSLog(@"Can it go back?: %@", jsonString);
-    NSDictionary* rateDictionary = [json objectForKey:@"Rate"];
-    NSString* rate = [NSString stringWithFormat:@"%@", rateDictionary];
-    NSLog(@"The rate is %@", rate);
-     */
+    NSDictionary* jsonDictionary = [URLFetcher data];
+    NSDictionary* queryDictionary = jsonDictionary[@"query"];
+    NSDictionary* resultsDictionary = queryDictionary[@"results"];
+    NSDictionary* rateDictionary = resultsDictionary[@"rate"];
+    NSString* rateResult = rateDictionary[@"Rate"];
+    NSLog(@"rateResult: %@", rateResult);
+    self.exchangeRate.rate = rateResult.floatValue;
+    
+    self.foreignCurrency.value = self.homeCurrency.value
+    
+    self.foreignField.text = [NSString stringWithFormat:@"%.%@f", myFloat, self.foreignCurrency.decimalPlaces];
 }
 
 - (IBAction)foreignFieldChange:(id)sender {
+    /*
+    Currency* temp = self.homeCurrency;
+    self.homeCurrency = self.foreignCurrency;
+    self.foreignCurrency = temp;
+     */
+    
     NSNumberFormatter *format = [[NSNumberFormatter alloc] init];
     format.numberStyle = NSNumberFormatterDecimalStyle;
     self.foreignCurrency.value = [format numberFromString:self.foreignField.text];
@@ -126,6 +123,14 @@ static Currency* myForeignCurrency = nil;
     URLFetcher* f = [[URLFetcher alloc] init];
     [f fetch];
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    
+    NSDictionary* jsonDictionary = [URLFetcher data];
+    NSDictionary* queryDictionary = jsonDictionary[@"query"];
+    NSDictionary* resultsDictionary = queryDictionary[@"results"];
+    NSDictionary* rateDictionary = resultsDictionary[@"rate"];
+    NSString* rateResult = rateDictionary[@"Rate"];
+    NSLog(@"rateResult: %@", rateResult);
+    self.exchangeRate.rate = rateResult.floatValue;
 }
 
 - (IBAction)usdHomeSelect:(id)sender {

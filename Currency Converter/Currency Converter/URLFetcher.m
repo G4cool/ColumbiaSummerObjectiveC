@@ -26,7 +26,7 @@ static NSString* dataHereAgain = nil;
     return self;
 }
 
-+ (NSString*) data {
++ (NSDictionary*) data {
     return dataHereAgain;
 }
 
@@ -48,7 +48,7 @@ static NSString* dataHereAgain = nil;
                                                             NSLog(@"%@", [dict description]);
                                                             dataToTransfer = [dict description];
                                                             self.dataHere = dataToTransfer;
-                                                            dataHereAgain = [dict description];
+                                                            dataHereAgain = dict;
                                                         } else {
                                                             NSLog(@"Not a dictionary.");
                                                             exit(1);

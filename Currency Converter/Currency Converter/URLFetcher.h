@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSString* dataHere;
 
 -(URLFetcher*) init;
-+(NSString*) data;
++(NSDictionary*) data;
 -(void) fetch;
 
 @end
