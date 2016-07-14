@@ -104,9 +104,9 @@ static Currency* myForeignCurrency = nil;
     NSLog(@"rateResult: %@", rateResult);
     self.exchangeRate.rate = rateResult.floatValue;
     
-    self.foreignCurrency.value = self.homeCurrency.value
+    self.foreignCurrency.value = [NSNumber numberWithFloat:(self.homeCurrency.value.floatValue * rateResult.floatValue)];
     
-    self.foreignField.text = [NSString stringWithFormat:@"%.%@f", myFloat, self.foreignCurrency.decimalPlaces];
+    self.foreignField.text = [NSString stringWithFormat:@"%f", self.foreignCurrency.value.floatValue];
 }
 
 - (IBAction)foreignFieldChange:(id)sender {

@@ -9,7 +9,7 @@
 #import "URLFetcher.h"
 #import "ExchangeRate.h"
 
-static NSString* dataHereAgain = nil;
+static NSDictionary* dataHereAgain = nil;
 
 @implementation URLFetcher
 
