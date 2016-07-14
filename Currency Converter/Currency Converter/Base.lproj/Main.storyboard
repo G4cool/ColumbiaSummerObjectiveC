@@ -77,6 +77,22 @@
                                     <action selector="cadForeignSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SN3-y5-aAJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AwI-Sd-Jdg">
+                                <rect key="frame" x="20" y="163" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="EUR"/>
+                                <connections>
+                                    <action selector="eurHomeSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uwC-Ah-o5L"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RfX-fY-s9x">
+                                <rect key="frame" x="270" y="163" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="EUR"/>
+                                <connections>
+                                    <action selector="eurForeignSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tai-fS-Fs3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

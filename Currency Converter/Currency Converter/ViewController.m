@@ -21,6 +21,7 @@ static Currency* myForeignCurrency = nil;
 @synthesize homeCurrency;
 @synthesize foreignCurrency;
 @synthesize exchangeRate;
+@synthesize rateView;
 
 + (Currency*) getHomeCurrency {
     return myHomeCurrency;
@@ -28,6 +29,20 @@ static Currency* myForeignCurrency = nil;
 
 + (Currency*) getForeignCurrency {
     return myForeignCurrency;
+}
+
+- (void) getRate {
+    URLFetcher* f = [[URLFetcher alloc] init];
+    [f fetch];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    
+    NSDictionary* jsonDictionary = [URLFetcher data];
+    NSDictionary* queryDictionary = jsonDictionary[@"query"];
+    NSDictionary* resultsDictionary = queryDictionary[@"results"];
+    NSDictionary* rateDictionary = resultsDictionary[@"rate"];
+    NSString* rateResult = rateDictionary[@"Rate"];
+    self.exchangeRate.rate = rateResult.floatValue;
+    self.rateView = rateResult.floatValue;
 }
 
 - (void)viewDidLoad {
@@ -44,6 +59,8 @@ static Currency* myForeignCurrency = nil;
     myForeignCurrency = self.foreignCurrency;
     self.exchangeRate.homeCurrency = self.homeCurrency;
     self.exchangeRate.foreignCurrency = self.foreignCurrency;
+    
+    [self getRate];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,25 +69,13 @@ static Currency* myForeignCurrency = nil;
 }
 
 - (IBAction)homeFieldChange:(id)sender {
-    NSLog(@"Home change");
-    
     NSNumberFormatter *format = [[NSNumberFormatter alloc] init];
     format.numberStyle = NSNumberFormatterDecimalStyle;
     self.homeCurrency.value = [format numberFromString:self.homeField.text];
     
-    URLFetcher* f = [[URLFetcher alloc] init];
-    [f fetch];
-    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    [self getRate];
     
-    NSDictionary* jsonDictionary = [URLFetcher data];
-    NSDictionary* queryDictionary = jsonDictionary[@"query"];
-    NSDictionary* resultsDictionary = queryDictionary[@"results"];
-    NSDictionary* rateDictionary = resultsDictionary[@"rate"];
-    NSString* rateResult = rateDictionary[@"Rate"];
-    NSLog(@"rateResult: %@", rateResult);
-    self.exchangeRate.rate = rateResult.floatValue;
-    
-    self.foreignCurrency.value = [NSNumber numberWithFloat:(self.homeCurrency.value.floatValue * rateResult.floatValue)];
+    self.foreignCurrency.value = [NSNumber numberWithFloat:(self.homeCurrency.value.floatValue * self.rateView)];
     
     float roundedVal = floorf(self.foreignCurrency.value.floatValue * 100 + 0.5) / 100;
     
@@ -84,19 +89,9 @@ static Currency* myForeignCurrency = nil;
     format.numberStyle = NSNumberFormatterDecimalStyle;
     self.foreignCurrency.value = [format numberFromString:self.foreignField.text];
     
-    URLFetcher* f = [[URLFetcher alloc] init];
-    [f fetch];
-    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    [self getRate];
     
-    NSDictionary* jsonDictionary = [URLFetcher data];
-    NSDictionary* queryDictionary = jsonDictionary[@"query"];
-    NSDictionary* resultsDictionary = queryDictionary[@"results"];
-    NSDictionary* rateDictionary = resultsDictionary[@"rate"];
-    NSString* rateResult = rateDictionary[@"Rate"];
-    NSLog(@"rateResult: %@", rateResult);
-    self.exchangeRate.rate = rateResult.floatValue;
-    
-    self.homeCurrency.value = [NSNumber numberWithFloat:(self.foreignCurrency.value.floatValue * (1.0/rateResult.floatValue))];
+    self.homeCurrency.value = [NSNumber numberWithFloat:(self.foreignCurrency.value.floatValue * (1.0/self.rateView))];
     
     float roundedVal = floorf(self.homeCurrency.value.floatValue * 100 + 0.5) / 100;
     
@@ -109,6 +104,8 @@ static Currency* myForeignCurrency = nil;
     myHomeCurrency = self.homeCurrency;
     self.homeCurrencyLabel.text = self.homeCurrency.alphaCode;
     self.exchangeRate.homeCurrency = self.homeCurrency;
+    
+    [self getRate];
 }
 
 - (IBAction)cadHomeSelect:(id)sender {
@@ -117,6 +114,18 @@ static Currency* myForeignCurrency = nil;
     self.homeCurrencyLabel.text = self.homeCurrency.alphaCode;
     myHomeCurrency = self.homeCurrency;
     self.exchangeRate.homeCurrency = self.homeCurrency;
+    
+    [self getRate];
+}
+
+- (IBAction)eurHomeSelect:(id)sender {
+    NSLog(@"Home: EUR");
+    self.homeCurrency.alphaCode = @"EUR";
+    self.homeCurrencyLabel.text = self.homeCurrency.alphaCode;
+    myHomeCurrency = self.homeCurrency;
+    self.exchangeRate.homeCurrency = self.homeCurrency;
+    
+    [self getRate];
 }
 
 - (IBAction)usdForeignSelect:(id)sender {
@@ -125,6 +134,8 @@ static Currency* myForeignCurrency = nil;
     self.foreignCurrencyLabel.text = self.foreignCurrency.alphaCode;
     myForeignCurrency = self.foreignCurrency;
     self.exchangeRate.foreignCurrency = self.foreignCurrency;
+    
+    [self getRate];
 }
 
 - (IBAction)cadForeignSelect:(id)sender {
@@ -133,6 +144,18 @@ static Currency* myForeignCurrency = nil;
     self.foreignCurrencyLabel.text = self.foreignCurrency.alphaCode;
     myForeignCurrency = self.foreignCurrency;
     self.exchangeRate.foreignCurrency = self.foreignCurrency;
+    
+    [self getRate];
+}
+
+- (IBAction)eurForeignSelect:(id)sender {
+    NSLog(@"Foreign: EUR");
+    self.foreignCurrency.alphaCode = @"EUR";
+    self.foreignCurrencyLabel.text = self.foreignCurrency.alphaCode;
+    myForeignCurrency = self.foreignCurrency;
+    self.exchangeRate.foreignCurrency = self.foreignCurrency;
+    
+    [self getRate];
 }
 
 @end
