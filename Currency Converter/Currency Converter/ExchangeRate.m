@@ -14,6 +14,8 @@
 @synthesize foreignCurrency;
 @synthesize expiresOn; // expires on
 @synthesize rate;
+@synthesize completionHandlerDictionary;
+@synthesize ephemeralConfigObject;
 
 -(ExchangeRate*) initWithHomeCurrency:(Currency *)aHome foreignCurrency:(Currency *)aForeign {
     self.homeCurrency = aHome;

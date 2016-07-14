@@ -19,9 +19,6 @@
 @property (strong) NSMutableDictionary *completionHandlerDictionary;
 @property (strong) NSURLSessionConfiguration *ephemeralConfigObject;
 
--(URLFetcher*) init;
--(void) fetch;
-
 -(bool) updateRate;
 -(NSString*) exchangeToHome: (NSNumber*) value;
 -(NSString*) exchangeToForeign: (NSNumber*) value;
@@ -32,5 +29,8 @@
                       foreignCurrency:(Currency*) aForeign;
 -(NSURL*) exchangeRateURL;
 +(NSArray*) allExchangeRates;
+
+-(URLFetcher*) init;
+-(void) fetch;
 
 @end
