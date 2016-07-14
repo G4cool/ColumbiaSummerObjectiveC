@@ -76,6 +76,8 @@ static Currency* myForeignCurrency = nil;
     
     self.homeCurrency = [[Currency alloc] init];
     self.foreignCurrency = [[Currency alloc] init];
+    self.homeCurrency.alphaCode = @"USD";
+    self.foreignCurrency.alphaCode = @"CAD";
     myHomeCurrency = self.homeCurrency;
     myForeignCurrency = self.foreignCurrency;
     self.exchangeRate.homeCurrency = self.homeCurrency;
@@ -131,6 +133,10 @@ static Currency* myForeignCurrency = nil;
     NSString* rateResult = rateDictionary[@"Rate"];
     NSLog(@"rateResult: %@", rateResult);
     self.exchangeRate.rate = rateResult.floatValue;
+    
+    self.homeCurrency.value = [NSNumber numberWithFloat:(self.foreignCurrency.value.floatValue * (1.0/rateResult.floatValue))];
+    
+    self.homeField.text = [NSString stringWithFormat:@"%f", self.homeCurrency.value.floatValue];
 }
 
 - (IBAction)usdHomeSelect:(id)sender {
