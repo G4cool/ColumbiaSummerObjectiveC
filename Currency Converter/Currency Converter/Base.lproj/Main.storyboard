@@ -114,8 +114,10 @@
                     </view>
                     <connections>
                         <outlet property="foreignCurrencyLabel" destination="2ed-AJ-dF5" id="9ss-1n-uOg"/>
+                        <outlet property="foreignCurrencyPicker" destination="bsQ-6h-SHn" id="UOH-24-IJV"/>
                         <outlet property="foreignField" destination="5eo-Ew-5QF" id="k3g-wH-157"/>
                         <outlet property="homeCurrencyLabel" destination="4s3-dd-jHR" id="rVG-S4-bVl"/>
+                        <outlet property="homeCurrencyPicker" destination="fKI-EV-rRZ" id="x2G-nZ-5AJ"/>
                         <outlet property="homeField" destination="MtD-tv-nuv" id="vPr-C3-bJo"/>
                     </connections>
                 </viewController>

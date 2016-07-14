@@ -11,15 +11,19 @@
 #import "ExchangeRate.h"
 #import "URLFetcher.h"
 
-@interface ViewController : UIViewController {
+@interface ViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate> {
     Currency* homeCurrencyForTransfer;
     Currency* foreignCurrencyForTransfer;
 }
+
 @property (strong, nonatomic) IBOutlet UILabel *homeCurrencyLabel;
 @property (strong, nonatomic) IBOutlet UILabel *foreignCurrencyLabel;
 
 @property (strong, nonatomic) IBOutlet UITextField *homeField;
 @property (strong, nonatomic) IBOutlet UITextField *foreignField;
+
+@property (strong, nonatomic) IBOutlet UIPickerView *homeCurrencyPicker;
+@property (strong, nonatomic) IBOutlet UIPickerView *foreignCurrencyPicker;
 
 @property (strong, nonatomic) Currency* homeCurrency;
 @property (strong, nonatomic) Currency* foreignCurrency;
