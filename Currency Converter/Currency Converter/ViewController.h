@@ -39,14 +39,6 @@
 - (IBAction)homeFieldChange:(id)sender;
 - (IBAction)foreignFieldChange:(id)sender;
 
-- (IBAction)usdHomeSelect:(id)sender;
-- (IBAction)cadHomeSelect:(id)sender;
-- (IBAction)eurHomeSelect:(id)sender;
-
-- (IBAction)usdForeignSelect:(id)sender;
-- (IBAction)cadForeignSelect:(id)sender;
-- (IBAction)eurForeignSelect:(id)sender;
-
 - (IBAction)calculate:(id)sender;
 
 @end

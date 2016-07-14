@@ -37,7 +37,7 @@ static NSDictionary* dataHereAgain = nil;
         NSLog(@"dispatching %@", [i description]);
         NSURLSessionTask* task = [delegateFreeSession dataTaskWithURL: [i exchangeRateURL]
                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                        NSLog(@"Got response %@ with error %@.\n", response, error);
+                                                        //NSLog(@"Got response %@ with error %@.\n", response, error);
                                                         id obj = [NSJSONSerialization JSONObjectWithData: data
                                                                                                  options: 0
                                                                                                    error: nil];
@@ -45,7 +45,7 @@ static NSDictionary* dataHereAgain = nil;
                                                         if ([obj isKindOfClass: [NSDictionary class]]) {
                                                             NSDictionary *dict = (NSDictionary*)obj;
                                                             //NSLog(@"Rate value from URLFetcher.m: %@", dict[@"Rate"]);
-                                                            NSLog(@"%@", [dict description]);
+                                                            //NSLog(@"%@", [dict description]);
                                                             dataToTransfer = [dict description];
                                                             self.dataHere = dataToTransfer;
                                                             dataHereAgain = dict;

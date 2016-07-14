@@ -11,6 +11,10 @@
 
 @interface ViewController ()
 
+{
+    NSArray *_pickerData;
+}
+
 @end
 
 static Currency* myHomeCurrency = nil;
@@ -49,10 +53,17 @@ static Currency* myForeignCurrency = nil;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    _pickerData = @[@"USD", @"CAD", @"EUR", @"GBP", @"JPY"];
+    // Connect data
+    self.homeCurrencyPicker.dataSource = self;
+    self.homeCurrencyPicker.delegate = self;
+    self.foreignCurrencyPicker.dataSource = self;
+    self.foreignCurrencyPicker.delegate = self;
+    
     self.homeCurrency = [[Currency alloc] init];
     self.foreignCurrency = [[Currency alloc] init];
     self.homeCurrency.alphaCode = @"USD";
-    self.foreignCurrency.alphaCode = @"CAD";
+    self.foreignCurrency.alphaCode = @"USD";
     self.homeCurrencyLabel.text = self.homeCurrency.alphaCode;
     self.foreignCurrencyLabel.text = self.foreignCurrency.alphaCode;
     myHomeCurrency = self.homeCurrency;
@@ -61,6 +72,68 @@ static Currency* myForeignCurrency = nil;
     self.exchangeRate.foreignCurrency = self.foreignCurrency;
     
     [self getRate];
+}
+
+// The number of columns of data
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+// The number of rows of data
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return _pickerData.count;
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return _pickerData[row];
+}
+
+// Catpure the picker view selection
+/*
+- (void)pickerViewHome:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    NSLog(@"picked home");
+    
+    self.homeCurrency.alphaCode = _pickerData[row];
+    myHomeCurrency = self.homeCurrency;
+    self.homeCurrencyLabel.text = self.homeCurrency.alphaCode;
+    self.exchangeRate.homeCurrency = self.homeCurrency;
+    
+    [self getRate];
+}
+
+- (void)pickerViewForeign:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    NSLog(@"picked foreign");
+    
+    self.foreignCurrency.alphaCode = _pickerData[row];
+    self.foreignCurrencyLabel.text = self.foreignCurrency.alphaCode;
+    myForeignCurrency = self.foreignCurrency;
+    self.exchangeRate.foreignCurrency = self.foreignCurrency;
+    
+    [self getRate];
+}
+*/
+
+// Catpure the picker view selection
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if([pickerView isEqual: self.homeCurrencyPicker]){
+        self.homeCurrency.alphaCode = _pickerData[row];
+        myHomeCurrency = self.homeCurrency;
+        self.homeCurrencyLabel.text = self.homeCurrency.alphaCode;
+        self.exchangeRate.homeCurrency = self.homeCurrency;
+        
+        [self getRate];
+    }
+    
+    if([pickerView isEqual: self.foreignCurrencyPicker]){
+        self.foreignCurrency.alphaCode = _pickerData[row];
+        self.foreignCurrencyLabel.text = self.foreignCurrency.alphaCode;
+        myForeignCurrency = self.foreignCurrency;
+        self.exchangeRate.foreignCurrency = self.foreignCurrency;
+        
+        [self getRate];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,66 +169,6 @@ static Currency* myForeignCurrency = nil;
     float roundedVal = floorf(self.homeCurrency.value.floatValue * 100 + 0.5) / 100;
     
     self.homeField.text = [NSString stringWithFormat:@"%.02f", roundedVal];
-}
-
-- (IBAction)usdHomeSelect:(id)sender {
-    NSLog(@"Home: USD");
-    self.homeCurrency.alphaCode = @"USD";
-    myHomeCurrency = self.homeCurrency;
-    self.homeCurrencyLabel.text = self.homeCurrency.alphaCode;
-    self.exchangeRate.homeCurrency = self.homeCurrency;
-    
-    [self getRate];
-}
-
-- (IBAction)cadHomeSelect:(id)sender {
-    NSLog(@"Home: CAD");
-    self.homeCurrency.alphaCode = @"CAD";
-    self.homeCurrencyLabel.text = self.homeCurrency.alphaCode;
-    myHomeCurrency = self.homeCurrency;
-    self.exchangeRate.homeCurrency = self.homeCurrency;
-    
-    [self getRate];
-}
-
-- (IBAction)eurHomeSelect:(id)sender {
-    NSLog(@"Home: EUR");
-    self.homeCurrency.alphaCode = @"EUR";
-    self.homeCurrencyLabel.text = self.homeCurrency.alphaCode;
-    myHomeCurrency = self.homeCurrency;
-    self.exchangeRate.homeCurrency = self.homeCurrency;
-    
-    [self getRate];
-}
-
-- (IBAction)usdForeignSelect:(id)sender {
-    NSLog(@"Foreign: USD");
-    self.foreignCurrency.alphaCode = @"USD";
-    self.foreignCurrencyLabel.text = self.foreignCurrency.alphaCode;
-    myForeignCurrency = self.foreignCurrency;
-    self.exchangeRate.foreignCurrency = self.foreignCurrency;
-    
-    [self getRate];
-}
-
-- (IBAction)cadForeignSelect:(id)sender {
-    NSLog(@"Foreign: CAD");
-    self.foreignCurrency.alphaCode = @"CAD";
-    self.foreignCurrencyLabel.text = self.foreignCurrency.alphaCode;
-    myForeignCurrency = self.foreignCurrency;
-    self.exchangeRate.foreignCurrency = self.foreignCurrency;
-    
-    [self getRate];
-}
-
-- (IBAction)eurForeignSelect:(id)sender {
-    NSLog(@"Foreign: EUR");
-    self.foreignCurrency.alphaCode = @"EUR";
-    self.foreignCurrencyLabel.text = self.foreignCurrency.alphaCode;
-    myForeignCurrency = self.foreignCurrency;
-    self.exchangeRate.foreignCurrency = self.foreignCurrency;
-    
-    [self getRate];
 }
 
 - (IBAction)calculate:(id)sender {

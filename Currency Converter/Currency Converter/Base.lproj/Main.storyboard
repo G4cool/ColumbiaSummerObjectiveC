@@ -45,54 +45,6 @@
                                     <action selector="foreignFieldChange:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="OLZ-BS-gw2"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OQX-kL-caU">
-                                <rect key="frame" x="20" y="231" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="USD"/>
-                                <connections>
-                                    <action selector="usdHomeSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gQK-sl-5jF"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BnM-Qd-uVB">
-                                <rect key="frame" x="20" y="269" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="CAD"/>
-                                <connections>
-                                    <action selector="cadHomeSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FY5-Dm-5yW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="01U-N8-oZA">
-                                <rect key="frame" x="269" y="231" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="USD"/>
-                                <connections>
-                                    <action selector="usdForeignSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dxg-di-oeX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="t3f-xl-TpT">
-                                <rect key="frame" x="269" y="269" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="CAD"/>
-                                <connections>
-                                    <action selector="cadForeignSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SN3-y5-aAJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AwI-Sd-Jdg">
-                                <rect key="frame" x="20" y="307" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="EUR"/>
-                                <connections>
-                                    <action selector="eurHomeSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uwC-Ah-o5L"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RfX-fY-s9x">
-                                <rect key="frame" x="270" y="307" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="EUR"/>
-                                <connections>
-                                    <action selector="eurForeignSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tai-fS-Fs3"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mnw-Qd-w5R">
                                 <rect key="frame" x="128" y="204" width="64" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
