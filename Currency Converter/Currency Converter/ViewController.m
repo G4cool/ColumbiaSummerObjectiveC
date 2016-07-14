@@ -90,6 +90,8 @@ static Currency* myForeignCurrency = nil;
 }
 
 - (IBAction)homeFieldChange:(id)sender {
+    NSLog(@"Home change");
+    
     NSNumberFormatter *format = [[NSNumberFormatter alloc] init];
     format.numberStyle = NSNumberFormatterDecimalStyle;
     self.homeCurrency.value = [format numberFromString:self.homeField.text];
@@ -112,11 +114,7 @@ static Currency* myForeignCurrency = nil;
 }
 
 - (IBAction)foreignFieldChange:(id)sender {
-    /*
-    Currency* temp = self.homeCurrency;
-    self.homeCurrency = self.foreignCurrency;
-    self.foreignCurrency = temp;
-     */
+    NSLog(@"Foreign change");
     
     NSNumberFormatter *format = [[NSNumberFormatter alloc] init];
     format.numberStyle = NSNumberFormatterDecimalStyle;
