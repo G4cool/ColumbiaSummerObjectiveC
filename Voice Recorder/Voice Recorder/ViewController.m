@@ -268,9 +268,10 @@
     
     assert([[NSFileManager defaultManager] fileExistsAtPath: archive]);
     
-    NSLog(@"Playing %@", self.currentRecording.description);
-    NSAssert([[NSFileManager defaultManager] fileExistsAtPath: self.currentRecording.path], @"Doesn't exist");
-    NSError *error;
+    //NSLog(@"Playing %@", self.currentRecording.description);
+    //NSAssert([[NSFileManager defaultManager] fileExistsAtPath: self.currentRecording.path], @"Doesn't exist");
+    //NSError *error;
+    /*
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL: self.currentRecording.url error:&error];
     if(error){
         NSLog(@"playing audio: %@ %ld %@", [error domain], [error code], [[error userInfo] description]);
@@ -285,7 +286,8 @@
     NSLog(@"CMON");
     [player play];
     NSLog(@"YES");
-    
+    */
+     
     self.recordingBool = NO;
 }
 
