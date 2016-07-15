@@ -49,6 +49,9 @@ static Currency* myForeignCurrency = nil;
     NSString* rateResult = rateDictionary[@"Rate"];
     self.exchangeRate.rate = rateResult.floatValue;
     self.rateView = rateResult.floatValue;
+    
+    self.homeField.placeholder = @"1.00";
+    self.foreignField.placeholder = @"1.00";
 }
 
 - (void)viewDidLoad {
