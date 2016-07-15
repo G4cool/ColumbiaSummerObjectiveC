@@ -22,8 +22,6 @@ static Currency* myForeignCurrency = nil;
 
 @implementation ViewController
 
-// Commissions: Use 2.0%
-
 @synthesize homeCurrency;
 @synthesize foreignCurrency;
 @synthesize exchangeRate;
