@@ -28,6 +28,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *commissionLabel;
 @property (strong, nonatomic) IBOutlet UISwitch *commissionSwitch;
 
+@property (strong, nonatomic) IBOutlet UITextField *commissionValue;
+
 @property (strong, nonatomic) Currency* homeCurrency;
 @property (strong, nonatomic) Currency* foreignCurrency;
 @property (strong, nonatomic) ExchangeRate* exchangeRate;
