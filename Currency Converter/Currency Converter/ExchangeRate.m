@@ -39,18 +39,7 @@
     NSMutableArray* allRates = [[NSMutableArray alloc] init];
     Currency* homeCurrencyForThis = [[Currency alloc] initWithName:@"US Dollar" alphaCode:@"USD" symbol:@"$" decimalPlaces:[NSNumber numberWithInt:2]];
     Currency* foreignCurrencyForThis = [[Currency alloc] initWithName:@"Canadian Dollar" alphaCode:@"CAD" symbol:@"$" decimalPlaces:[NSNumber numberWithInt:2]];
-    /*
-    Currency* homeCurrencyForThis = [[Currency alloc] init];
-    homeCurrencyForThis.name = @"US Dollar";
-    homeCurrencyForThis.alphaCode = @"USD";
-    homeCurrencyForThis.symbol = @"$";
-    homeCurrencyForThis.decimalPlaces = [NSNumber numberWithInt:2];
-    Currency* foreignCurrencyForThis = [[Currency alloc] init];
-    foreignCurrencyForThis.name = @"US Dollar";
-    foreignCurrencyForThis.alphaCode = @"USD";
-    foreignCurrencyForThis.symbol = @"$";
-    foreignCurrencyForThis.decimalPlaces = [NSNumber numberWithInt:2];
-     */
+    
     NSLog(@"before");
     [allRates addObject: [[ExchangeRate alloc] initWithHomeCurrency: homeCurrencyForThis foreignCurrency: foreignCurrencyForThis]];
     NSLog(@"after");
