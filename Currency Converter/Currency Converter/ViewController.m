@@ -201,10 +201,8 @@ static Currency* myForeignCurrency = nil;
     float commissionVal = 0.0;
     
     if (self.commissionSwitch.on) {
-        NSLog(@"calculate commission on");
         commissionVal = 0.02 * self.foreignCurrency.value.floatValue;
     } else {
-        NSLog(@"calculate commission off");
         commissionVal = 0.0;
     }
     
