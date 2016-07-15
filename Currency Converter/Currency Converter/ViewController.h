@@ -25,6 +25,9 @@
 @property (strong, nonatomic) IBOutlet UIPickerView *homeCurrencyPicker;
 @property (strong, nonatomic) IBOutlet UIPickerView *foreignCurrencyPicker;
 
+@property (strong, nonatomic) IBOutlet UILabel *commissionLabel;
+@property (strong, nonatomic) IBOutlet UISwitch *commissionSwitch;
+
 @property (strong, nonatomic) Currency* homeCurrency;
 @property (strong, nonatomic) Currency* foreignCurrency;
 @property (strong, nonatomic) ExchangeRate* exchangeRate;
@@ -40,6 +43,8 @@
 - (IBAction)foreignFieldChange:(id)sender;
 
 - (IBAction)calculate:(id)sender;
+
+- (IBAction)commissionYesNo:(id)sender;
 
 @end
 

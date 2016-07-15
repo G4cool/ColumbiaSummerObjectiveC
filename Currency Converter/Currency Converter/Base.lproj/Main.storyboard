@@ -46,7 +46,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mnw-Qd-w5R">
-                                <rect key="frame" x="128" y="204" width="64" height="30"/>
+                                <rect key="frame" x="128" y="269" width="64" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Calculate"/>
                                 <connections>
@@ -61,10 +61,26 @@
                                 <rect key="frame" x="203" y="87" width="97" height="109"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="M1x-DL-9lM">
+                                <rect key="frame" x="251" y="204" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="commissionYesNo:" destination="BYZ-38-t0r" eventType="valueChanged" id="BwT-BF-9Ng"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commission: Yes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PrM-cJ-hRm">
+                                <rect key="frame" x="20" y="209" width="131" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="commissionLabel" destination="PrM-cJ-hRm" id="38G-oC-zMy"/>
+                        <outlet property="commissionSwitch" destination="M1x-DL-9lM" id="LQs-wb-DHB"/>
                         <outlet property="foreignCurrencyLabel" destination="2ed-AJ-dF5" id="9ss-1n-uOg"/>
                         <outlet property="foreignCurrencyPicker" destination="bsQ-6h-SHn" id="UOH-24-IJV"/>
                         <outlet property="foreignField" destination="5eo-Ew-5QF" id="k3g-wH-157"/>

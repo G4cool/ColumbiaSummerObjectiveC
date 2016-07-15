@@ -22,7 +22,7 @@ static Currency* myForeignCurrency = nil;
 
 @implementation ViewController
 
-// Commissions: About $1.39 to $3.32, take average: about $2.36
+// Commissions: Use 2.0%
 
 @synthesize homeCurrency;
 @synthesize foreignCurrency;
@@ -186,6 +186,14 @@ static Currency* myForeignCurrency = nil;
     float roundedVal = floorf(self.foreignCurrency.value.floatValue * 100 + 0.5) / 100;
     
     self.foreignField.text = [NSString stringWithFormat:@"%.02f", roundedVal];
+}
+
+- (IBAction)commissionYesNo:(id)sender {
+    if (self.commissionSwitch.on) {
+        self.commissionLabel.text = @"Commission: Yes";
+    } else {
+        self.commissionLabel.text = @"Commission: No";
+    }
 }
 
 @end
