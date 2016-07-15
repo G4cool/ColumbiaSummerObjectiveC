@@ -58,7 +58,7 @@ static Currency* myForeignCurrency = nil;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    _pickerData = @[@"USD", @"CAD", @"EUR", @"GBP", @"JPY"];
+    _pickerData = @[@"USD", @"AOA", @"ARS", @"CAD", @"EUR", @"GBP", @"IQD", @"JPY", @"MAD", @"ZMW"];
     // Connect data
     self.homeCurrencyPicker.dataSource = self;
     self.homeCurrencyPicker.delegate = self;
@@ -164,7 +164,11 @@ static Currency* myForeignCurrency = nil;
     float commissionVal = 0.0;
     
     if (self.commissionSwitch.on) {
-        commissionVal = (self.commissionValueField.text.floatValue/100) * self.foreignCurrency.value.floatValue;
+        if ([self.commissionValueField.text isEqual: @""]) {
+            commissionVal = (0.02) * self.foreignCurrency.value.floatValue;
+        } else {
+            commissionVal = (self.commissionValueField.text.floatValue/100) * self.foreignCurrency.value.floatValue;
+        }
     } else {
         commissionVal = 0.0;
     }
@@ -188,7 +192,11 @@ static Currency* myForeignCurrency = nil;
     float commissionVal = 0.0;
     
     if (self.commissionSwitch.on) {
-        commissionVal = (self.commissionValueField.text.floatValue/100) * self.homeCurrency.value.floatValue;
+        if ([self.commissionValueField.text isEqual: @""]) {
+            commissionVal = (0.02) * self.homeCurrency.value.floatValue;
+        } else {
+            commissionVal = (self.commissionValueField.text.floatValue/100) * self.homeCurrency.value.floatValue;
+        }
     } else {
         commissionVal = 0.0;
     }
@@ -210,7 +218,11 @@ static Currency* myForeignCurrency = nil;
     float commissionVal = 0.0;
     
     if (self.commissionSwitch.on) {
-        commissionVal = (self.commissionValueField.text.floatValue/100) * self.foreignCurrency.value.floatValue;
+        if ([self.commissionValueField.text isEqual: @""]) {
+            commissionVal = (0.02) * self.foreignCurrency.value.floatValue;
+        } else {
+            commissionVal = (self.commissionValueField.text.floatValue/100) * self.foreignCurrency.value.floatValue;
+        }
     } else {
         commissionVal = 0.0;
     }
