@@ -81,8 +81,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commission value:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B2v-Hb-wTE">
-                                <rect key="frame" x="20" y="247" width="144" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commission value %:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B2v-Hb-wTE">
+                                <rect key="frame" x="20" y="247" width="161" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -94,7 +94,7 @@
                     <connections>
                         <outlet property="commissionLabel" destination="PrM-cJ-hRm" id="38G-oC-zMy"/>
                         <outlet property="commissionSwitch" destination="M1x-DL-9lM" id="LQs-wb-DHB"/>
-                        <outlet property="commissionValue" destination="eg6-pH-ERt" id="I0o-P4-xFy"/>
+                        <outlet property="commissionValueField" destination="eg6-pH-ERt" id="2qQ-ub-sEE"/>
                         <outlet property="foreignCurrencyLabel" destination="2ed-AJ-dF5" id="9ss-1n-uOg"/>
                         <outlet property="foreignCurrencyPicker" destination="bsQ-6h-SHn" id="UOH-24-IJV"/>
                         <outlet property="foreignField" destination="5eo-Ew-5QF" id="k3g-wH-157"/>

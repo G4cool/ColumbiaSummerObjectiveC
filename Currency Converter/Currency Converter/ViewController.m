@@ -52,6 +52,8 @@ static Currency* myForeignCurrency = nil;
     
     self.homeField.placeholder = @"1.00";
     self.foreignField.placeholder = @"1.00";
+    
+    self.commissionValueField.placeholder = @"Default: 2";
 }
 
 - (void)viewDidLoad {
@@ -158,7 +160,7 @@ static Currency* myForeignCurrency = nil;
     float commissionVal = 0.0;
     
     if (self.commissionSwitch.on) {
-        commissionVal = 0.02 * self.foreignCurrency.value.floatValue;
+        commissionVal = self.commissionValueField.text.floatValue * self.foreignCurrency.value.floatValue;
     } else {
         commissionVal = 0.0;
     }
@@ -182,7 +184,7 @@ static Currency* myForeignCurrency = nil;
     float commissionVal = 0.0;
     
     if (self.commissionSwitch.on) {
-        commissionVal = 0.02 * self.homeCurrency.value.floatValue;
+        commissionVal = self.commissionValueField.text.floatValue * self.homeCurrency.value.floatValue;
     } else {
         commissionVal = 0.0;
     }
@@ -204,7 +206,7 @@ static Currency* myForeignCurrency = nil;
     float commissionVal = 0.0;
     
     if (self.commissionSwitch.on) {
-        commissionVal = 0.02 * self.foreignCurrency.value.floatValue;
+        commissionVal = self.commissionValueField.text.floatValue * self.foreignCurrency.value.floatValue;
     } else {
         commissionVal = 0.0;
     }
