@@ -106,7 +106,6 @@
     if (count <= 100000000) { // 100000000 works
         self.progressBar.progress = (float)count/100000.0f; // 100000.0f works
     } else {
-        NSLog(@"end the timer");
         self.progressBar.progress = 0.0;
         [self.myTimer invalidate];
         self.myTimer = nil;
