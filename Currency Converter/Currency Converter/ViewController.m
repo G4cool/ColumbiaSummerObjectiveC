@@ -81,6 +81,12 @@ static Currency* myForeignCurrency = nil;
     [self getRate];
 }
 
+- (void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.homeField resignFirstResponder];
+    [self.foreignField resignFirstResponder];
+    [self.commissionValueField resignFirstResponder];
+}
+
 // The number of columns of data
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
@@ -160,7 +166,7 @@ static Currency* myForeignCurrency = nil;
     float commissionVal = 0.0;
     
     if (self.commissionSwitch.on) {
-        commissionVal = self.commissionValueField.text.floatValue * self.foreignCurrency.value.floatValue;
+        commissionVal = (self.commissionValueField.text.floatValue/100) * self.foreignCurrency.value.floatValue;
     } else {
         commissionVal = 0.0;
     }
@@ -184,7 +190,7 @@ static Currency* myForeignCurrency = nil;
     float commissionVal = 0.0;
     
     if (self.commissionSwitch.on) {
-        commissionVal = self.commissionValueField.text.floatValue * self.homeCurrency.value.floatValue;
+        commissionVal = (self.commissionValueField.text.floatValue/100) * self.homeCurrency.value.floatValue;
     } else {
         commissionVal = 0.0;
     }
@@ -206,7 +212,7 @@ static Currency* myForeignCurrency = nil;
     float commissionVal = 0.0;
     
     if (self.commissionSwitch.on) {
-        commissionVal = self.commissionValueField.text.floatValue * self.foreignCurrency.value.floatValue;
+        commissionVal = (self.commissionValueField.text.floatValue/100) * self.foreignCurrency.value.floatValue;
     } else {
         commissionVal = 0.0;
     }
