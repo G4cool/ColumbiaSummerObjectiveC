@@ -106,6 +106,8 @@
     if (count <= 100000000) { // 100000000 works
         self.progressBar.progress = (float)count/100000.0f; // 100000.0f works
     } else {
+        NSLog(@"end the timer");
+        self.progressBar.progress = 0.0;
         [self.myTimer invalidate];
         self.myTimer = nil;
     }
@@ -113,6 +115,7 @@
 
 - (void) stopTimer
 {
+    self.progressBar.progress = 0.0;
     [self.myTimer invalidate];
     self.myTimer = nil;
 }
@@ -236,11 +239,11 @@
     }
     
     // start recording
-    [recorder recordForDuration:(NSTimeInterval)5];
+    [recorder recordForDuration:(NSTimeInterval)10];
     
     self.progressBar.progress = 0.0;
     self.myTimer = [NSTimer
-                  scheduledTimerWithTimeInterval:0.2
+                  scheduledTimerWithTimeInterval:0.0
                   target:self
                     selector:@selector(updateUI:)
                   userInfo:nil
@@ -254,6 +257,9 @@
 }
 
 - (IBAction)stopButton:(id)sender {
+    self.progressBar.progress = 0.0;
+    [recorder stop];
+    
     [self performSelectorOnMainThread:@selector(stopTimer) withObject:nil waitUntilDone:YES];
     
     NSString* archive = [NSString stringWithFormat:@"/Users/Luca/Desktop/Universal/RecordingList/recordingList"];
