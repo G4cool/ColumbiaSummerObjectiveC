@@ -33,7 +33,7 @@ static NSDictionary* dataHereAgain = nil;
 -(void) fetch {
     NSOperationQueue *mainQueue = [NSOperationQueue mainQueue];
     NSURLSession *delegateFreeSession = [NSURLSession sessionWithConfiguration: self.ephemeralConfigObject delegate: nil delegateQueue: mainQueue];
-    for(ExchangeRate* i in [ExchangeRate allExchangeRates]) {
+    for(ExchangeRate* i in [ExchangeRate allExchangeRates]) { // Fix this, the way it is implemented now, we do not need the loop, but there are still references to it, like i in [i description] and [i exchangeRateURL]
         NSLog(@"dispatching %@", [i description]);
         NSURLSessionTask* task = [delegateFreeSession dataTaskWithURL: [i exchangeRateURL]
                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
