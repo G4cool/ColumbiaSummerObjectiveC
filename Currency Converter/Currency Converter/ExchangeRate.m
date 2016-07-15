@@ -28,16 +28,14 @@
     return YES;
 }
 
--(NSURL*) exchangeRateURL
-{
+-(NSURL*) exchangeRateURL {
     self.homeCurrency = [ViewController getHomeCurrency];
     self.foreignCurrency = [ViewController getForeignCurrency];
     NSString* urlString = [NSString stringWithFormat: @"https://query.yahooapis.com/v1/public/yql?q=select%%20*%%20from%%20yahoo.finance.xchange%%20where%%20pair%%20in%%20(%%22%@%@%%22)&format=json&env=store%%3A%%2F%%2Fdatatables.org%%2Falltableswithkeys&callback=", self.homeCurrency.alphaCode, self.foreignCurrency.alphaCode];
     return [NSURL URLWithString: urlString];
 }
 
-+(NSArray*) allExchangeRates
-{
++(NSArray*) allExchangeRates {
     NSMutableArray* allRates = [[NSMutableArray alloc] init];
     Currency* homeCurrencyForThis = [[Currency alloc] initWithName:@"US Dollar" alphaCode:@"USD" symbol:@"$" decimalPlaces:[NSNumber numberWithInt:2]];
     Currency* foreignCurrencyForThis = [[Currency alloc] initWithName:@"Canadian Dollar" alphaCode:@"CAD" symbol:@"$" decimalPlaces:[NSNumber numberWithInt:2]];
