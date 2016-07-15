@@ -114,6 +114,7 @@
 
 - (void) stopTimer
 {
+    NSLog(@"stop");
     self.progressBar.progress = 0.0;
     [self.myTimer invalidate];
     self.myTimer = nil;
@@ -181,6 +182,11 @@
     
     
     NSDate* now = [NSDate date];
+        
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyyMMddHHmmss"];
+    NSString* dateStringVar = [formatter stringFromDate:now];
+    NSLog(@"now: %@", [NSString stringWithFormat:@"%@", dateStringVar]);
     
     self.currentRecording = [[Recording alloc] initWithDate: now];
     [self.listOfRecordings addObject: self.currentRecording];
@@ -232,7 +238,6 @@
         
         [cantRecordAlert addAction:defaultAction];
         [self presentViewController:cantRecordAlert animated:YES completion:nil];
-        
         
         return;
     }

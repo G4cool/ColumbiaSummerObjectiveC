@@ -22,6 +22,8 @@ static Currency* myForeignCurrency = nil;
 
 @implementation ViewController
 
+// Commissions: About $1.39 to $3.32, take average: about $2.36
+
 @synthesize homeCurrency;
 @synthesize foreignCurrency;
 @synthesize exchangeRate;
