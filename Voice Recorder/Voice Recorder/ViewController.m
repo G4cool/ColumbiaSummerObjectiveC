@@ -94,8 +94,6 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.progressBar = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
     
-    //self.startButton.center = self.view.center;
-    //self.stopButton.center = self.view.center;
     self.progressBar.center = self.view.center;
     [self.view addSubview:self.progressBar];
     listOfRecordings = [[NSMutableArray alloc]init];
@@ -124,8 +122,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-//listOfRecordings = [[NSMutableArray alloc]init];
-
 - (NSString *) dateString
 {
     // return a formatted string for a file name
@@ -144,7 +140,6 @@
     }else{
         // Doesn't exist!
         NSLog(@"No file to open!!");
-        //exit(1);
     }
     
     NSLog(@"self.listOfRecordings: %@", self.listOfRecordings);
@@ -254,10 +249,8 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    //NSLog(@"hello from the other side: %@", recordings[0]);
     TableViewController* pvc = (TableViewController*) segue.destinationViewController;
     pvc.recordings = self.listOfRecordings;
-    //NSLog(@"hello from the other side: %@", recordings[0]);
 }
 
 - (IBAction)stopButton:(id)sender {
@@ -267,26 +260,6 @@
     [NSKeyedArchiver archiveRootObject: self.listOfRecordings toFile: archive];
     
     assert([[NSFileManager defaultManager] fileExistsAtPath: archive]);
-    
-    //NSLog(@"Playing %@", self.currentRecording.description);
-    //NSAssert([[NSFileManager defaultManager] fileExistsAtPath: self.currentRecording.path], @"Doesn't exist");
-    //NSError *error;
-    /*
-    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL: self.currentRecording.url error:&error];
-    if(error){
-        NSLog(@"playing audio: %@ %ld %@", [error domain], [error code], [[error userInfo] description]);
-        return;
-    }else{
-        player.delegate = self;
-    }
-    if([player prepareToPlay] == NO){
-        NSLog(@"Not prepared to play!");
-        return;
-    }
-    NSLog(@"CMON");
-    [player play];
-    NSLog(@"YES");
-    */
      
     self.recordingBool = NO;
 }
