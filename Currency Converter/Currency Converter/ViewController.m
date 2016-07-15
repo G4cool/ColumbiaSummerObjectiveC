@@ -152,7 +152,15 @@ static Currency* myForeignCurrency = nil;
     
     self.foreignCurrency.value = [NSNumber numberWithFloat:(self.homeCurrency.value.floatValue * self.rateView)];
     
-    float roundedVal = floorf(self.foreignCurrency.value.floatValue * 100 + 0.5) / 100;
+    float commissionVal = 0.0;
+    
+    if (self.commissionSwitch.on) {
+        commissionVal = 0.02 * self.foreignCurrency.value.floatValue;
+    } else {
+        commissionVal = 0.0;
+    }
+    
+    float roundedVal = floorf((self.foreignCurrency.value.floatValue + commissionVal) * 100 + 0.5) / 100;
     
     self.foreignField.text = [NSString stringWithFormat:@"%.02f", roundedVal];
 }
@@ -168,7 +176,15 @@ static Currency* myForeignCurrency = nil;
     
     self.homeCurrency.value = [NSNumber numberWithFloat:(self.foreignCurrency.value.floatValue * (1.0/self.rateView))];
     
-    float roundedVal = floorf(self.homeCurrency.value.floatValue * 100 + 0.5) / 100;
+    float commissionVal = 0.0;
+    
+    if (self.commissionSwitch.on) {
+        commissionVal = 0.02 * self.homeCurrency.value.floatValue;
+    } else {
+        commissionVal = 0.0;
+    }
+    
+    float roundedVal = floorf((self.homeCurrency.value.floatValue + commissionVal) * 100 + 0.5) / 100;
     
     self.homeField.text = [NSString stringWithFormat:@"%.02f", roundedVal];
 }
@@ -177,13 +193,22 @@ static Currency* myForeignCurrency = nil;
     NSNumberFormatter *format = [[NSNumberFormatter alloc] init];
     format.numberStyle = NSNumberFormatterDecimalStyle;
     self.homeCurrency.value = [format numberFromString:self.homeField.text];
-    self.foreignCurrency.value = [format numberFromString:self.foreignField.text];
     
     [self getRate];
     
     self.foreignCurrency.value = [NSNumber numberWithFloat:(self.homeCurrency.value.floatValue * self.rateView)];
     
-    float roundedVal = floorf(self.foreignCurrency.value.floatValue * 100 + 0.5) / 100;
+    float commissionVal = 0.0;
+    
+    if (self.commissionSwitch.on) {
+        NSLog(@"calculate commission on");
+        commissionVal = 0.02 * self.foreignCurrency.value.floatValue;
+    } else {
+        NSLog(@"calculate commission off");
+        commissionVal = 0.0;
+    }
+    
+    float roundedVal = floorf((self.foreignCurrency.value.floatValue + commissionVal) * 100 + 0.5) / 100;
     
     self.foreignField.text = [NSString stringWithFormat:@"%.02f", roundedVal];
 }
