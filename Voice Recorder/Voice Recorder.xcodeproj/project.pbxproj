@@ -15,6 +15,12 @@
 		818402D11D2D51BC003B5A34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 818402D01D2D51BC003B5A34 /* Assets.xcassets */; };
 		818402D41D2D51BC003B5A34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 818402D21D2D51BC003B5A34 /* LaunchScreen.storyboard */; };
 		818402DD1D2D60B0003B5A34 /* Recording.m in Sources */ = {isa = PBXBuildFile; fileRef = 818402DC1D2D60B0003B5A34 /* Recording.m */; };
+		81FD867A1D39623D00949E05 /* Icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81FD86741D39623D00949E05 /* Icon-29@2x.png */; };
+		81FD867B1D39623D00949E05 /* Icon-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81FD86751D39623D00949E05 /* Icon-29@3x.png */; };
+		81FD867C1D39623D00949E05 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81FD86761D39623D00949E05 /* Icon-40@2x.png */; };
+		81FD867D1D39623D00949E05 /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81FD86771D39623D00949E05 /* Icon-40@3x.png */; };
+		81FD867E1D39623D00949E05 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81FD86781D39623D00949E05 /* Icon-60@2x.png */; };
+		81FD867F1D39623D00949E05 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81FD86791D39623D00949E05 /* Icon-60@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +38,12 @@
 		818402D51D2D51BC003B5A34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		818402DB1D2D60B0003B5A34 /* Recording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recording.h; sourceTree = "<group>"; };
 		818402DC1D2D60B0003B5A34 /* Recording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recording.m; sourceTree = "<group>"; };
+		81FD86741D39623D00949E05 /* Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29@2x.png"; sourceTree = "<group>"; };
+		81FD86751D39623D00949E05 /* Icon-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29@3x.png"; sourceTree = "<group>"; };
+		81FD86761D39623D00949E05 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
+		81FD86771D39623D00949E05 /* Icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@3x.png"; sourceTree = "<group>"; };
+		81FD86781D39623D00949E05 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
+		81FD86791D39623D00949E05 /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +86,12 @@
 				818402DC1D2D60B0003B5A34 /* Recording.m */,
 				818402CD1D2D51BC003B5A34 /* Main.storyboard */,
 				818402D01D2D51BC003B5A34 /* Assets.xcassets */,
+				81FD86741D39623D00949E05 /* Icon-29@2x.png */,
+				81FD86751D39623D00949E05 /* Icon-29@3x.png */,
+				81FD86761D39623D00949E05 /* Icon-40@2x.png */,
+				81FD86771D39623D00949E05 /* Icon-40@3x.png */,
+				81FD86781D39623D00949E05 /* Icon-60@2x.png */,
+				81FD86791D39623D00949E05 /* Icon-60@3x.png */,
 				818402D21D2D51BC003B5A34 /* LaunchScreen.storyboard */,
 				818402D51D2D51BC003B5A34 /* Info.plist */,
 				818402C41D2D51BC003B5A34 /* Supporting Files */,
@@ -146,9 +164,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81FD867A1D39623D00949E05 /* Icon-29@2x.png in Resources */,
 				818402D41D2D51BC003B5A34 /* LaunchScreen.storyboard in Resources */,
 				818402D11D2D51BC003B5A34 /* Assets.xcassets in Resources */,
+				81FD867C1D39623D00949E05 /* Icon-40@2x.png in Resources */,
+				81FD867B1D39623D00949E05 /* Icon-29@3x.png in Resources */,
+				81FD867D1D39623D00949E05 /* Icon-40@3x.png in Resources */,
+				81FD867F1D39623D00949E05 /* Icon-60@3x.png in Resources */,
 				818402CF1D2D51BC003B5A34 /* Main.storyboard in Resources */,
+				81FD867E1D39623D00949E05 /* Icon-60@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
