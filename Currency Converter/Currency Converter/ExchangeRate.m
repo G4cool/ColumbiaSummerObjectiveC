@@ -13,7 +13,6 @@
 
 @synthesize homeCurrency;
 @synthesize foreignCurrency;
-//@synthesize aReference = _aReference;
 @synthesize expiresOn; // expires on
 @synthesize rate;
 
@@ -33,8 +32,6 @@
 {
     self.homeCurrency = [ViewController getHomeCurrency];
     self.foreignCurrency = [ViewController getForeignCurrency];
-    NSLog(@"Home currency alpha code: %@", self.homeCurrency.alphaCode);
-    NSLog(@"Foreign currency alpha code: %@", self.foreignCurrency.alphaCode);
     NSString* urlString = [NSString stringWithFormat: @"https://query.yahooapis.com/v1/public/yql?q=select%%20*%%20from%%20yahoo.finance.xchange%%20where%%20pair%%20in%%20(%%22%@%@%%22)&format=json&env=store%%3A%%2F%%2Fdatatables.org%%2Falltableswithkeys&callback=", self.homeCurrency.alphaCode, self.foreignCurrency.alphaCode];
     return [NSURL URLWithString: urlString];
 }
