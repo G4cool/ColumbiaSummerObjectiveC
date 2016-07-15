@@ -46,7 +46,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mnw-Qd-w5R">
-                                <rect key="frame" x="128" y="330" width="64" height="30"/>
+                                <rect key="frame" x="128" y="335" width="64" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Calculate"/>
                                 <connections>
@@ -75,32 +75,48 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="eg6-pH-ERt">
-                                <rect key="frame" x="203" y="243" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commission value %:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B2v-Hb-wTE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commission % value:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B2v-Hb-wTE">
                                 <rect key="frame" x="20" y="247" width="161" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commission value:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m9J-0r-VeH">
+                                <rect key="frame" x="20" y="276" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D9Q-Hc-5nN">
+                                <rect key="frame" x="20" y="305" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="eg6-pH-ERt">
+                                <rect key="frame" x="203" y="243" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="commissionLabel" destination="PrM-cJ-hRm" id="38G-oC-zMy"/>
+                        <outlet property="commissionPercentValueField" destination="eg6-pH-ERt" id="SqH-eI-8B6"/>
                         <outlet property="commissionSwitch" destination="M1x-DL-9lM" id="LQs-wb-DHB"/>
-                        <outlet property="commissionValueField" destination="eg6-pH-ERt" id="2qQ-ub-sEE"/>
+                        <outlet property="commissionValueLabel" destination="m9J-0r-VeH" id="hsM-sW-z4i"/>
                         <outlet property="foreignCurrencyLabel" destination="2ed-AJ-dF5" id="9ss-1n-uOg"/>
                         <outlet property="foreignCurrencyPicker" destination="bsQ-6h-SHn" id="UOH-24-IJV"/>
                         <outlet property="foreignField" destination="5eo-Ew-5QF" id="k3g-wH-157"/>
                         <outlet property="homeCurrencyLabel" destination="4s3-dd-jHR" id="rVG-S4-bVl"/>
                         <outlet property="homeCurrencyPicker" destination="fKI-EV-rRZ" id="x2G-nZ-5AJ"/>
                         <outlet property="homeField" destination="MtD-tv-nuv" id="vPr-C3-bJo"/>
+                        <outlet property="totalLabel" destination="D9Q-Hc-5nN" id="c01-DC-TTh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

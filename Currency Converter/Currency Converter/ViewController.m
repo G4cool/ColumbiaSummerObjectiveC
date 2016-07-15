@@ -51,7 +51,7 @@ static Currency* myForeignCurrency = nil;
     self.homeField.placeholder = @"1.00";
     self.foreignField.placeholder = @"1.00";
     
-    self.commissionValueField.placeholder = @"Default: 2";
+    self.commissionPercentValueField.placeholder = @"Default: 2";
 }
 
 - (void)viewDidLoad {
@@ -82,7 +82,7 @@ static Currency* myForeignCurrency = nil;
 - (void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.homeField resignFirstResponder];
     [self.foreignField resignFirstResponder];
-    [self.commissionValueField resignFirstResponder];
+    [self.commissionPercentValueField resignFirstResponder];
 }
 
 // The number of columns of data
@@ -99,31 +99,6 @@ static Currency* myForeignCurrency = nil;
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     return _pickerData[row];
 }
-
-// Catpure the picker view selection
-/*
-- (void)pickerViewHome:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    NSLog(@"picked home");
-    
-    self.homeCurrency.alphaCode = _pickerData[row];
-    myHomeCurrency = self.homeCurrency;
-    self.homeCurrencyLabel.text = self.homeCurrency.alphaCode;
-    self.exchangeRate.homeCurrency = self.homeCurrency;
-    
-    [self getRate];
-}
-
-- (void)pickerViewForeign:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    NSLog(@"picked foreign");
-    
-    self.foreignCurrency.alphaCode = _pickerData[row];
-    self.foreignCurrencyLabel.text = self.foreignCurrency.alphaCode;
-    myForeignCurrency = self.foreignCurrency;
-    self.exchangeRate.foreignCurrency = self.foreignCurrency;
-    
-    [self getRate];
-}
-*/
 
 // Catpure the picker view selection
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
@@ -164,23 +139,24 @@ static Currency* myForeignCurrency = nil;
     float commissionVal = 0.0;
     
     if (self.commissionSwitch.on) {
-        if ([self.commissionValueField.text isEqual: @""]) {
-            commissionVal = (0.02) * self.foreignCurrency.value.floatValue;
+        if ([self.commissionPercentValueField.text isEqual: @""]) {
+            commissionVal = (0.02) * self.homeCurrency.value.floatValue;
         } else {
-            commissionVal = (self.commissionValueField.text.floatValue/100) * self.foreignCurrency.value.floatValue;
+            commissionVal = (self.commissionPercentValueField.text.floatValue/100) * self.homeCurrency.value.floatValue;
         }
     } else {
         commissionVal = 0.0;
     }
     
-    float roundedVal = floorf((self.foreignCurrency.value.floatValue + commissionVal) * 100 + 0.5) / 100;
+    float roundedVal = floorf((self.foreignCurrency.value.floatValue) * 100 + 0.5) / 100;
+    float roundedCommissionVal = floorf((commissionVal) * 100 + 0.5) / 100;
     
     self.foreignField.text = [NSString stringWithFormat:@"%.02f", roundedVal];
+    self.commissionValueLabel.text = [NSString stringWithFormat:@"Commission value: %.02f", roundedCommissionVal];
+    self.totalLabel.text = [NSString stringWithFormat:@"Total: %.02f", (roundedVal + (floorf((self.homeCurrency.value.floatValue) * 100 + 0.5) / 100))];
 }
 
 - (IBAction)foreignFieldChange:(id)sender {
-    NSLog(@"Foreign change");
-    
     NSNumberFormatter *format = [[NSNumberFormatter alloc] init];
     format.numberStyle = NSNumberFormatterDecimalStyle;
     self.foreignCurrency.value = [format numberFromString:self.foreignField.text];
@@ -192,18 +168,21 @@ static Currency* myForeignCurrency = nil;
     float commissionVal = 0.0;
     
     if (self.commissionSwitch.on) {
-        if ([self.commissionValueField.text isEqual: @""]) {
-            commissionVal = (0.02) * self.homeCurrency.value.floatValue;
+        if ([self.commissionPercentValueField.text isEqual: @""]) {
+            commissionVal = (0.02) * self.foreignCurrency.value.floatValue;
         } else {
-            commissionVal = (self.commissionValueField.text.floatValue/100) * self.homeCurrency.value.floatValue;
+            commissionVal = (self.commissionPercentValueField.text.floatValue/100) * self.foreignCurrency.value.floatValue;
         }
     } else {
         commissionVal = 0.0;
     }
     
-    float roundedVal = floorf((self.homeCurrency.value.floatValue + commissionVal) * 100 + 0.5) / 100;
+    float roundedVal = floorf((self.homeCurrency.value.floatValue) * 100 + 0.5) / 100;
+    float roundedCommissionVal = floorf((commissionVal) * 100 + 0.5) / 100;
     
     self.homeField.text = [NSString stringWithFormat:@"%.02f", roundedVal];
+    self.commissionValueLabel.text = [NSString stringWithFormat:@"Commission value: %.02f", roundedCommissionVal];
+    self.totalLabel.text = [NSString stringWithFormat:@"Total: %.02f", (roundedVal + (floorf((self.foreignCurrency.value.floatValue) * 100 + 0.5) / 100))];
 }
 
 - (IBAction)calculate:(id)sender {
@@ -218,18 +197,21 @@ static Currency* myForeignCurrency = nil;
     float commissionVal = 0.0;
     
     if (self.commissionSwitch.on) {
-        if ([self.commissionValueField.text isEqual: @""]) {
-            commissionVal = (0.02) * self.foreignCurrency.value.floatValue;
+        if ([self.commissionPercentValueField.text isEqual: @""]) {
+            commissionVal = (0.02) * self.homeCurrency.value.floatValue;
         } else {
-            commissionVal = (self.commissionValueField.text.floatValue/100) * self.foreignCurrency.value.floatValue;
+            commissionVal = (self.commissionPercentValueField.text.floatValue/100) * self.homeCurrency.value.floatValue;
         }
     } else {
         commissionVal = 0.0;
     }
     
-    float roundedVal = floorf((self.foreignCurrency.value.floatValue + commissionVal) * 100 + 0.5) / 100;
+    float roundedVal = floorf((self.foreignCurrency.value.floatValue) * 100 + 0.5) / 100;
+    float roundedCommissionVal = floorf((commissionVal) * 100 + 0.5) / 100;
     
     self.foreignField.text = [NSString stringWithFormat:@"%.02f", roundedVal];
+    self.commissionValueLabel.text = [NSString stringWithFormat:@"Commission value: %.02f", roundedCommissionVal];
+    self.totalLabel.text = [NSString stringWithFormat:@"Total: %.02f", (roundedVal + (floorf((self.homeCurrency.value.floatValue) * 100 + 0.5) / 100))];
 }
 
 - (IBAction)commissionYesNo:(id)sender {
